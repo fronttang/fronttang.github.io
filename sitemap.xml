@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://blog.open4j.com/2018/12/17/centos7-install-docker/</loc>
+    
+    <lastmod>2019-12-03T09:04:41.955Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/tags/index.html</loc>
+    
+    <lastmod>2019-12-03T09:00:55.005Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/about/index.html</loc>
+    
+    <lastmod>2019-12-03T09:00:55.004Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/categories/index.html</loc>
+    
+    <lastmod>2019-12-03T09:00:55.004Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2019/06/01/use-time-machine-backup-mac-to-synology-nas/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.993Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2019/04/07/use-dsm-nginx-reverse-proxy/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.987Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2019/06/02/update-esxi/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.980Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2019/05/29/ros-firewall-net-hairpin/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.972Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2019/04/07/netdata-allow-connetions-dashboard-from-internat/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.970Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.950Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2019/06/10/lede-openwrt-install-smartdns/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.943Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.914Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2019/04/07/lede-docker-nginx-reverse-proxy/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.888Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2019/05/30/ipxe-build-embedded-script/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.884Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2018/12/06/hadoop-ecosystem-install-step9-install-kafka/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.878Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2018/12/05/hadoop-ecosystem-install-step8-install-hive/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.878Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2018/12/04/hadoop-ecosystem-install-step7-install-hbase/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.878Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2018/12/03/hadoop-ecosystem-install-step6-install-hadoop/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.865Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2018/12/02/hadoop-ecosystem-install-step5-install-and-setup-zookeeper/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.862Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2018/12/01/hadoop-ecosystem-install-step4-setup-ssh/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.862Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2018/12/10/hadoop-ecosystem-install-step13-startup-system/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.861Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2018/11/29/hadoop-ecosystem-install-step3-install-mysql/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.861Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2018/11/28/hadoop-ecosystem-install-step2/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.861Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2018/12/09/hadoop-ecosystem-install-step12-install-azkaban/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.860Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2018/12/08/hadoop-ecosystem-install-step11-install-sqoop/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.860Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2018/12/07/hadoop-ecosystem-install-step10-install-storm/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.856Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2018/11/27/hadoop-ecosystem-install-step1/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.856Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2019/06/01/frp-reverse-proxy/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.846Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2019/05/30/dsm-nas-webDAV/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.836Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2018/12/21/docker-registry-install/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.836Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2019/06/09/apply-Lets-Encrypt-free-ssl/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.828Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/2019/06/26/Mac-terminal-shell-zsh/</loc>
+    
+    <lastmod>2019-12-03T09:00:54.826Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.open4j.com/404.html</loc>
+    
+    <lastmod>2019-12-03T09:00:54.826Z</lastmod>
+    
+  </url>
+  
+</urlset>
