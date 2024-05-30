@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="iPXE,NETBOOT,iSCSI,ESXi,NAS,TFTP,DHCP,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、源码与链接几个相关链接 同胞网友写的教程共 3 篇，基本上我都是按他的教程来的https://t17.techbang.com/topics/50737-build-a-remote-boot-system-using-synology-nas-ipxe-part-i-compact-remote-boot-system-management-toolhttps://t17.techbang">
+<meta name="keywords" content="iPXE,NETBOOT,iSCSI,ESXi,NAS,TFTP,DHCP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用ipxe网络启动打造无盘ESXi系统">
+<meta property="og:url" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/index.html">
+<meta property="og:site_name" content="写BUG">
+<meta property="og:description" content="一、源码与链接几个相关链接 同胞网友写的教程共 3 篇，基本上我都是按他的教程来的https://t17.techbang.com/topics/50737-build-a-remote-boot-system-using-synology-nas-ipxe-part-i-compact-remote-boot-system-management-toolhttps://t17.techbang">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/1.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/2.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/3.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/4.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/5.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/48.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/6.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/7.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/8.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/9.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/10.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/11.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/12.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/13.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/14.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/6.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/15.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/16.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/22.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/28.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/29.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/17.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/23.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/18.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/21.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/19.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/20.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/10.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/4.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/44.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/45.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/46.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/47.png">
+<meta property="og:updated_time" content="2024-05-30T08:23:15.541Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用ipxe网络启动打造无盘ESXi系统">
+<meta name="twitter:description" content="一、源码与链接几个相关链接 同胞网友写的教程共 3 篇，基本上我都是按他的教程来的https://t17.techbang.com/topics/50737-build-a-remote-boot-system-using-synology-nas-ipxe-part-i-compact-remote-boot-system-management-toolhttps://t17.techbang">
+<meta name="twitter:image" content="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/">
+
+
+
+
+
+  <title>用ipxe网络启动打造无盘ESXi系统 | 写BUG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">写BUG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Just do IT, I can do IT.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FrontTang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="写BUG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">用ipxe网络启动打造无盘ESXi系统</h2>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-29T22:35:09+08:00">
+                2019-05-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iPXE/" itemprop="url" rel="index">
+                    <span itemprop="name">iPXE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.5k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <a id="more"></a>
+<h3 id="一、源码与链接"><a href="#一、源码与链接" class="headerlink" title="一、源码与链接"></a>一、源码与链接</h3><h4 id="几个相关链接"><a href="#几个相关链接" class="headerlink" title="几个相关链接"></a>几个相关链接</h4><ol>
+<li>同胞网友写的教程共 3 篇，基本上我都是按他的教程来的<br><a href="https://t17.techbang.com/topics/50737-build-a-remote-boot-system-using-synology-nas-ipxe-part-i-compact-remote-boot-system-management-tool" target="_blank" rel="noopener">https://t17.techbang.com/topics/50737-build-a-remote-boot-system-using-synology-nas-ipxe-part-i-compact-remote-boot-system-management-tool</a><br><a href="https://t17.techbang.com/topics/50767-build-a-remote-boot-system-using-synology-nas-ipxe-part-ii-install-and-start-ubuntu-linux-on-an-iscsi-disk" target="_blank" rel="noopener">https://t17.techbang.com/topics/50767-build-a-remote-boot-system-using-synology-nas-ipxe-part-ii-install-and-start-ubuntu-linux-on-an-iscsi-disk</a><br><a href="https://t17.techbang.com/topics/50776-establish-a-remote-boot-system-using-synology-nas-ipxe-part-iii-install-and-start-ms-windows-on-an-iscsi-disk" target="_blank" rel="noopener">https://t17.techbang.com/topics/50776-establish-a-remote-boot-system-using-synology-nas-ipxe-part-iii-install-and-start-ms-windows-on-an-iscsi-disk</a></li>
+<li>外国友人博客<br><a href="https://www.reversengineered.com/2016/01/07/booting-linux-isos-with-memdisk-and-ipxe/" target="_blank" rel="noopener">https://www.reversengineered.com/2016/01/07/booting-linux-isos-with-memdisk-and-ipxe/</a><br><a href="https://www.reversengineered.com/2015/11/25/netboot-xyz/" target="_blank" rel="noopener">https://www.reversengineered.com/2015/11/25/netboot-xyz/</a><br><a href="https://www.reversengineered.com/2015/02/11/booting-vmware-esxi-in-ipxe/" target="_blank" rel="noopener">https://www.reversengineered.com/2015/02/11/booting-vmware-esxi-in-ipxe/</a></li>
+<li>ipxe<br>ipxe 论坛关于 ESXi 的<br><a href="http://forum.ipxe.org/showthread.php?tid=1123&amp;highlight=esxi" target="_blank" rel="noopener">http://forum.ipxe.org/showthread.php?tid=1123&amp;highlight=esxi</a><br>ipxe 官网<br><a href="http://ipxe.org" target="_blank" rel="noopener">http://ipxe.org</a></li>
+</ol>
+<h4 id="相关源码"><a href="#相关源码" class="headerlink" title="相关源码"></a>相关源码</h4><ol>
+<li>ipxe 源码<br><a href="https://github.com/ipxe/ipxe" target="_blank" rel="noopener">https://github.com/ipxe/ipxe</a></li>
+<li>netboot.xyz 源码，供学习<br><a href="https://github.com/antonym/netboot.xyz" target="_blank" rel="noopener">https://github.com/antonym/netboot.xyz</a></li>
+<li>我自己编译配置好的 kpxe 及一些启动菜单配置<br><a href="https://github.com/fronttang/netboot-tftp" target="_blank" rel="noopener">https://github.com/fronttang/netboot-tftp</a></li>
+</ol>
+<h3 id="二、编译一个带-iSCSI-和-COMBOOT-功能的-iPXE-固件"><a href="#二、编译一个带-iSCSI-和-COMBOOT-功能的-iPXE-固件" class="headerlink" title="二、编译一个带 iSCSI 和 COMBOOT 功能的 iPXE 固件"></a>二、编译一个带 iSCSI 和 COMBOOT 功能的 iPXE 固件</h3><p>这个参考 ipxe 官网或 <a href="https://blog.open4j.com/2019/05/30/ipxe-build-embedded-script/" target="_blank" rel="noopener">iPXE 编译增加功能与自定义脚本</a> 进行编译，在我的源码 netboot-tftp 中有编译好可用的 kpxe 文件</p>
+<h3 id="三、群晖-NAS-里配置-DCHP、TFTP-和-WEB-服务器"><a href="#三、群晖-NAS-里配置-DCHP、TFTP-和-WEB-服务器" class="headerlink" title="三、群晖 NAS 里配置 DCHP、TFTP 和 WEB 服务器"></a>三、群晖 NAS 里配置 DCHP、TFTP 和 WEB 服务器</h3><p>先按同胞网友写的教程 Part 1 配置好群晖的 iSCSI、DCHP、TFTP 和 WEB 服务器</p>
+<h4 id="开启-TFTP-服务"><a href="#开启-TFTP-服务" class="headerlink" title="开启 TFTP 服务"></a>开启 TFTP 服务</h4><p><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/1.png" alt="image 1"></p>
+<p>将 netboot-tftp 源码里全部文件上传到 /PXE/Grub 文件夹下<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/2.png" alt="image 2"></p>
+<h4 id="开启-DHCP-服务"><a href="#开启-DHCP-服务" class="headerlink" title="开启 DHCP 服务"></a>开启 DHCP 服务</h4><p><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/3.png" alt="image 3"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/4.png" alt="image 4"></p>
+<h4 id="开启-PXE-并设置启动文件"><a href="#开启-PXE-并设置启动文件" class="headerlink" title="开启 PXE 并设置启动文件"></a>开启 PXE 并设置启动文件</h4><p><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/5.png" alt="image 5"></p>
+<h4 id="网络启动测试"><a href="#网络启动测试" class="headerlink" title="网络启动测试"></a>网络启动测试</h4><p>在 BIOS 的 BOOT 选项里将从网络启动调整到第一位,各主板 BIOS 操作不一样,请自行查阅主板 BIOS 说明<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/48.png" alt="image 48"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/6.png" alt="image 6"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/7.png" alt="image 7"></p>
+<h4 id="开启-WEB-服务"><a href="#开启-WEB-服务" class="headerlink" title="开启 WEB 服务"></a>开启 WEB 服务</h4><p>开启群晖 web station 并设置虚拟主机用来加载一些系统的引导文件<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/8.png" alt="image 8"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/9.png" alt="image 9"></p>
+<h3 id="四、在群晖配置-iSCSI-target-和-iSCSI-LUN"><a href="#四、在群晖配置-iSCSI-target-和-iSCSI-LUN" class="headerlink" title="四、在群晖配置 iSCSI target 和 iSCSI LUN"></a>四、在群晖配置 iSCSI target 和 iSCSI LUN</h3><p><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/10.png" alt="image 10"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/11.png" alt="image 11"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/12.png" alt="image 12"></p>
+<h3 id="五、修改-tftp-根目录中的文件"><a href="#五、修改-tftp-根目录中的文件" class="headerlink" title="五、修改 tftp 根目录中的文件"></a>五、修改 tftp 根目录中的文件</h3><p><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/13.png" alt="image 13"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/14.png" alt="image 14"></p>
+<h3 id="六、通过网卡-DHCP-启动机器安装系统"><a href="#六、通过网卡-DHCP-启动机器安装系统" class="headerlink" title="六、通过网卡 DHCP 启动机器安装系统"></a>六、通过网卡 DHCP 启动机器安装系统</h3><p><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/6.png" alt="image 6"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/15.png" alt="image 15"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/16.png" alt="image 16"></p>
+<p>在 menu.ipxe 的一些网络地址没问题的话，就能进入 ESXi 的安装界面了</p>
+<p><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/22.png" alt="image 22"></p>
+<p>这里安装的时候硬盘选择界面会出现 iSCSI 的硬盘，如果有其他硬盘的话别选错了<br>如果没有出现 iSCSI 硬盘，那肯定是加载出错了。<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/28.png" alt="image 28"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/29.png" alt="image 29"></p>
+<h3 id="七、安装完成启动系统"><a href="#七、安装完成启动系统" class="headerlink" title="七、安装完成启动系统"></a>七、安装完成启动系统</h3><p><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/17.png" alt="image 17"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/23.png" alt="image 23"></p>
+<h3 id="八、关于-DHCP-与-TFTP-服务器"><a href="#八、关于-DHCP-与-TFTP-服务器" class="headerlink" title="八、关于 DHCP 与 TFTP 服务器"></a>八、关于 DHCP 与 TFTP 服务器</h3><p>按照上面的教程是在内网开启了两个 DHCP 服务器，一个是主路由的，我这里是 ROS，一个是群晖的。<br>这样会导致有些时候网络启动后 iPXE DHCP 获取到的结果不是想要的结果，比如 next-server 地址错误<br>会导致加载不到启动脚本而进不了菜单，这里建议内网只有一个 DHCP 服务器，这样就不会有 DHCP 服务干扰了<br>下面介绍使用 ROS、LEDE 的 DHCP 和 TFTP 服务器</p>
+<h4 id="ROS-的-DHCP-与-TFTP-设置"><a href="#ROS-的-DHCP-与-TFTP-设置" class="headerlink" title="ROS 的 DHCP 与 TFTP 设置"></a>ROS 的 DHCP 与 TFTP 设置</h4><p>将 netboot-tftp 源码上传到 ROS 的 files，然后 ip -&gt; TFTP 开启 ROS 的 TFTP 服务<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/18.png" alt="image 18"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/21.png" alt="image 21"></p>
+<p>DHCP server 里配置 next server 和 boot file name<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/19.png" alt="image 19"></p>
+<h4 id="LEDE-的-DHCP-与-TFTP-设置"><a href="#LEDE-的-DHCP-与-TFTP-设置" class="headerlink" title="LEDE 的 DHCP 与 TFTP 设置"></a>LEDE 的 DHCP 与 TFTP 设置</h4><p>如果是使用 LEDE 的 DHCP 和 TFTP 服务器，则将 netboot-tftp 源码上传到 lede 路由上<br>然后在 网络 -&gt; DHCP/DNS 下进行配置 TFTP 服务<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/20.png" alt="image 20"></p>
+<h3 id="九、对特殊电脑做特别设置"><a href="#九、对特殊电脑做特别设置" class="headerlink" title="九、对特殊电脑做特别设置"></a>九、对特殊电脑做特别设置</h3><p>脚本是支持多个电脑启动不同的系统到电脑对应系统的 iSCSI LUN<br>这就是上面创建 iSCSI target 的时候 target 名称为什么要用 主机名.系统名<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/10.png" alt="image 10"></p>
+<p>* 设置电脑网卡 mac 地址脚本<br>比如要让电脑 A(网卡 MAC 地址为 00:12:34:56:78:90) 启动到 mini.系统名 的 iSCSI<br>那就是设置电脑 A 的主机名为 mini<br>如果使用群晖的 DHCP，则可以在群群晖 DHCP 客户端列表里给 MAC 地址设置主机名<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/4.png" alt="image 4"></p>
+<p>如果一些不能设置主机名的 DHCP 服务器，如 ROS，如果不用做特殊设置，则 hostname 为空<br>这样脚本会找 mac 地址.系统名 的 iSCSI, 这样就会取不到 iSCSI, 除非你 iSCSI target 用 mac 地址.系统名 命名</p>
+<p>在 netboot-tftp 源码目录下有一个 boot 文件夹，这个文件夹就是放置对应主机或 MAC 地址特殊脚本的目录<br>在 boot 目录下创建文件, 文件的命名格式为 mac-mac 地址去掉冒号字母小写.ipxe<br>例如 mac-001234567890.ipxe<br>在文件里添加脚本如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#!ipxe</span><br><span class="line">echo</span><br><span class="line"># 设置这个mac地址的主机名</span><br><span class="line">set hostname mini</span><br><span class="line">set initiator-iqn $&#123;base-iqn&#125;:$&#123;hostname&#125;</span><br><span class="line">echo Booting $&#123;hostname&#125;</span><br><span class="line"></span><br><span class="line"># 这里还可以设置默认进入的菜单和在菜单上的等待时间</span><br><span class="line"># 比如装好系统后设置 default 为 esxi ,timeout 为1秒或更短</span><br><span class="line"># 这样就可以直接进入esxi系统，省去选择菜单步骤。在装好系统不要用菜单的时候很有用</span><br><span class="line">set menu-default esxi</span><br><span class="line">set menu-timeout 10000</span><br><span class="line"></span><br><span class="line">chain --replace --autofree $&#123;menu-url&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="十、折腾过程中遇到的坑"><a href="#十、折腾过程中遇到的坑" class="headerlink" title="十、折腾过程中遇到的坑"></a>十、折腾过程中遇到的坑</h3><h4 id="关于-iscsi-的坑"><a href="#关于-iscsi-的坑" class="headerlink" title="关于 iscsi 的坑"></a>关于 iscsi 的坑</h4><p>仔细看 netboot-tftp 里菜单命令会发现有一条命令 sanhook \${root-path}<br>是扫描加载 iSCSI 的<br>全路径是这样的<br>sanhook iscsi:192.168.1.252::::iqn.iqn.2000-01.com.synology:mini.ESXi</p>
+<p><a href="http://ipxe.org/sanuri" target="_blank" rel="noopener">iPXE 官方文档</a>有对这个进行说明:<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/44.png" alt="image 44"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iscsi:&lt;servername&gt;:&lt;protocol&gt;:&lt;port&gt;:&lt;LUN&gt;:&lt;targetname&gt;</span><br></pre></td></tr></table></figure>
+<p>我们把其中的 protocol、prot、LUN 都省略了，所以成了::::<br>其中 LUN 是一个坑，官方文档中有对 LUN 的介绍是这个样的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;LUN&gt; is the SCSI LUN of the boot disk, in hexadecimal. It can be left empty, in which case the default LUN (0) will be used.</span><br></pre></td></tr></table></figure>
+<p>LUN 是指要加载 iSCSI target 中哪个 LUN，值是 LUN 的编号 ,关键信息是 默认值 为 0。<br>使用我的脚本加载 DS3617xs 中的 iSCSI 一切正常<br>但是用这个脚本加载 DS918+ 的中 iSCSI 就会加载不到<br>研究了几个小才发现<br>在我在 DS3617xs 中 iSCSI target 第一个 LUN 的编号为 0<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/45.png" alt="image 45"></p>
+<p>而 DS918+ 中 iSCSI target 第一个 LUN 的编号为 1<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/46.png" alt="image 46"></p>
+<p>所以如果发现自己 iSCSI target 第一个 LUN 的编号为 1 的，请修改 netboot-tftp 源码中的 boot.ipxe.cfg 文件</p>
+<p><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/47.png" alt="image 47"></p>
+<p>将</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set base-iscsi iscsi:$&#123;iscsi-server&#125;::::$&#123;base-iqn&#125;</span><br></pre></td></tr></table></figure>
+<p>改成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set base-iscsi iscsi:$&#123;iscsi-server&#125;:::1:$&#123;base-iqn&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iPXE/" rel="tag"><i class="fa fa-tag"></i> iPXE</a>
+          
+            <a href="/tags/NETBOOT/" rel="tag"><i class="fa fa-tag"></i> NETBOOT</a>
+          
+            <a href="/tags/iSCSI/" rel="tag"><i class="fa fa-tag"></i> iSCSI</a>
+          
+            <a href="/tags/ESXi/" rel="tag"><i class="fa fa-tag"></i> ESXi</a>
+          
+            <a href="/tags/NAS/" rel="tag"><i class="fa fa-tag"></i> NAS</a>
+          
+            <a href="/tags/TFTP/" rel="tag"><i class="fa fa-tag"></i> TFTP</a>
+          
+            <a href="/tags/DHCP/" rel="tag"><i class="fa fa-tag"></i> DHCP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/29/ros-firewall-net-hairpin/" rel="next" title="ROS端口映射动态IP完美解决回流问题">
+                <i class="fa fa-chevron-left"></i> ROS端口映射动态IP完美解决回流问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/30/ipxe-build-embedded-script/" rel="prev" title="iPXE编译增加功能与自定义脚本">
+                iPXE编译增加功能与自定义脚本 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">FrontTang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/fronttang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:fronttang@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、源码与链接"><span class="nav-number">1.</span> <span class="nav-text">一、源码与链接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#几个相关链接"><span class="nav-number">1.1.</span> <span class="nav-text">几个相关链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关源码"><span class="nav-number">1.2.</span> <span class="nav-text">相关源码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、编译一个带-iSCSI-和-COMBOOT-功能的-iPXE-固件"><span class="nav-number">2.</span> <span class="nav-text">二、编译一个带 iSCSI 和 COMBOOT 功能的 iPXE 固件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、群晖-NAS-里配置-DCHP、TFTP-和-WEB-服务器"><span class="nav-number">3.</span> <span class="nav-text">三、群晖 NAS 里配置 DCHP、TFTP 和 WEB 服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#开启-TFTP-服务"><span class="nav-number">3.1.</span> <span class="nav-text">开启 TFTP 服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开启-DHCP-服务"><span class="nav-number">3.2.</span> <span class="nav-text">开启 DHCP 服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开启-PXE-并设置启动文件"><span class="nav-number">3.3.</span> <span class="nav-text">开启 PXE 并设置启动文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络启动测试"><span class="nav-number">3.4.</span> <span class="nav-text">网络启动测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开启-WEB-服务"><span class="nav-number">3.5.</span> <span class="nav-text">开启 WEB 服务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、在群晖配置-iSCSI-target-和-iSCSI-LUN"><span class="nav-number">4.</span> <span class="nav-text">四、在群晖配置 iSCSI target 和 iSCSI LUN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、修改-tftp-根目录中的文件"><span class="nav-number">5.</span> <span class="nav-text">五、修改 tftp 根目录中的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、通过网卡-DHCP-启动机器安装系统"><span class="nav-number">6.</span> <span class="nav-text">六、通过网卡 DHCP 启动机器安装系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、安装完成启动系统"><span class="nav-number">7.</span> <span class="nav-text">七、安装完成启动系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八、关于-DHCP-与-TFTP-服务器"><span class="nav-number">8.</span> <span class="nav-text">八、关于 DHCP 与 TFTP 服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ROS-的-DHCP-与-TFTP-设置"><span class="nav-number">8.1.</span> <span class="nav-text">ROS 的 DHCP 与 TFTP 设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LEDE-的-DHCP-与-TFTP-设置"><span class="nav-number">8.2.</span> <span class="nav-text">LEDE 的 DHCP 与 TFTP 设置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#九、对特殊电脑做特别设置"><span class="nav-number">9.</span> <span class="nav-text">九、对特殊电脑做特别设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#十、折腾过程中遇到的坑"><span class="nav-number">10.</span> <span class="nav-text">十、折腾过程中遇到的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于-iscsi-的坑"><span class="nav-number">10.1.</span> <span class="nav-text">关于 iscsi 的坑</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+      
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+      <div id="myCanvasContainer" class="widget tagcloud">
+          <canvas width="250" height="250" id="resCanvas" style="width=100%">
+              <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azkaban/">Azkaban</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS/">CentOS</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DHCP/">DHCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DSM/">DSM</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESXi/">ESXi</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FIREWALL/">FIREWALL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HBase/">HBase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS/">HTTPS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/">Hadoop</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hive/">Hive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDK/">JDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kafka/">Kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LEDE/">LEDE</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MacOS/">MacOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NAS/">NAS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NET/">NET</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NETBOOT/">NETBOOT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenWRT/">OpenWRT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openwrt/">Openwrt</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ROS/">ROS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Router/">Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSL/">SSL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SmartDNS/">SmartDNS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sqoop/">Sqoop</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Storm/">Storm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TFTP/">TFTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Terminal/">Terminal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time-Machine/">Time Machine</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPN/">VPN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebDAV/">WebDAV</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Zookeeper/">Zookeeper</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajenti/">ajenti</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backup/">backup</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/">frp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hosts/">hosts</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iPXE/">iPXE</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iSCSI/">iSCSI</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/letsencrypt/">letsencrypt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netdata/">netdata</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proxy/">proxy</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/softether-vpn/">softether_vpn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a><span class="tag-list-count">1</span></li></ul>
+          </canvas>
+      </div>
+      </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FrontTang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" color="0,0,255" opacity="0.7" zindex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

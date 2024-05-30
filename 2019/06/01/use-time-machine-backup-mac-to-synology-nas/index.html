@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MacOS,NAS,Time Machine,backup,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="原文地址：http://www.cdaten.com/news/html/?778.html  总览本文将引导您使用 Apple Time Machine Mac OS X 10.5 和更高版本随附的备份实用程序），将数据从 Mac OS X 计算机备份至 Synology DiskStation。 1.设置 DiskStation 以支持 Time Machine将 DiskStation 设">
+<meta name="keywords" content="MacOS,NAS,Time Machine,backup">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Time Machine 将文件从 Mac 备份至 Synology NAS">
+<meta property="og:url" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/index.html">
+<meta property="og:site_name" content="写BUG">
+<meta property="og:description" content="原文地址：http://www.cdaten.com/news/html/?778.html  总览本文将引导您使用 Apple Time Machine Mac OS X 10.5 和更高版本随附的备份实用程序），将数据从 Mac OS X 计算机备份至 Synology DiskStation。 1.设置 DiskStation 以支持 Time Machine将 DiskStation 设">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/1.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/2.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/3.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/4.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/5.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/6.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/7.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/8.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/9.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/10.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/11.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/12.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/13.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/14.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/15.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/16.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/17.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/18.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/19.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/20.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/21.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/22.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/23.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/24.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/25.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/26.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/27.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/28.png">
+<meta property="og:updated_time" content="2024-05-30T08:23:15.703Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 Time Machine 将文件从 Mac 备份至 Synology NAS">
+<meta name="twitter:description" content="原文地址：http://www.cdaten.com/news/html/?778.html  总览本文将引导您使用 Apple Time Machine Mac OS X 10.5 和更高版本随附的备份实用程序），将数据从 Mac OS X 计算机备份至 Synology DiskStation。 1.设置 DiskStation 以支持 Time Machine将 DiskStation 设">
+<meta name="twitter:image" content="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/">
+
+
+
+
+
+  <title>使用 Time Machine 将文件从 Mac 备份至 Synology NAS | 写BUG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">写BUG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Just do IT, I can do IT.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FrontTang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="写BUG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">使用 Time Machine 将文件从 Mac 备份至 Synology NAS</h2>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-01T20:20:41+08:00">
+                2019-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DSM/" itemprop="url" rel="index">
+                    <span itemprop="name">DSM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.2k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <a id="more"></a>
+<p>原文地址：<a href="http://www.cdaten.com/news/html/?778.html" target="_blank" rel="noopener">http://www.cdaten.com/news/html/?778.html</a></p>
+<p><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/1.png" alt="image 1"></p>
+<h3 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h3><p>本文将引导您使用 Apple Time Machine Mac OS X 10.5 和更高版本随附的备份实用程序），将数据从 Mac OS X 计算机备份至 Synology DiskStation。</p>
+<h3 id="1-设置-DiskStation-以支持-Time-Machine"><a href="#1-设置-DiskStation-以支持-Time-Machine" class="headerlink" title="1.设置 DiskStation 以支持 Time Machine"></a>1.设置 DiskStation 以支持 Time Machine</h3><p>将 DiskStation 设置为 Time Machine 的目的地之前，您需要先登录 DSM 并更改部分设置。</p>
+<h4 id="1-1-为-Time-Machine-备份创建共享文件夹"><a href="#1-1-为-Time-Machine-备份创建共享文件夹" class="headerlink" title="1.1 为 Time Machine 备份创建共享文件夹"></a>1.1 为 Time Machine 备份创建共享文件夹</h4><ol>
+<li>使用属于 administrators 群组的帐户登录 DSM。</li>
+<li>前往控制面板 &gt; 共享文件夹，然后单击创建以创建共享文件夹。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/2.png" alt="image 2"></li>
+<li>为该共享文件夹输入名称（如“Time Machine Folder”）并选择位置（如果存在多个卷）。在此示例中，我们将选择卷 1。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/3.png" alt="image 3"></li>
+<li>如果要对共享文件夹 Time Machine Folder 进行加密，请选中加密此共享文件夹框并输入加密密钥，然后单击下一步。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/4.png" alt="image 4"></li>
+<li>按需要为共享文件夹配置高级设置，然后单击下一步。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/5.png" alt="image 5"></li>
+<li>单击应用。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/6.png" alt="image 6"></li>
+<li>单击确定。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/7.png" alt="image 7"></li>
+<li>您现在应看到新创建的共享文件夹。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/8.png" alt="image 8"></li>
+</ol>
+<h4 id="1-2-为-Time-Machine-创建用户并设置配额限制"><a href="#1-2-为-Time-Machine-创建用户并设置配额限制" class="headerlink" title="1.2 为 Time Machine 创建用户并设置配额限制"></a>1.2 为 Time Machine 创建用户并设置配额限制</h4><ol>
+<li>前往控制面板 &gt; 用户，然后单击创建。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/9.png" alt="image 9"></li>
+<li>输入用户名（如“Time Machine User”）并指定密码。然后单击下一步。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/10.png" alt="image 10"></li>
+<li>单击下一步。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/11.png" alt="image 11"></li>
+<li>确保向此用户分配对 Time Machine Folder 的读取/写入权限，然后单击确定。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/12.png" alt="image 12"></li>
+<li>在此示例中，我们要将数据备份至 Time Machine Folder。但是，我们不希望备份用尽空间，因此我们将指定使用配额。在用户配额设置页面上，在配额栏中输入偏好值，然后从下拉菜单中选择单位。例如，我们将 Time Machine Folder 中的配额设置为 200 GB。指定配额之后，单击下一步。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/13.png" alt="image 13"></li>
+</ol>
+<p>注：<br>我们建议您设置配额以避免 Time Machine 占用您的整个存储空间。一般而言，配额应至少为 Mac 硬盘大小或要备份数据量的两倍或三倍。<br>用户只能在支持 Btrfs 文件系统的型号上为单个文件夹设置使用配额。如果 NAS 服务器仅支持 EXT4 系统，则只能为整个卷设置使用配额。</p>
+<ol start="6">
+<li>单击下一步。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/14.png" alt="image 14"></li>
+<li>单击下一步。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/15.png" alt="image 15"></li>
+<li>单击应用。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/16.png" alt="image 16"></li>
+<li>现在我们应有一个名为 Time Machine User 的用户。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/17.png" alt="image 17"></li>
+</ol>
+<h4 id="1-3-将共享文件夹设置为-Time-Machine-的备份目的地"><a href="#1-3-将共享文件夹设置为-Time-Machine-的备份目的地" class="headerlink" title="1.3 将共享文件夹设置为 Time Machine 的备份目的地"></a>1.3 将共享文件夹设置为 Time Machine 的备份目的地</h4><ol>
+<li>前往控制面板 &gt; 文件服务。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/18.png" alt="image 18"></li>
+<li>在 SMB/AFP/NFS 选项卡上找到 AFP 部分，然后选中启用 AFP 服务框。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/19.png" alt="image 19"></li>
+</ol>
+<p>注：<br>Time Machine 同时支持 SMB 和 AFP。对于 macOS Sierra 和更高版本，Time Machine 使用 SMB 代替 AFP 作为默认协议。<br>如果您想要通过 SMB 备份文件，请前往同一选项卡的 SMB 部分，然后选中启用 SMB 服务框。</p>
+<ol start="3">
+<li>前往高级选项卡，选中启用通过 AFP 进行 Bonjour Time Machine 播送框，然后单击设置 Time Machine 文件夹按钮。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/20.png" alt="image 20"></li>
+<li>选择您刚刚从 Time Machine 菜单创建的共享文件夹，然后单击应用以保存设置。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/21.png" alt="image 21"></li>
+</ol>
+<p>注：如果您在步骤 1.3.2 中选择使用 SMB，则改为选中启用通过 SMB 进行 Bonjour Time Machine 播送框。选择您刚创建的共享文件夹，然后单击应用。然后，在弹出窗口中单击是以确认并保存您的设置。</p>
+<h3 id="2-执行-Time-Machine-备份至-DiskStation"><a href="#2-执行-Time-Machine-备份至-DiskStation" class="headerlink" title="2.执行 Time Machine 备份至 DiskStation"></a>2.执行 Time Machine 备份至 DiskStation</h3><p>本节将介绍如何配置 Time Machine，使其将 DiskStation 的共享文件夹设置为备份目的地。此过程可让 Time Machine 在局域网上轻易地找到您的 DiskStation，并将其视为备份硬盘。设置完成后，Time Machine 就能够开始将数据备份到 DiskStation。</p>
+<h4 id="2-1-连接到您的-NAS-服务器"><a href="#2-1-连接到您的-NAS-服务器" class="headerlink" title="2.1 连接到您的 NAS 服务器"></a>2.1 连接到您的 NAS 服务器</h4><ol>
+<li>在 Mac 上，单击顶部菜单栏中的前往，然后选择连接到服务器。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/22.png" alt="image 22"></li>
+<li>输入 NAS 服务器的地址。根据步骤 1.3.2 中的设置使用 AFP 或 SMB。指定地址之后，单击连接。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/23.png" alt="image 23"></li>
+<li>输入您的帐户凭据，然后单击连接。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/24.png" alt="image 24"></li>
+<li>从列表中选择 Time Machine Folder，然后单击确定。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/25.png" alt="image 25"></li>
+</ol>
+<h4 id="2-2-配置-Time-Machine-以将-DiskStation-设置为其备份硬盘"><a href="#2-2-配置-Time-Machine-以将-DiskStation-设置为其备份硬盘" class="headerlink" title="2.2 配置 Time Machine 以将 DiskStation 设置为其备份硬盘"></a>2.2 配置 Time Machine 以将 DiskStation 设置为其备份硬盘</h4><ol>
+<li>在 Mac 上，从 Dock 打开系统偏好设置，然后单击 Time Machine。</li>
+<li>选中自动备份框，然后单击选择硬盘。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/26.png" alt="image 26"></li>
+<li>选择您创建的共享文件夹（在此例中为 Time Machine Folder），然后单击使用硬盘。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/27.png" alt="image 27"></li>
+<li>系统将提示您提供您的帐户凭据。输入您刚创建的用户的用户名和密码，然后单击连接。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/28.png" alt="image 28"></li>
+<li>Time Machine 将立即开始备份数据。</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MacOS/" rel="tag"><i class="fa fa-tag"></i> MacOS</a>
+          
+            <a href="/tags/NAS/" rel="tag"><i class="fa fa-tag"></i> NAS</a>
+          
+            <a href="/tags/Time-Machine/" rel="tag"><i class="fa fa-tag"></i> Time Machine</a>
+          
+            <a href="/tags/backup/" rel="tag"><i class="fa fa-tag"></i> backup</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/01/frp-reverse-proxy/" rel="next" title="LEDE路由下frp内网穿透教程">
+                <i class="fa fa-chevron-left"></i> LEDE路由下frp内网穿透教程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/02/update-esxi/" rel="prev" title="用命令升级ESXi6.7到ESXi6.7u2">
+                用命令升级ESXi6.7到ESXi6.7u2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">FrontTang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/fronttang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:fronttang@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#总览"><span class="nav-number">1.</span> <span class="nav-text">总览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-设置-DiskStation-以支持-Time-Machine"><span class="nav-number">2.</span> <span class="nav-text">1.设置 DiskStation 以支持 Time Machine</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-为-Time-Machine-备份创建共享文件夹"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 为 Time Machine 备份创建共享文件夹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-为-Time-Machine-创建用户并设置配额限制"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 为 Time Machine 创建用户并设置配额限制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-将共享文件夹设置为-Time-Machine-的备份目的地"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 将共享文件夹设置为 Time Machine 的备份目的地</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-执行-Time-Machine-备份至-DiskStation"><span class="nav-number">3.</span> <span class="nav-text">2.执行 Time Machine 备份至 DiskStation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-连接到您的-NAS-服务器"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 连接到您的 NAS 服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-配置-Time-Machine-以将-DiskStation-设置为其备份硬盘"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 配置 Time Machine 以将 DiskStation 设置为其备份硬盘</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+      
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+      <div id="myCanvasContainer" class="widget tagcloud">
+          <canvas width="250" height="250" id="resCanvas" style="width=100%">
+              <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azkaban/">Azkaban</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS/">CentOS</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DHCP/">DHCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DSM/">DSM</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESXi/">ESXi</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FIREWALL/">FIREWALL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HBase/">HBase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS/">HTTPS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/">Hadoop</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hive/">Hive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDK/">JDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kafka/">Kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LEDE/">LEDE</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MacOS/">MacOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NAS/">NAS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NET/">NET</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NETBOOT/">NETBOOT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenWRT/">OpenWRT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openwrt/">Openwrt</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ROS/">ROS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Router/">Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSL/">SSL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SmartDNS/">SmartDNS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sqoop/">Sqoop</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Storm/">Storm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TFTP/">TFTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Terminal/">Terminal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time-Machine/">Time Machine</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPN/">VPN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebDAV/">WebDAV</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Zookeeper/">Zookeeper</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajenti/">ajenti</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backup/">backup</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/">frp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hosts/">hosts</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iPXE/">iPXE</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iSCSI/">iSCSI</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/letsencrypt/">letsencrypt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netdata/">netdata</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proxy/">proxy</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/softether-vpn/">softether_vpn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a><span class="tag-list-count">1</span></li></ul>
+          </canvas>
+      </div>
+      </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FrontTang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" color="0,0,255" opacity="0.7" zindex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

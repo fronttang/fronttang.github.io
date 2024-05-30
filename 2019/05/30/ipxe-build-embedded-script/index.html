@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="iPXE,NETBOOT,iSCSI,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、iPXE 概要按iPXE 官网的介绍是这样的：iPXE 是领先的开源网络启动固件。它提供了一个完整的 PXE 实现，增强了其他功能，例如通过 HTTP 从 Web 服务器启动、从 iSCSI SAN 启动 等等. 二、下载 iPXE 源码并编译(CentOS 环境) 官方编译文档：http://ipxe.org/downloadhttp://ipxe.org/appnote/buildta">
+<meta name="keywords" content="iPXE,NETBOOT,iSCSI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iPXE编译增加功能与自定义脚本">
+<meta property="og:url" content="https://fronttang.github.io/2019/05/30/ipxe-build-embedded-script/index.html">
+<meta property="og:site_name" content="写BUG">
+<meta property="og:description" content="一、iPXE 概要按iPXE 官网的介绍是这样的：iPXE 是领先的开源网络启动固件。它提供了一个完整的 PXE 实现，增强了其他功能，例如通过 HTTP 从 Web 服务器启动、从 iSCSI SAN 启动 等等. 二、下载 iPXE 源码并编译(CentOS 环境) 官方编译文档：http://ipxe.org/downloadhttp://ipxe.org/appnote/buildta">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/30/ipxe-build-embedded-script/1.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/30/ipxe-build-embedded-script/2.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/30/ipxe-build-embedded-script/3.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/30/ipxe-build-embedded-script/4.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/30/ipxe-build-embedded-script/5.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/30/ipxe-build-embedded-script/6.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/30/ipxe-build-embedded-script/7.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/30/ipxe-build-embedded-script/8.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/30/ipxe-build-embedded-script/9.png">
+<meta property="og:image" content="https://fronttang.github.io/2019/05/30/ipxe-build-embedded-script/11.png">
+<meta property="og:updated_time" content="2024-05-30T08:23:15.375Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iPXE编译增加功能与自定义脚本">
+<meta name="twitter:description" content="一、iPXE 概要按iPXE 官网的介绍是这样的：iPXE 是领先的开源网络启动固件。它提供了一个完整的 PXE 实现，增强了其他功能，例如通过 HTTP 从 Web 服务器启动、从 iSCSI SAN 启动 等等. 二、下载 iPXE 源码并编译(CentOS 环境) 官方编译文档：http://ipxe.org/downloadhttp://ipxe.org/appnote/buildta">
+<meta name="twitter:image" content="https://fronttang.github.io/2019/05/30/ipxe-build-embedded-script/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://fronttang.github.io/2019/05/30/ipxe-build-embedded-script/">
+
+
+
+
+
+  <title>iPXE编译增加功能与自定义脚本 | 写BUG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">写BUG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Just do IT, I can do IT.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fronttang.github.io/2019/05/30/ipxe-build-embedded-script/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FrontTang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="写BUG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">iPXE编译增加功能与自定义脚本</h2>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-30T10:36:48+08:00">
+                2019-05-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iPXE/" itemprop="url" rel="index">
+                    <span itemprop="name">iPXE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  848 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <a id="more"></a>
+<h3 id="一、iPXE-概要"><a href="#一、iPXE-概要" class="headerlink" title="一、iPXE 概要"></a>一、iPXE 概要</h3><p>按<a href="http://ipxe.org/start" target="_blank" rel="noopener">iPXE 官网</a>的介绍是这样的：iPXE 是领先的开源网络启动固件。它提供了一个完整的 PXE 实现，增强了其他功能，例如通过 HTTP 从 Web 服务器启动、从 iSCSI SAN 启动 等等.<br><img src="//fronttang.github.io/2019/05/30/ipxe-build-embedded-script/1.png" alt="image 1"></p>
+<h3 id="二、下载-iPXE-源码并编译-CentOS-环境"><a href="#二、下载-iPXE-源码并编译-CentOS-环境" class="headerlink" title="二、下载 iPXE 源码并编译(CentOS 环境)"></a>二、下载 iPXE 源码并编译(CentOS 环境)</h3><p> 官方编译文档：<br><a href="http://ipxe.org/download" target="_blank" rel="noopener">http://ipxe.org/download</a><br><a href="http://ipxe.org/appnote/buildtargets#special_targets" target="_blank" rel="noopener">http://ipxe.org/appnote/buildtargets#special_targets</a></p>
+<h4 id="git-下载-iPXE-源码"><a href="#git-下载-iPXE-源码" class="headerlink" title="git 下载 iPXE 源码"></a>git 下载 iPXE 源码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git://git.ipxe.org/ipxe.git</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/ipxe/ipxe.git</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2019/05/30/ipxe-build-embedded-script/2.png" alt="image 2"></p>
+<h4 id="make-编译"><a href="#make-编译" class="headerlink" title="make 编译"></a>make 编译</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ipxe/src</span><br><span class="line">make bin/undionly.kpxe</span><br></pre></td></tr></table></figure>
+<p>编译前先安装这些依赖环境<br>gcc (version 3 or later)<br>binutils (version 2.18 or later)<br>make<br>perl<br>liblzma or xz header files<br>mtools<br>mkisofs (needed only for building .iso images)<br>syslinux (for isolinux, needed only for building .iso images)</p>
+<p>编译后会在 bin 目录下生成 undionly.kpxe 文件，这个就是 iPXE 网络启动固件<br><img src="//fronttang.github.io/2019/05/30/ipxe-build-embedded-script/3.png" alt="image 3"></p>
+<p> 如果要编译 64 位 pcbios 或 efi 固件请参考 <a href="http://ipxe.org/appnote/buildtargets#special_targets" target="_blank" rel="noopener">官网文档</a></p>
+<p>通过网络启动后是这样的界面(命令模式)<br><img src="//fronttang.github.io/2019/05/30/ipxe-build-embedded-script/4.png" alt="image 4"><br>关于网络启动请参考<a href="https://blog.open4j.com/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/" target="_blank" rel="noopener">用 ipxe 网络启动打造无盘 ESXi 系统</a></p>
+<h3 id="三、开启其他功能"><a href="#三、开启其他功能" class="headerlink" title="三、开启其他功能"></a>三、开启其他功能</h3><p>编译好以后默认开启的功能有<br>DNS、HTTP、iSCSI、TFTP、AoE、ELF、MBOOT、PXE、bzImage、Menu、PXEXT<br>在上图的启动界面可以看到。</p>
+<p> 如果要加载 HTTPS web 的内容，那就要开启 HTTPS<br>还有一些系统启动需要开启 COMBOOT 功能<br>下面以开启 HTTPS 和 COMBOOT 功能为例进行编译<br> 修改源码下 src/config/general.h 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi config/general.h</span><br></pre></td></tr></table></figure>
+<p>找到 DOWNLOAD_PROTO_HTTPS，将 DOWNLOAD_PROTO_HTTPS 前面有#undef 改成 #define<br>找到 IMAGE_COMBOOT 将前面的注释去掉</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#define DOWNLOAD_PROTO_HTTPS    /* Secure Hypertext Transfer Protocol */</span><br><span class="line">#define IMAGE_COMBOOT           /* SYSLINUX COMBOOT image support */</span><br></pre></td></tr></table></figure>
+<p>或者将上面的代码添加到源码目录 src/config/local/general.h 文件里</p>
+<p>修改完用前面的 make bin/undionly.kpxe 重新编译即可</p>
+<p>现在用新生成的 undionly.kpxe 固件网络启动后就多了 HTTPS 和 COMBOOT<br><img src="//fronttang.github.io/2019/05/30/ipxe-build-embedded-script/5.png" alt="image 5"></p>
+<h3 id="四、添加自定义脚本"><a href="#四、添加自定义脚本" class="headerlink" title="四、添加自定义脚本"></a>四、添加自定义脚本</h3><p>官方文档：<a href="http://ipxe.org/embed" target="_blank" rel="noopener">http://ipxe.org/embed</a></p>
+<p>默认编译启动后按 Ctrl+B 进入命令模式<br>可以输入下面的命令进入到外国友人做的 menu 界面<br>注：首先你网络启动的 DHCP 服务器设置的 DNS 能访问网络</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dhcp</span><br><span class="line">chain --autofree https://boot.netboot.xyz</span><br></pre></td></tr></table></figure>
+<p>进入后如图<br><img src="//fronttang.github.io/2019/05/30/ipxe-build-embedded-script/6.png" alt="image 6"></p>
+<p>如果想网络启动后直接进入 menu 界面，而不通过命令行输入命令，那就需要编译的时候加入自定义脚本<br>我们把上面的进入 menu 的代码编译进固件</p>
+<p>在源码 src 目录下新建脚本文件 script.ipxe，将上面的命令 copy 到文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi script.ipxe</span><br><span class="line">#!ipxe</span><br><span class="line">dhcp</span><br><span class="line">chain --autofree https://boot.netboot.xyz</span><br></pre></td></tr></table></figure>
+<p>重新编译增加参数 EMBED=script.ipxe</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make bin/undionly.kpxe EMBED=script.ipxe</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2019/05/30/ipxe-build-embedded-script/7.png" alt="image 7"></p>
+<p>使用新的 undionly.kpxe 网络引导，直接会进入 netboot.xyz 的 menu 界面</p>
+<p><img src="//fronttang.github.io/2019/05/30/ipxe-build-embedded-script/8.png" alt="image 8"></p>
+<p>也可以使用自己的菜单界面<br><a href="https://github.com/fronttang/netboot-tftp" target="_blank" rel="noopener">这里</a>有我使用的菜单界面源码，只要将源码放到 TFTP 根目录，然后在编译的时候加入下面的自定义脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi script.ipxe</span><br><span class="line">#!ipxe</span><br><span class="line">dhcp</span><br><span class="line">chain --autofree tftp://$&#123;next-server&#125;/boot.ipxe</span><br></pre></td></tr></table></figure>
+<p>网络启动后就能进入自己的菜单了<br><img src="//fronttang.github.io/2019/05/30/ipxe-build-embedded-script/9.png" alt="image 9"></p>
+<h3 id="五、开启-debug-模式"><a href="#五、开启-debug-模式" class="headerlink" title="五、开启 debug 模式"></a>五、开启 debug 模式</h3><p>有时候会遇到一些奇葩问题不知道如何解决，这时候可以开启 debug 模式，这里以开启 iSCSI 的 debug 为例</p>
+<p>在编译的时候增加 DEBUG=iscsi 参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make bin/undionly.kpxe EMBED=script.ipxe DEBUG=iscsi</span><br></pre></td></tr></table></figure>
+<p>编译后用新固件引导启动，在 sanhook iscsi 命令的时候就会出现 debug 日志信息<br><img src="//fronttang.github.io/2019/05/30/ipxe-build-embedded-script/11.png" alt="image 11"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iPXE/" rel="tag"><i class="fa fa-tag"></i> iPXE</a>
+          
+            <a href="/tags/NETBOOT/" rel="tag"><i class="fa fa-tag"></i> NETBOOT</a>
+          
+            <a href="/tags/iSCSI/" rel="tag"><i class="fa fa-tag"></i> iSCSI</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/" rel="next" title="用ipxe网络启动打造无盘ESXi系统">
+                <i class="fa fa-chevron-left"></i> 用ipxe网络启动打造无盘ESXi系统
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/30/dsm-nas-webDAV/" rel="prev" title="开启群晖NAS的WebDAV服务，让文件操作变得更简单">
+                开启群晖NAS的WebDAV服务，让文件操作变得更简单 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">FrontTang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/fronttang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:fronttang@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、iPXE-概要"><span class="nav-number">1.</span> <span class="nav-text">一、iPXE 概要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、下载-iPXE-源码并编译-CentOS-环境"><span class="nav-number">2.</span> <span class="nav-text">二、下载 iPXE 源码并编译(CentOS 环境)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#git-下载-iPXE-源码"><span class="nav-number">2.1.</span> <span class="nav-text">git 下载 iPXE 源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#make-编译"><span class="nav-number">2.2.</span> <span class="nav-text">make 编译</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、开启其他功能"><span class="nav-number">3.</span> <span class="nav-text">三、开启其他功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、添加自定义脚本"><span class="nav-number">4.</span> <span class="nav-text">四、添加自定义脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、开启-debug-模式"><span class="nav-number">5.</span> <span class="nav-text">五、开启 debug 模式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+      
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+      <div id="myCanvasContainer" class="widget tagcloud">
+          <canvas width="250" height="250" id="resCanvas" style="width=100%">
+              <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azkaban/">Azkaban</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS/">CentOS</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DHCP/">DHCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DSM/">DSM</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESXi/">ESXi</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FIREWALL/">FIREWALL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HBase/">HBase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS/">HTTPS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/">Hadoop</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hive/">Hive</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDK/">JDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kafka/">Kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LEDE/">LEDE</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MacOS/">MacOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NAS/">NAS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NET/">NET</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NETBOOT/">NETBOOT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenWRT/">OpenWRT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openwrt/">Openwrt</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ROS/">ROS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Router/">Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSL/">SSL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SmartDNS/">SmartDNS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sqoop/">Sqoop</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Storm/">Storm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TFTP/">TFTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Terminal/">Terminal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time-Machine/">Time Machine</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPN/">VPN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebDAV/">WebDAV</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Zookeeper/">Zookeeper</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajenti/">ajenti</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backup/">backup</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/">frp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hosts/">hosts</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iPXE/">iPXE</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iSCSI/">iSCSI</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/letsencrypt/">letsencrypt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netdata/">netdata</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proxy/">proxy</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/softether-vpn/">softether_vpn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a><span class="tag-list-count">1</span></li></ul>
+          </canvas>
+      </div>
+      </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FrontTang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" color="0,0,255" opacity="0.7" zindex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

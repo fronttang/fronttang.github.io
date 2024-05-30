@@ -1,0 +1,1232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>OpenWRT/LEDE下安裝配置SoftEther VPN</title>
+    <url>/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="一、安裝"><a href="#一、安裝" class="headerlink" title="一、安裝"></a>一、安裝</h3><p>以 koolshare 的 lede 为例，在酷软里找到 softether_vpn 插件并安装<br><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/1.png" alt="图片 1"></p>
+<h3 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置</h3><h4 id="1-启动-SoftEther-VPN-服务"><a href="#1-启动-SoftEther-VPN-服务" class="headerlink" title="1. 启动 SoftEther VPN 服务"></a>1. 启动 SoftEther VPN 服务</h4><p><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/2.png" alt="图片 2"></p>
+<h4 id="2-配置-SoftEther-VPN"><a href="#2-配置-SoftEther-VPN" class="headerlink" title="2. 配置 SoftEther VPN"></a>2. 配置 SoftEther VPN</h4><h4 id="1-安装-SoftEther-VPN-Server-Manager"><a href="#1-安装-SoftEther-VPN-Server-Manager" class="headerlink" title="1) 安装 SoftEther VPN Server Manager"></a>1) 安装 SoftEther VPN Server Manager</h4><p>在<a href="https://www.softether.org/5-download" target="_blank" rel="noopener">官网</a>下载并安装 softether vpn 服务管理工具：SoftEther VPN Server Manager</p>
+<p><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/3.png" alt="图片 3"><br>这里以 MacOS 为例：<br><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/4.png" alt="图片 4"></p>
+<h4 id="2-添加新设置连接到-lede-的-SoftEther-VPN-服务"><a href="#2-添加新设置连接到-lede-的-SoftEther-VPN-服务" class="headerlink" title="2) 添加新设置连接到 lede 的 SoftEther VPN 服务"></a>2) 添加新设置连接到 lede 的 SoftEther VPN 服务</h4><p><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/5.png" alt="图片 5"></p>
+<p>点击连接<br><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/7.png" alt="图片 7"></p>
+<p>第一连接会要求设置管理密码<br><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/6.png" alt="图片 6"></p>
+<h4 id="3-进行配置"><a href="#3-进行配置" class="headerlink" title="3) 进行配置"></a>3) 进行配置</h4><p>（借 koolshare 论坛的图）</p>
+<p><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/8.png" alt="图片 8"><br><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/9.png" alt="图片 9"><br><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/10.png" alt="图片 10"></p>
+<h4 id="4）本地网桥设置"><a href="#4）本地网桥设置" class="headerlink" title="4）本地网桥设置"></a>4）本地网桥设置</h4><p><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/11.png" alt="图片 11"><br><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/13.png" alt="图片 13"><br><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/24.png" alt="图片 24"></p>
+<h4 id="5）添加用户"><a href="#5）添加用户" class="headerlink" title="5）添加用户"></a>5）添加用户</h4><p><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/14.png" alt="图片 14"><br><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/15.png" alt="图片 15"><br><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/16.png" alt="图片 16"><br><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/17.png" alt="图片 17"><br><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/18.png" alt="图片 18"></p>
+<h4 id="6）关闭日志"><a href="#6）关闭日志" class="headerlink" title="6）关闭日志"></a>6）关闭日志</h4><p><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/19.png" alt="图片 19"><br><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/20.png" alt="图片 20"></p>
+<h4 id="7）改加密方式"><a href="#7）改加密方式" class="headerlink" title="7）改加密方式"></a>7）改加密方式</h4><p><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/21.png" alt="图片 21"><br><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/22.png" alt="图片 22"></p>
+<h4 id="8-关闭-Virtual-NET"><a href="#8-关闭-Virtual-NET" class="headerlink" title="8) 关闭 Virtual NET"></a>8) 关闭 Virtual NET</h4><p><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/23.png" alt="图片 23"></p>
+<h3 id="三、客户端连接"><a href="#三、客户端连接" class="headerlink" title="三、客户端连接"></a>三、客户端连接</h3><p>以 MacOS 下 Shimo 客户端为例<br><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/25.png" alt="图片 25"><br><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/26.png" alt="图片 26"><br><img src="//fronttang.github.io/2019/06/26/lede-openwrt-install-and-setup-softether-vpn/27.png" alt="图片 27"></p>
+]]></content>
+      <categories>
+        <category>Router</category>
+      </categories>
+      <tags>
+        <tag>LEDE</tag>
+        <tag>Router</tag>
+        <tag>OpenWRT</tag>
+        <tag>VPN</tag>
+        <tag>softether_vpn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac终端神器zsh</title>
+    <url>/2019/06/26/Mac-terminal-shell-zsh/</url>
+    <content><![CDATA[<a id="more"></a>
+<p>先上一张图</p>
+<p><img src="//fronttang.github.io/2019/06/26/Mac-terminal-shell-zsh/1.png" alt="图片 1"></p>
+<h3 id="一、背景介绍"><a href="#一、背景介绍" class="headerlink" title="一、背景介绍"></a>一、背景介绍</h3><p>在 unix 内核的操作系统中,当然现在衍生出好多分支,linux ,OS X 都算.</p>
+<p>shell 就算和上面这些系统内核指令打交道的一座桥梁,我们通过键盘输入一种自己容易记忆识别的符号标识(shell 命令)</p>
+<p>然后 shell 解析这种命令再反馈给内核去执行一系列操作.</p>
+<p>zsh 和 shell 有什么关系呢?</p>
+<p>其实 zsh 也是一种 shell ,但是并不是我们系统默认的 shell ,unix 衍生系统的默认 shell 都是 bash。</p>
+<h4 id="1-查看已安装-shell"><a href="#1-查看已安装-shell" class="headerlink" title="1. 查看已安装 shell"></a>1. 查看已安装 shell</h4><p>查看 Mac 上已有的 shell,一共有 6 种</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat /etc/shells</span><br><span class="line"></span><br><span class="line">/bin/bash</span><br><span class="line">/bin/csh</span><br><span class="line">/bin/ksh</span><br><span class="line">/bin/sh</span><br><span class="line">/bin/tcsh</span><br><span class="line">/bin/zsh</span><br></pre></td></tr></table></figure>
+<h4 id="2-将默认-shell-改成-zsh"><a href="#2-将默认-shell-改成-zsh" class="headerlink" title="2. 将默认 shell 改成 zsh"></a>2. 将默认 shell 改成 zsh</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
+<h4 id="3-安装“oh-my-zsh”"><a href="#3-安装“oh-my-zsh”" class="headerlink" title="3. 安装“oh my zsh”"></a>3. 安装“oh my zsh”</h4><p>手动安装：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</span><br><span class="line">cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>PS：详细信息可以参考 <a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="noopener">oh-my-zsh</a> 的 GitHub 页面</p>
+<h3 id="二、-配置-zsh"><a href="#二、-配置-zsh" class="headerlink" title="二、 配置 zsh"></a>二、 配置 zsh</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>设置别名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">alias zshconfig=&apos;vi ~/.zshrc&apos;</span><br><span class="line">alias vimconfig=&apos;vi ~/.vimrc&apos;</span><br><span class="line">alias ll=&apos;ls -l&apos;</span><br><span class="line">alias vi=&apos;vim&apos;</span><br><span class="line">alias atom=&apos;open -a &quot;Atom&quot;&apos;</span><br></pre></td></tr></table></figure>
+<p>启用命令纠错功能</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Uncomment the following line to enable command auto-correction.</span><br><span class="line">ENABLE_CORRECTION=&quot;true&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="三、插件"><a href="#三、插件" class="headerlink" title="三、插件"></a>三、插件</h3><p>git<br>osx<br>autojump<br>只需要在.zshrc 中启用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">plugins=(git osx autojump)</span><br></pre></td></tr></table></figure>
+<p>关于 oh-my-zsh 的 git 插件 ，已经设置了很多 git 命令的 alias 别名，这样我们可以使用别名来执行命令，这样也可以提高一下效率<br>例如输入 gl 等同于 git pull</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">alias gl=&apos;git pull&apos;</span><br><span class="line">alias gm=&apos;git merge&apos;</span><br><span class="line">alias gp=&apos;git push&apos;</span><br><span class="line">alias gr=&apos;git remote</span><br><span class="line">alias grb=&apos;git rebase&apos;</span><br><span class="line">alias grh=&apos;git reset&apos;</span><br><span class="line">alias grm=&apos;git rm</span><br><span class="line">alias grmv=&apos;git remote rename&apos;</span><br><span class="line">alias grrm=&apos;git remote remove</span><br><span class="line">alias gru=&apos;git reset --&apos;</span><br><span class="line">alias grup=&apos;git remote update&apos;</span><br><span class="line">alias grv=&apos;git remote -v</span><br><span class="line">alias gts=&apos;git tag -s&apos;</span><br><span class="line">alias gup=&apos;git pull --rebase&apos;</span><br><span class="line">alias gupv=&apos;git pull --rebase -v&apos;</span><br><span class="line">alias glum=&apos;git pull upstream master&apos;</span><br><span class="line"># .... 还有很多方便使用的别名</span><br></pre></td></tr></table></figure>
+<p>还有<a href="https://github.com/akarzim/zsh-docker-aliases" target="_blank" rel="noopener">docker 别名</a>插件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dk is short for docker</span><br><span class="line">dka Attach to a running container</span><br><span class="line">dka! Attach to a running container by name</span><br><span class="line">dkb Build an image from a Dockerfile</span><br><span class="line">dkd Inspect changes on a container&apos;s filesystem</span><br><span class="line">dkdf Show docker filesystem usage</span><br><span class="line">dke Run a command in a running container</span><br><span class="line">dkE Run an interactive command in a running container</span><br><span class="line">dkE! Run an interactive command in a running container by name</span><br><span class="line">dkh Show the history of an image</span><br><span class="line"># .... 还有很多方便使用的别名</span><br></pre></td></tr></table></figure>
+<h3 id="四、shell-的配色"><a href="#四、shell-的配色" class="headerlink" title="四、shell 的配色"></a>四、shell 的配色</h3><p>git 搜索<a href="https://github.com/altercation/solarized" target="_blank" rel="noopener">solarized</a> clone 到本地</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/altercation/solarized</span><br></pre></td></tr></table></figure>
+<p>然后执行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">solarized/osx-terminal.app-colors-solarized/Solarized Dark ansi.terminal</span><br></pre></td></tr></table></figure>
+<p>这时候在 mac 的偏好设置中就可以看到已导入的配置了<br><img src="//fronttang.github.io/2019/06/26/Mac-terminal-shell-zsh/2.png" alt="图片 2"></p>
+]]></content>
+      <categories>
+        <category>MacOS</category>
+      </categories>
+      <tags>
+        <tag>MacOS</tag>
+        <tag>Shell</tag>
+        <tag>Terminal</tag>
+        <tag>git</tag>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>lede/openwrt 安装配置 SmartDNS 插件</title>
+    <url>/2019/06/10/lede-openwrt-install-smartdns/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h3><p>官网地址：<a href="https://pymumu.github.io/smartdns/" target="_blank" rel="noopener">https://pymumu.github.io/smartdns/</a><br>下载地址：<a href="https://github.com/pymumu/smartdns/releases" target="_blank" rel="noopener">https://github.com/pymumu/smartdns/releases</a><br>SmartDNS 是一个运行在本地的 DNS 服务器，SmartDNS 接受本地客户端的 DNS 查询请求，从多个上游 DNS 服务器获取 DNS 查询结果，并将访问速度最快的结果返回给客户端，避免 DNS 污染，提高网络访问速度。 同时支持指定特定域名 IP 地址，并高性匹配，达到过滤广告的效果。<br>与 dnsmasq 的 all-servers 不同，smartdns 返回的是访问速度最快的解析结果。</p>
+<h3 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h3><h4 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h4><p>直接在 <a href="https://github.com/pymumu/smartdns/releases" target="_blank" rel="noopener">官方 Github 发布地址</a> 下载最新版本的安装包上传到 lede/openwrt 的/tmp 目录下<br>也可以 copy 下载地址直接在 lede/openwrt 里用 wget 命令下载<br>需要下载这两个：<br><a href="https://github.com/pymumu/smartdns/releases/download/Release25/smartdns.1.2019.05.21-2250.x86_64.ipk" target="_blank" rel="noopener">smartdns.1.2019.05.21-2250.x86_64.ipk</a><br><a href="https://github.com/pymumu/smartdns/releases/download/Release25/luci-app-smartdns.1.2019.05.21-2250.all.ipk" target="_blank" rel="noopener">luci-app-smartdns.1.2019.05.21-2250.all.ipk</a><br>一个是程序，一个是界面</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /tmp</span><br><span class="line">wget https://github.com/pymumu/smartdns/releases/download/Release25/smartdns.1.2019.05.21-2250.x86_64.ipk</span><br><span class="line">wget https://github.com/pymumu/smartdns/releases/download/Release25/luci-app-smartdns.1.2019.05.21-2250.all.ipk</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2019/06/10/lede-openwrt-install-smartdns/1.png" alt="图片 1"><br><img src="//fronttang.github.io/2019/06/10/lede-openwrt-install-smartdns/2.png" alt="图片 2"></p>
+<h4 id="安装-SmartDNS"><a href="#安装-SmartDNS" class="headerlink" title="安装 SmartDNS"></a>安装 SmartDNS</h4><p>直接用 opkg install xxx.ipk 进行安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">opkg install smartdns.1.2019.05.21-2250.x86_64.ipk</span><br><span class="line">opkg install luci-app-smartdns.1.2019.05.21-2250.all.ipk</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2019/06/10/lede-openwrt-install-smartdns/3.png" alt="图片 3"></p>
+<p>注意：如使用 Koolshare Lede 2.3.0 及之后版本，请安装 openssl1.0.0 系统库，安装文件从下面页面中获取：<br><a href="https://downloads.openwrt.org/releases/18.06.2/packages/x86_64/base/" target="_blank" rel="noopener">https://downloads.openwrt.org/releases/18.06.2/packages/x86_64/base/</a><br>找到 libopenssl_1.0.2XXXX_x86_64.ipk 并安装下载，XXXX 为版本号。</p>
+<h3 id="三、配置-SmartDNS"><a href="#三、配置-SmartDNS" class="headerlink" title="三、配置 SmartDNS"></a>三、配置 SmartDNS</h3><h4 id="開啟-SmartDNS"><a href="#開啟-SmartDNS" class="headerlink" title="開啟 SmartDNS"></a>開啟 SmartDNS</h4><p><img src="//fronttang.github.io/2019/06/10/lede-openwrt-install-smartdns/4.png" alt="图片 4"><br><img src="//fronttang.github.io/2019/06/10/lede-openwrt-install-smartdns/5.png" alt="图片 5"></p>
+<h4 id="其他一些配置"><a href="#其他一些配置" class="headerlink" title="其他一些配置"></a>其他一些配置</h4><p>國內的 DNS 交給 SmartDNS,國外默認。<br><img src="//fronttang.github.io/2019/06/10/lede-openwrt-install-smartdns/6.png" alt="图片 6"></p>
+<h4 id="检测转发服务是否配置成功"><a href="#检测转发服务是否配置成功" class="headerlink" title="检测转发服务是否配置成功"></a>检测转发服务是否配置成功</h4><p>使用 nslookup -querytype=ptr 0.0.0.0 查询域名<br>看命令结果中的 name 项目是否显示为 smartdns 或主机名，如 smartdns 则表示生效</p>
+<p><img src="//fronttang.github.io/2019/06/10/lede-openwrt-install-smartdns/7.png" alt="图片 7"></p>
+<p>其他使用方法請參考官網</p>
+]]></content>
+      <categories>
+        <category>Router</category>
+      </categories>
+      <tags>
+        <tag>LEDE</tag>
+        <tag>OpenWRT</tag>
+        <tag>SmartDNS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>申请 Let&#39;s Encrypt 免费 SSL 证书</title>
+    <url>/2019/06/09/apply-Lets-Encrypt-free-ssl/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="一、在线申请免费证书"><a href="#一、在线申请免费证书" class="headerlink" title="一、在线申请免费证书"></a>一、在线申请免费证书</h3><p>打开 <a href="https://www.sslforfree.com/" target="_blank" rel="noopener">sslforfree</a> 网站填写要申请证书的域名<br>这里直接申请泛域名证书<br><img src="//fronttang.github.io/2019/06/09/apply-Lets-Encrypt-free-ssl/1.png" alt="图片 1"><br><img src="//fronttang.github.io/2019/06/09/apply-Lets-Encrypt-free-ssl/2.png" alt="图片 2"></p>
+<h3 id="二、添加域名的TXT记录"><a href="#二、添加域名的TXT记录" class="headerlink" title="二、添加域名的TXT记录"></a>二、添加域名的TXT记录</h3><p><img src="//fronttang.github.io/2019/06/09/apply-Lets-Encrypt-free-ssl/3.png" alt="图片 3"></p>
+<p>这里以阿里云域名为例<br><img src="//fronttang.github.io/2019/06/09/apply-Lets-Encrypt-free-ssl/5.png" alt="图片 5"></p>
+<h3 id="三、下载证书"><a href="#三、下载证书" class="headerlink" title="三、下载证书"></a>三、下载证书</h3><p><img src="//fronttang.github.io/2019/06/09/apply-Lets-Encrypt-free-ssl/7.png" alt="图片 7"><br><img src="//fronttang.github.io/2019/06/09/apply-Lets-Encrypt-free-ssl/8.png" alt="图片 8"><br><img src="//fronttang.github.io/2019/06/09/apply-Lets-Encrypt-free-ssl/9.png" alt="图片 9"><br><img src="//fronttang.github.io/2019/06/09/apply-Lets-Encrypt-free-ssl/10.png" alt="图片 10"></p>
+]]></content>
+      <categories>
+        <category>SSL</category>
+      </categories>
+      <tags>
+        <tag>SSL</tag>
+        <tag>HTTPS</tag>
+        <tag>letsencrypt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用命令升级ESXi6.7到ESXi6.7u2</title>
+    <url>/2019/06/02/update-esxi/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="一、下载-ESXi-升级文件"><a href="#一、下载-ESXi-升级文件" class="headerlink" title="一、下载 ESXi 升级文件"></a>一、下载 ESXi 升级文件</h3><p>在 <a href="https://my.vmware.com/group/vmware/patch#search" target="_blank" rel="noopener">官网</a> 下载升级文件 update-from-esxi6.7-6.7_update02</p>
+<p><img src="//fronttang.github.io/2019/06/02/update-esxi/1.png" alt="image 1"></p>
+<h3 id="二、将文件上传到-ESXi"><a href="#二、将文件上传到-ESXi" class="headerlink" title="二、将文件上传到 ESXi"></a>二、将文件上传到 ESXi</h3><p>可以直接通过 ESXi 的 web 界面将下载的升级文件上传到 datastore</p>
+<p><img src="//fronttang.github.io/2019/06/02/update-esxi/2.png" alt="image 2"><br><img src="//fronttang.github.io/2019/06/02/update-esxi/3.png" alt="image 3"></p>
+<h3 id="三、开启-SSH-关闭虚拟机"><a href="#三、开启-SSH-关闭虚拟机" class="headerlink" title="三、开启 SSH,关闭虚拟机"></a>三、开启 SSH,关闭虚拟机</h3><ol>
+<li><p>开启 SSH<br><img src="//fronttang.github.io/2019/06/02/update-esxi/4.png" alt="image 4"></p>
+</li>
+<li><p>关闭虚拟机<br><img src="//fronttang.github.io/2019/06/02/update-esxi/5.png" alt="image 5"></p>
+</li>
+<li><p>进入维护模式<br><img src="//fronttang.github.io/2019/06/02/update-esxi/7.png" alt="image 7"></p>
+</li>
+</ol>
+<h3 id="四、安装更新"><a href="#四、安装更新" class="headerlink" title="四、安装更新"></a>四、安装更新</h3><ol>
+<li><p>用 SSH 工具进入 ESXi<br><img src="//fronttang.github.io/2019/06/02/update-esxi/6.png" alt="image 6"></p>
+</li>
+<li><p>执行安装</p>
+</li>
+</ol>
+<p>输入命令进行安装, 这里要输入升级包的全路径</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">esxcli software vib update -d /vmfs/volumes/5bf02f7f-4ff1fc33-27e0-0c54a5521b94/update-from-esxi6.7-6.7_update02.zip</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2019/06/02/update-esxi/8.png" alt="image 8"></p>
+<p>如果显示依赖错误，请先升级更老的 build 版本,比如 U1 等等<br>参考：<a href="https://communities.vmware.com/message/2810545" target="_blank" rel="noopener">https://communities.vmware.com/message/2810545</a></p>
+<ol start="3">
+<li>重启完关闭维护模式并开启虚拟机<br><img src="//fronttang.github.io/2019/06/02/update-esxi/9.png" alt="image 9"></li>
+</ol>
+]]></content>
+      <categories>
+        <category>ESXi</category>
+      </categories>
+      <tags>
+        <tag>SSH</tag>
+        <tag>ESXi</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 Time Machine 将文件从 Mac 备份至 Synology NAS</title>
+    <url>/2019/06/01/use-time-machine-backup-mac-to-synology-nas/</url>
+    <content><![CDATA[<a id="more"></a>
+<p>原文地址：<a href="http://www.cdaten.com/news/html/?778.html" target="_blank" rel="noopener">http://www.cdaten.com/news/html/?778.html</a></p>
+<p><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/1.png" alt="image 1"></p>
+<h3 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h3><p>本文将引导您使用 Apple Time Machine Mac OS X 10.5 和更高版本随附的备份实用程序），将数据从 Mac OS X 计算机备份至 Synology DiskStation。</p>
+<h3 id="1-设置-DiskStation-以支持-Time-Machine"><a href="#1-设置-DiskStation-以支持-Time-Machine" class="headerlink" title="1.设置 DiskStation 以支持 Time Machine"></a>1.设置 DiskStation 以支持 Time Machine</h3><p>将 DiskStation 设置为 Time Machine 的目的地之前，您需要先登录 DSM 并更改部分设置。</p>
+<h4 id="1-1-为-Time-Machine-备份创建共享文件夹"><a href="#1-1-为-Time-Machine-备份创建共享文件夹" class="headerlink" title="1.1 为 Time Machine 备份创建共享文件夹"></a>1.1 为 Time Machine 备份创建共享文件夹</h4><ol>
+<li>使用属于 administrators 群组的帐户登录 DSM。</li>
+<li>前往控制面板 &gt; 共享文件夹，然后单击创建以创建共享文件夹。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/2.png" alt="image 2"></li>
+<li>为该共享文件夹输入名称（如“Time Machine Folder”）并选择位置（如果存在多个卷）。在此示例中，我们将选择卷 1。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/3.png" alt="image 3"></li>
+<li>如果要对共享文件夹 Time Machine Folder 进行加密，请选中加密此共享文件夹框并输入加密密钥，然后单击下一步。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/4.png" alt="image 4"></li>
+<li>按需要为共享文件夹配置高级设置，然后单击下一步。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/5.png" alt="image 5"></li>
+<li>单击应用。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/6.png" alt="image 6"></li>
+<li>单击确定。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/7.png" alt="image 7"></li>
+<li>您现在应看到新创建的共享文件夹。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/8.png" alt="image 8"></li>
+</ol>
+<h4 id="1-2-为-Time-Machine-创建用户并设置配额限制"><a href="#1-2-为-Time-Machine-创建用户并设置配额限制" class="headerlink" title="1.2 为 Time Machine 创建用户并设置配额限制"></a>1.2 为 Time Machine 创建用户并设置配额限制</h4><ol>
+<li>前往控制面板 &gt; 用户，然后单击创建。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/9.png" alt="image 9"></li>
+<li>输入用户名（如“Time Machine User”）并指定密码。然后单击下一步。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/10.png" alt="image 10"></li>
+<li>单击下一步。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/11.png" alt="image 11"></li>
+<li>确保向此用户分配对 Time Machine Folder 的读取/写入权限，然后单击确定。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/12.png" alt="image 12"></li>
+<li>在此示例中，我们要将数据备份至 Time Machine Folder。但是，我们不希望备份用尽空间，因此我们将指定使用配额。在用户配额设置页面上，在配额栏中输入偏好值，然后从下拉菜单中选择单位。例如，我们将 Time Machine Folder 中的配额设置为 200 GB。指定配额之后，单击下一步。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/13.png" alt="image 13"></li>
+</ol>
+<p>注：<br>我们建议您设置配额以避免 Time Machine 占用您的整个存储空间。一般而言，配额应至少为 Mac 硬盘大小或要备份数据量的两倍或三倍。<br>用户只能在支持 Btrfs 文件系统的型号上为单个文件夹设置使用配额。如果 NAS 服务器仅支持 EXT4 系统，则只能为整个卷设置使用配额。</p>
+<ol start="6">
+<li>单击下一步。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/14.png" alt="image 14"></li>
+<li>单击下一步。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/15.png" alt="image 15"></li>
+<li>单击应用。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/16.png" alt="image 16"></li>
+<li>现在我们应有一个名为 Time Machine User 的用户。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/17.png" alt="image 17"></li>
+</ol>
+<h4 id="1-3-将共享文件夹设置为-Time-Machine-的备份目的地"><a href="#1-3-将共享文件夹设置为-Time-Machine-的备份目的地" class="headerlink" title="1.3 将共享文件夹设置为 Time Machine 的备份目的地"></a>1.3 将共享文件夹设置为 Time Machine 的备份目的地</h4><ol>
+<li>前往控制面板 &gt; 文件服务。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/18.png" alt="image 18"></li>
+<li>在 SMB/AFP/NFS 选项卡上找到 AFP 部分，然后选中启用 AFP 服务框。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/19.png" alt="image 19"></li>
+</ol>
+<p>注：<br>Time Machine 同时支持 SMB 和 AFP。对于 macOS Sierra 和更高版本，Time Machine 使用 SMB 代替 AFP 作为默认协议。<br>如果您想要通过 SMB 备份文件，请前往同一选项卡的 SMB 部分，然后选中启用 SMB 服务框。</p>
+<ol start="3">
+<li>前往高级选项卡，选中启用通过 AFP 进行 Bonjour Time Machine 播送框，然后单击设置 Time Machine 文件夹按钮。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/20.png" alt="image 20"></li>
+<li>选择您刚刚从 Time Machine 菜单创建的共享文件夹，然后单击应用以保存设置。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/21.png" alt="image 21"></li>
+</ol>
+<p>注：如果您在步骤 1.3.2 中选择使用 SMB，则改为选中启用通过 SMB 进行 Bonjour Time Machine 播送框。选择您刚创建的共享文件夹，然后单击应用。然后，在弹出窗口中单击是以确认并保存您的设置。</p>
+<h3 id="2-执行-Time-Machine-备份至-DiskStation"><a href="#2-执行-Time-Machine-备份至-DiskStation" class="headerlink" title="2.执行 Time Machine 备份至 DiskStation"></a>2.执行 Time Machine 备份至 DiskStation</h3><p>本节将介绍如何配置 Time Machine，使其将 DiskStation 的共享文件夹设置为备份目的地。此过程可让 Time Machine 在局域网上轻易地找到您的 DiskStation，并将其视为备份硬盘。设置完成后，Time Machine 就能够开始将数据备份到 DiskStation。</p>
+<h4 id="2-1-连接到您的-NAS-服务器"><a href="#2-1-连接到您的-NAS-服务器" class="headerlink" title="2.1 连接到您的 NAS 服务器"></a>2.1 连接到您的 NAS 服务器</h4><ol>
+<li>在 Mac 上，单击顶部菜单栏中的前往，然后选择连接到服务器。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/22.png" alt="image 22"></li>
+<li>输入 NAS 服务器的地址。根据步骤 1.3.2 中的设置使用 AFP 或 SMB。指定地址之后，单击连接。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/23.png" alt="image 23"></li>
+<li>输入您的帐户凭据，然后单击连接。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/24.png" alt="image 24"></li>
+<li>从列表中选择 Time Machine Folder，然后单击确定。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/25.png" alt="image 25"></li>
+</ol>
+<h4 id="2-2-配置-Time-Machine-以将-DiskStation-设置为其备份硬盘"><a href="#2-2-配置-Time-Machine-以将-DiskStation-设置为其备份硬盘" class="headerlink" title="2.2 配置 Time Machine 以将 DiskStation 设置为其备份硬盘"></a>2.2 配置 Time Machine 以将 DiskStation 设置为其备份硬盘</h4><ol>
+<li>在 Mac 上，从 Dock 打开系统偏好设置，然后单击 Time Machine。</li>
+<li>选中自动备份框，然后单击选择硬盘。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/26.png" alt="image 26"></li>
+<li>选择您创建的共享文件夹（在此例中为 Time Machine Folder），然后单击使用硬盘。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/27.png" alt="image 27"></li>
+<li>系统将提示您提供您的帐户凭据。输入您刚创建的用户的用户名和密码，然后单击连接。<br><img src="//fronttang.github.io/2019/06/01/use-time-machine-backup-mac-to-synology-nas/28.png" alt="image 28"></li>
+<li>Time Machine 将立即开始备份数据。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>DSM</category>
+      </categories>
+      <tags>
+        <tag>MacOS</tag>
+        <tag>NAS</tag>
+        <tag>Time Machine</tag>
+        <tag>backup</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LEDE路由下frp内网穿透教程</title>
+    <url>/2019/06/01/frp-reverse-proxy/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h3><h4 id="准备一台-VPS"><a href="#准备一台-VPS" class="headerlink" title="准备一台 VPS"></a>准备一台 VPS</h4><p>有公网 IP，腾迅云、阿里云、谷歌云都可以，这里以谷歌云为例</p>
+<h4 id="准备一个域名"><a href="#准备一个域名" class="headerlink" title="准备一个域名"></a>准备一个域名</h4><p>可以自己买或使用一些免费域名，这里以阿里云域名为例<br>在阿里云域名控制台解析域名到谷歌云 VPS 实例的 IP<br>在解析列表里添加一条 A 记录<br><img src="//fronttang.github.io/2019/06/01/frp-reverse-proxy/2.png" alt="image 2"></p>
+<h3 id="二、安装-frps"><a href="#二、安装-frps" class="headerlink" title="二、安装 frps"></a>二、安装 frps</h3><p>frps 就是 frp 的服务器端</p>
+<h4 id="SSH-进入谷歌云实例"><a href="#SSH-进入谷歌云实例" class="headerlink" title="SSH 进入谷歌云实例"></a>SSH 进入谷歌云实例</h4><p>这里使用谷歌强大的网页版 SSH<br><img src="//fronttang.github.io/2019/06/01/frp-reverse-proxy/1.png" alt="image 1"></p>
+<h4 id="安装-frps"><a href="#安装-frps" class="headerlink" title="安装 frps"></a>安装 frps</h4><p>在 <a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">官方 Github 版本发布地址</a> 下载最新的程序包<br>我谷歌云实例是 CentOS x64 系统, 所以下载的是 <a href="https://github.com/fatedier/frp/releases/download/v0.27.0/frp_0.27.0_linux_amd64.tar.gz" target="_blank" rel="noopener">frp_0.27.0_linux_amd64.tar.gz</a></p>
+<p>在网页 SSH 执行命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo -i    # 先到root用户</span><br><span class="line">cd /home   # 我喜欢先在home目录下操作</span><br><span class="line"># 下载 frp</span><br><span class="line">wget https://github.com/fatedier/frp/releases/download/v0.27.0/frp_0.27.0_linux_amd64.tar.gz</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2019/06/01/frp-reverse-proxy/3.png" alt="image 3"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar zxvf frp_0.27.0_linux_amd64.tar.gz  # 解压下载的文件</span><br><span class="line">mv frp_0.27.0_linux_amd64 frp           # 文件夹名太长，换个名字</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2019/06/01/frp-reverse-proxy/4.png" alt="image 4"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd frp</span><br><span class="line">vi frps.ini  # 进到frp目录，修改 frps.ini 文件</span><br><span class="line">[common]</span><br><span class="line">bind_addr = 0.0.0.0</span><br><span class="line">bind_port = 7000</span><br><span class="line">vhost_http_port = 80</span><br><span class="line">vhost_https_port = 443</span><br><span class="line">dashboard_addr = 0.0.0.0</span><br><span class="line">dashboard_port = 7500</span><br><span class="line">dashboard_user = admin</span><br><span class="line">dashboard_pwd = admin</span><br><span class="line">log_file = ./frps.log</span><br><span class="line">log_level = info</span><br><span class="line">log_max_days = 3</span><br><span class="line">token = YWxkamZhaWV1b2FkdmZydGZyb250dGF</span><br><span class="line"></span><br><span class="line"># :wq保存后启动</span><br><span class="line">./frps -c ./frps.ini</span><br><span class="line"># 后台运行使用这个</span><br><span class="line">nohup ./frps -c ./frps.ini &amp;</span><br><span class="line">tail -n 100 -f frps.log  # 查看日志</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2019/06/01/frp-reverse-proxy/5.png" alt="image 5"><br><img src="//fronttang.github.io/2019/06/01/frp-reverse-proxy/6.png" alt="image 6"></p>
+<p>进到 frps 控制台看看<br><img src="//fronttang.github.io/2019/06/01/frp-reverse-proxy/9.png" alt="image 9"><br><img src="//fronttang.github.io/2019/06/01/frp-reverse-proxy/10.png" alt="image 10"></p>
+<p>关于 frp 的使用 <a href="https://github.com/fatedier/frp/blob/master/README_zh.md" target="_blank" rel="noopener">这里</a> 有官方的中文说明</p>
+<h3 id="三、配置-frpc"><a href="#三、配置-frpc" class="headerlink" title="三、配置 frpc"></a>三、配置 frpc</h3><h4 id="安装-frp-客户端插件"><a href="#安装-frp-客户端插件" class="headerlink" title="安装 frp 客户端插件"></a>安装 frp 客户端插件</h4><p><img src="//fronttang.github.io/2019/06/01/frp-reverse-proxy/7.png" alt="image 7"></p>
+<h4 id="开启-frpc-并配置-frps-信息"><a href="#开启-frpc-并配置-frps-信息" class="headerlink" title="开启 frpc 并配置 frps 信息"></a>开启 frpc 并配置 frps 信息</h4><p><img src="//fronttang.github.io/2019/06/01/frp-reverse-proxy/8.png" alt="image 8"></p>
+<h4 id="服务穿透配置"><a href="#服务穿透配置" class="headerlink" title="服务穿透配置"></a>服务穿透配置</h4><p><img src="//fronttang.github.io/2019/06/01/frp-reverse-proxy/11.png" alt="image 11"></p>
+<p>保存后访问域名试试<br><img src="//fronttang.github.io/2019/06/01/frp-reverse-proxy/12.png" alt="image 12"><br><img src="//fronttang.github.io/2019/06/01/frp-reverse-proxy/13.png" alt="image 13"></p>
+<p>进管理台可以看到一条 http 的记录<br><img src="//fronttang.github.io/2019/06/01/frp-reverse-proxy/14.png" alt="image 14"></p>
+<h3 id="四、穿透-https-服务"><a href="#四、穿透-https-服务" class="headerlink" title="四、穿透 https 服务"></a>四、穿透 https 服务</h3><p>如果要穿透 https 服务则要为 https 服务设置证书，先按 <a href="https://blog.open4j.com/2019/06/09/apply-lets-encrypt-free-ssl/" target="_blank" rel="noopener">申请 Let’s Encrypt 免费 SSL 证书</a> 文章申请域名 SSL 证书</p>
+<p>下面以配置 lede https 服务为例<br>将下载来的证书文件上传到 lede 的 /etc/ssl 目录下，目录可以随意，我这里上传到 lede 的 /etc/ssl/open4j 目录<br>然后 SSH 进到 lede 修改 /etc/config/uhttpd 配置文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi /etc/config/uhttpd</span><br><span class="line"></span><br><span class="line"># 修改下面这两个option</span><br><span class="line">option cert &apos;/etc/ssl/open4j/certificate.crt&apos;</span><br><span class="line">option key &apos;/etc/ssl/open4j/private.key&apos;</span><br><span class="line"></span><br><span class="line"># cert 为下载来的certificate.crt文件路径</span><br><span class="line"># key 为下载来的private.key文件路径</span><br><span class="line"></span><br><span class="line"># 保存后重启 uhttpd</span><br><span class="line">service uhttpd restart</span><br></pre></td></tr></table></figure>
+<p>最后修改 lede frpc 插件配置<br><img src="//fronttang.github.io/2019/06/01/frp-reverse-proxy/15.png" alt="image 15"><br><img src="//fronttang.github.io/2019/06/01/frp-reverse-proxy/16.png" alt="image 16"></p>
+<p>用 https 访问 esxi、群晖，只有配置好证书就可以了，具体配置方法这里不一一介绍了，善用搜索引擎。</p>
+]]></content>
+      <categories>
+        <category>Router</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>DSM</tag>
+        <tag>LEDE</tag>
+        <tag>nginx</tag>
+        <tag>Openwrt</tag>
+        <tag>vps</tag>
+        <tag>frp</tag>
+        <tag>proxy</tag>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开启群晖NAS的WebDAV服务，让文件操作变得更简单</title>
+    <url>/2019/05/30/dsm-nas-webDAV/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="一、群晖-NAS-里安装-WebDAV-server"><a href="#一、群晖-NAS-里安装-WebDAV-server" class="headerlink" title="一、群晖 NAS 里安装 WebDAV server"></a>一、群晖 NAS 里安装 WebDAV server</h3><p>在群晖的套件中心找到 WebDAV Server 并安装<br><img src="//fronttang.github.io/2019/05/30/dsm-nas-webDAV/1.png" alt="image 1"></p>
+<p>安装完后打开，然后启用 HTTP 或 HTTPS 端口<br><img src="//fronttang.github.io/2019/05/30/dsm-nas-webDAV/2.png" alt="image 2"></p>
+<p>这样群晖的 WebDAV Server 就配置好了</p>
+<h3 id="二、路由器端口映射让外网可以访问-WebDAV"><a href="#二、路由器端口映射让外网可以访问-WebDAV" class="headerlink" title="二、路由器端口映射让外网可以访问 WebDAV"></a>二、路由器端口映射让外网可以访问 WebDAV</h3><p>如果想要让外网能够操作 NAS 的文件，则需要在主路由里配置端口映射，将刚才设置的 5005 或 5006 映射到外网<br>这里以 ROS 为例将 5005 映射到外网的 15675 端口<br><img src="//fronttang.github.io/2019/05/30/dsm-nas-webDAV/3.png" alt="image 3"><br><img src="//fronttang.github.io/2019/05/30/dsm-nas-webDAV/4.png" alt="image 4"></p>
+<h3 id="三、使用客户端工具映射-NAS-到本地磁盘"><a href="#三、使用客户端工具映射-NAS-到本地磁盘" class="headerlink" title="三、使用客户端工具映射 NAS 到本地磁盘"></a>三、使用客户端工具映射 NAS 到本地磁盘</h3><p>使用客户端口工具<a href="http://www.netdrive.net/" target="_blank" rel="noopener">NetDrive</a>映射 NAS 到本地<br>NetDrive 支持多个网盘，例如 Google Drive ,OneDrive 等等</p>
+<h4 id="下载安装-NetDrive"><a href="#下载安装-NetDrive" class="headerlink" title="下载安装 NetDrive"></a>下载安装 NetDrive</h4><p>网址 <a href="http://www.netdrive.net/" target="_blank" rel="noopener">http://www.netdrive.net/</a></p>
+<h4 id="打开-NetDrive-客户端并登录"><a href="#打开-NetDrive-客户端并登录" class="headerlink" title="打开 NetDrive 客户端并登录"></a>打开 NetDrive 客户端并登录</h4><p>先注册一个账号或使用 Facebook、Twitter、Google 账号登录<br><img src="//fronttang.github.io/2019/05/30/dsm-nas-webDAV/5.png" alt="image 5"></p>
+<h4 id="添加并映射磁盘"><a href="#添加并映射磁盘" class="headerlink" title="添加并映射磁盘"></a>添加并映射磁盘</h4><p><img src="//fronttang.github.io/2019/05/30/dsm-nas-webDAV/6.png" alt="image 6"><br><img src="//fronttang.github.io/2019/05/30/dsm-nas-webDAV/7.png" alt="image 7"><br><img src="//fronttang.github.io/2019/05/30/dsm-nas-webDAV/8.png" alt="image 8"><br><img src="//fronttang.github.io/2019/05/30/dsm-nas-webDAV/9.png" alt="image 9"><br><img src="//fronttang.github.io/2019/05/30/dsm-nas-webDAV/10.png" alt="image 10"><br><img src="//fronttang.github.io/2019/05/30/dsm-nas-webDAV/11.png" alt="image 11"></p>
+]]></content>
+      <categories>
+        <category>DSM</category>
+      </categories>
+      <tags>
+        <tag>DSM</tag>
+        <tag>ROS</tag>
+        <tag>WebDAV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>iPXE编译增加功能与自定义脚本</title>
+    <url>/2019/05/30/ipxe-build-embedded-script/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="一、iPXE-概要"><a href="#一、iPXE-概要" class="headerlink" title="一、iPXE 概要"></a>一、iPXE 概要</h3><p>按<a href="http://ipxe.org/start" target="_blank" rel="noopener">iPXE 官网</a>的介绍是这样的：iPXE 是领先的开源网络启动固件。它提供了一个完整的 PXE 实现，增强了其他功能，例如通过 HTTP 从 Web 服务器启动、从 iSCSI SAN 启动 等等.<br><img src="//fronttang.github.io/2019/05/30/ipxe-build-embedded-script/1.png" alt="image 1"></p>
+<h3 id="二、下载-iPXE-源码并编译-CentOS-环境"><a href="#二、下载-iPXE-源码并编译-CentOS-环境" class="headerlink" title="二、下载 iPXE 源码并编译(CentOS 环境)"></a>二、下载 iPXE 源码并编译(CentOS 环境)</h3><p> 官方编译文档：<br><a href="http://ipxe.org/download" target="_blank" rel="noopener">http://ipxe.org/download</a><br><a href="http://ipxe.org/appnote/buildtargets#special_targets" target="_blank" rel="noopener">http://ipxe.org/appnote/buildtargets#special_targets</a></p>
+<h4 id="git-下载-iPXE-源码"><a href="#git-下载-iPXE-源码" class="headerlink" title="git 下载 iPXE 源码"></a>git 下载 iPXE 源码</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone git://git.ipxe.org/ipxe.git</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/ipxe/ipxe.git</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2019/05/30/ipxe-build-embedded-script/2.png" alt="image 2"></p>
+<h4 id="make-编译"><a href="#make-编译" class="headerlink" title="make 编译"></a>make 编译</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ipxe/src</span><br><span class="line">make bin/undionly.kpxe</span><br></pre></td></tr></table></figure>
+<p>编译前先安装这些依赖环境<br>gcc (version 3 or later)<br>binutils (version 2.18 or later)<br>make<br>perl<br>liblzma or xz header files<br>mtools<br>mkisofs (needed only for building .iso images)<br>syslinux (for isolinux, needed only for building .iso images)</p>
+<p>编译后会在 bin 目录下生成 undionly.kpxe 文件，这个就是 iPXE 网络启动固件<br><img src="//fronttang.github.io/2019/05/30/ipxe-build-embedded-script/3.png" alt="image 3"></p>
+<p> 如果要编译 64 位 pcbios 或 efi 固件请参考 <a href="http://ipxe.org/appnote/buildtargets#special_targets" target="_blank" rel="noopener">官网文档</a></p>
+<p>通过网络启动后是这样的界面(命令模式)<br><img src="//fronttang.github.io/2019/05/30/ipxe-build-embedded-script/4.png" alt="image 4"><br>关于网络启动请参考<a href="https://blog.open4j.com/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/" target="_blank" rel="noopener">用 ipxe 网络启动打造无盘 ESXi 系统</a></p>
+<h3 id="三、开启其他功能"><a href="#三、开启其他功能" class="headerlink" title="三、开启其他功能"></a>三、开启其他功能</h3><p>编译好以后默认开启的功能有<br>DNS、HTTP、iSCSI、TFTP、AoE、ELF、MBOOT、PXE、bzImage、Menu、PXEXT<br>在上图的启动界面可以看到。</p>
+<p> 如果要加载 HTTPS web 的内容，那就要开启 HTTPS<br>还有一些系统启动需要开启 COMBOOT 功能<br>下面以开启 HTTPS 和 COMBOOT 功能为例进行编译<br> 修改源码下 src/config/general.h 文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi config/general.h</span><br></pre></td></tr></table></figure>
+<p>找到 DOWNLOAD_PROTO_HTTPS，将 DOWNLOAD_PROTO_HTTPS 前面有#undef 改成 #define<br>找到 IMAGE_COMBOOT 将前面的注释去掉</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#define DOWNLOAD_PROTO_HTTPS    /* Secure Hypertext Transfer Protocol */</span><br><span class="line">#define IMAGE_COMBOOT           /* SYSLINUX COMBOOT image support */</span><br></pre></td></tr></table></figure>
+<p>或者将上面的代码添加到源码目录 src/config/local/general.h 文件里</p>
+<p>修改完用前面的 make bin/undionly.kpxe 重新编译即可</p>
+<p>现在用新生成的 undionly.kpxe 固件网络启动后就多了 HTTPS 和 COMBOOT<br><img src="//fronttang.github.io/2019/05/30/ipxe-build-embedded-script/5.png" alt="image 5"></p>
+<h3 id="四、添加自定义脚本"><a href="#四、添加自定义脚本" class="headerlink" title="四、添加自定义脚本"></a>四、添加自定义脚本</h3><p>官方文档：<a href="http://ipxe.org/embed" target="_blank" rel="noopener">http://ipxe.org/embed</a></p>
+<p>默认编译启动后按 Ctrl+B 进入命令模式<br>可以输入下面的命令进入到外国友人做的 menu 界面<br>注：首先你网络启动的 DHCP 服务器设置的 DNS 能访问网络</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dhcp</span><br><span class="line">chain --autofree https://boot.netboot.xyz</span><br></pre></td></tr></table></figure>
+<p>进入后如图<br><img src="//fronttang.github.io/2019/05/30/ipxe-build-embedded-script/6.png" alt="image 6"></p>
+<p>如果想网络启动后直接进入 menu 界面，而不通过命令行输入命令，那就需要编译的时候加入自定义脚本<br>我们把上面的进入 menu 的代码编译进固件</p>
+<p>在源码 src 目录下新建脚本文件 script.ipxe，将上面的命令 copy 到文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi script.ipxe</span><br><span class="line">#!ipxe</span><br><span class="line">dhcp</span><br><span class="line">chain --autofree https://boot.netboot.xyz</span><br></pre></td></tr></table></figure>
+<p>重新编译增加参数 EMBED=script.ipxe</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make bin/undionly.kpxe EMBED=script.ipxe</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2019/05/30/ipxe-build-embedded-script/7.png" alt="image 7"></p>
+<p>使用新的 undionly.kpxe 网络引导，直接会进入 netboot.xyz 的 menu 界面</p>
+<p><img src="//fronttang.github.io/2019/05/30/ipxe-build-embedded-script/8.png" alt="image 8"></p>
+<p>也可以使用自己的菜单界面<br><a href="https://github.com/fronttang/netboot-tftp" target="_blank" rel="noopener">这里</a>有我使用的菜单界面源码，只要将源码放到 TFTP 根目录，然后在编译的时候加入下面的自定义脚本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi script.ipxe</span><br><span class="line">#!ipxe</span><br><span class="line">dhcp</span><br><span class="line">chain --autofree tftp://$&#123;next-server&#125;/boot.ipxe</span><br></pre></td></tr></table></figure>
+<p>网络启动后就能进入自己的菜单了<br><img src="//fronttang.github.io/2019/05/30/ipxe-build-embedded-script/9.png" alt="image 9"></p>
+<h3 id="五、开启-debug-模式"><a href="#五、开启-debug-模式" class="headerlink" title="五、开启 debug 模式"></a>五、开启 debug 模式</h3><p>有时候会遇到一些奇葩问题不知道如何解决，这时候可以开启 debug 模式，这里以开启 iSCSI 的 debug 为例</p>
+<p>在编译的时候增加 DEBUG=iscsi 参数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make bin/undionly.kpxe EMBED=script.ipxe DEBUG=iscsi</span><br></pre></td></tr></table></figure>
+<p>编译后用新固件引导启动，在 sanhook iscsi 命令的时候就会出现 debug 日志信息<br><img src="//fronttang.github.io/2019/05/30/ipxe-build-embedded-script/11.png" alt="image 11"></p>
+]]></content>
+      <categories>
+        <category>iPXE</category>
+      </categories>
+      <tags>
+        <tag>iPXE</tag>
+        <tag>NETBOOT</tag>
+        <tag>iSCSI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用ipxe网络启动打造无盘ESXi系统</title>
+    <url>/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="一、源码与链接"><a href="#一、源码与链接" class="headerlink" title="一、源码与链接"></a>一、源码与链接</h3><h4 id="几个相关链接"><a href="#几个相关链接" class="headerlink" title="几个相关链接"></a>几个相关链接</h4><ol>
+<li>同胞网友写的教程共 3 篇，基本上我都是按他的教程来的<br><a href="https://t17.techbang.com/topics/50737-build-a-remote-boot-system-using-synology-nas-ipxe-part-i-compact-remote-boot-system-management-tool" target="_blank" rel="noopener">https://t17.techbang.com/topics/50737-build-a-remote-boot-system-using-synology-nas-ipxe-part-i-compact-remote-boot-system-management-tool</a><br><a href="https://t17.techbang.com/topics/50767-build-a-remote-boot-system-using-synology-nas-ipxe-part-ii-install-and-start-ubuntu-linux-on-an-iscsi-disk" target="_blank" rel="noopener">https://t17.techbang.com/topics/50767-build-a-remote-boot-system-using-synology-nas-ipxe-part-ii-install-and-start-ubuntu-linux-on-an-iscsi-disk</a><br><a href="https://t17.techbang.com/topics/50776-establish-a-remote-boot-system-using-synology-nas-ipxe-part-iii-install-and-start-ms-windows-on-an-iscsi-disk" target="_blank" rel="noopener">https://t17.techbang.com/topics/50776-establish-a-remote-boot-system-using-synology-nas-ipxe-part-iii-install-and-start-ms-windows-on-an-iscsi-disk</a></li>
+<li>外国友人博客<br><a href="https://www.reversengineered.com/2016/01/07/booting-linux-isos-with-memdisk-and-ipxe/" target="_blank" rel="noopener">https://www.reversengineered.com/2016/01/07/booting-linux-isos-with-memdisk-and-ipxe/</a><br><a href="https://www.reversengineered.com/2015/11/25/netboot-xyz/" target="_blank" rel="noopener">https://www.reversengineered.com/2015/11/25/netboot-xyz/</a><br><a href="https://www.reversengineered.com/2015/02/11/booting-vmware-esxi-in-ipxe/" target="_blank" rel="noopener">https://www.reversengineered.com/2015/02/11/booting-vmware-esxi-in-ipxe/</a></li>
+<li>ipxe<br>ipxe 论坛关于 ESXi 的<br><a href="http://forum.ipxe.org/showthread.php?tid=1123&amp;highlight=esxi" target="_blank" rel="noopener">http://forum.ipxe.org/showthread.php?tid=1123&amp;highlight=esxi</a><br>ipxe 官网<br><a href="http://ipxe.org" target="_blank" rel="noopener">http://ipxe.org</a></li>
+</ol>
+<h4 id="相关源码"><a href="#相关源码" class="headerlink" title="相关源码"></a>相关源码</h4><ol>
+<li>ipxe 源码<br><a href="https://github.com/ipxe/ipxe" target="_blank" rel="noopener">https://github.com/ipxe/ipxe</a></li>
+<li>netboot.xyz 源码，供学习<br><a href="https://github.com/antonym/netboot.xyz" target="_blank" rel="noopener">https://github.com/antonym/netboot.xyz</a></li>
+<li>我自己编译配置好的 kpxe 及一些启动菜单配置<br><a href="https://github.com/fronttang/netboot-tftp" target="_blank" rel="noopener">https://github.com/fronttang/netboot-tftp</a></li>
+</ol>
+<h3 id="二、编译一个带-iSCSI-和-COMBOOT-功能的-iPXE-固件"><a href="#二、编译一个带-iSCSI-和-COMBOOT-功能的-iPXE-固件" class="headerlink" title="二、编译一个带 iSCSI 和 COMBOOT 功能的 iPXE 固件"></a>二、编译一个带 iSCSI 和 COMBOOT 功能的 iPXE 固件</h3><p>这个参考 ipxe 官网或 <a href="https://blog.open4j.com/2019/05/30/ipxe-build-embedded-script/" target="_blank" rel="noopener">iPXE 编译增加功能与自定义脚本</a> 进行编译，在我的源码 netboot-tftp 中有编译好可用的 kpxe 文件</p>
+<h3 id="三、群晖-NAS-里配置-DCHP、TFTP-和-WEB-服务器"><a href="#三、群晖-NAS-里配置-DCHP、TFTP-和-WEB-服务器" class="headerlink" title="三、群晖 NAS 里配置 DCHP、TFTP 和 WEB 服务器"></a>三、群晖 NAS 里配置 DCHP、TFTP 和 WEB 服务器</h3><p>先按同胞网友写的教程 Part 1 配置好群晖的 iSCSI、DCHP、TFTP 和 WEB 服务器</p>
+<h4 id="开启-TFTP-服务"><a href="#开启-TFTP-服务" class="headerlink" title="开启 TFTP 服务"></a>开启 TFTP 服务</h4><p><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/1.png" alt="image 1"></p>
+<p>将 netboot-tftp 源码里全部文件上传到 /PXE/Grub 文件夹下<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/2.png" alt="image 2"></p>
+<h4 id="开启-DHCP-服务"><a href="#开启-DHCP-服务" class="headerlink" title="开启 DHCP 服务"></a>开启 DHCP 服务</h4><p><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/3.png" alt="image 3"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/4.png" alt="image 4"></p>
+<h4 id="开启-PXE-并设置启动文件"><a href="#开启-PXE-并设置启动文件" class="headerlink" title="开启 PXE 并设置启动文件"></a>开启 PXE 并设置启动文件</h4><p><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/5.png" alt="image 5"></p>
+<h4 id="网络启动测试"><a href="#网络启动测试" class="headerlink" title="网络启动测试"></a>网络启动测试</h4><p>在 BIOS 的 BOOT 选项里将从网络启动调整到第一位,各主板 BIOS 操作不一样,请自行查阅主板 BIOS 说明<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/48.png" alt="image 48"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/6.png" alt="image 6"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/7.png" alt="image 7"></p>
+<h4 id="开启-WEB-服务"><a href="#开启-WEB-服务" class="headerlink" title="开启 WEB 服务"></a>开启 WEB 服务</h4><p>开启群晖 web station 并设置虚拟主机用来加载一些系统的引导文件<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/8.png" alt="image 8"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/9.png" alt="image 9"></p>
+<h3 id="四、在群晖配置-iSCSI-target-和-iSCSI-LUN"><a href="#四、在群晖配置-iSCSI-target-和-iSCSI-LUN" class="headerlink" title="四、在群晖配置 iSCSI target 和 iSCSI LUN"></a>四、在群晖配置 iSCSI target 和 iSCSI LUN</h3><p><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/10.png" alt="image 10"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/11.png" alt="image 11"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/12.png" alt="image 12"></p>
+<h3 id="五、修改-tftp-根目录中的文件"><a href="#五、修改-tftp-根目录中的文件" class="headerlink" title="五、修改 tftp 根目录中的文件"></a>五、修改 tftp 根目录中的文件</h3><p><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/13.png" alt="image 13"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/14.png" alt="image 14"></p>
+<h3 id="六、通过网卡-DHCP-启动机器安装系统"><a href="#六、通过网卡-DHCP-启动机器安装系统" class="headerlink" title="六、通过网卡 DHCP 启动机器安装系统"></a>六、通过网卡 DHCP 启动机器安装系统</h3><p><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/6.png" alt="image 6"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/15.png" alt="image 15"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/16.png" alt="image 16"></p>
+<p>在 menu.ipxe 的一些网络地址没问题的话，就能进入 ESXi 的安装界面了</p>
+<p><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/22.png" alt="image 22"></p>
+<p>这里安装的时候硬盘选择界面会出现 iSCSI 的硬盘，如果有其他硬盘的话别选错了<br>如果没有出现 iSCSI 硬盘，那肯定是加载出错了。<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/28.png" alt="image 28"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/29.png" alt="image 29"></p>
+<h3 id="七、安装完成启动系统"><a href="#七、安装完成启动系统" class="headerlink" title="七、安装完成启动系统"></a>七、安装完成启动系统</h3><p><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/17.png" alt="image 17"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/23.png" alt="image 23"></p>
+<h3 id="八、关于-DHCP-与-TFTP-服务器"><a href="#八、关于-DHCP-与-TFTP-服务器" class="headerlink" title="八、关于 DHCP 与 TFTP 服务器"></a>八、关于 DHCP 与 TFTP 服务器</h3><p>按照上面的教程是在内网开启了两个 DHCP 服务器，一个是主路由的，我这里是 ROS，一个是群晖的。<br>这样会导致有些时候网络启动后 iPXE DHCP 获取到的结果不是想要的结果，比如 next-server 地址错误<br>会导致加载不到启动脚本而进不了菜单，这里建议内网只有一个 DHCP 服务器，这样就不会有 DHCP 服务干扰了<br>下面介绍使用 ROS、LEDE 的 DHCP 和 TFTP 服务器</p>
+<h4 id="ROS-的-DHCP-与-TFTP-设置"><a href="#ROS-的-DHCP-与-TFTP-设置" class="headerlink" title="ROS 的 DHCP 与 TFTP 设置"></a>ROS 的 DHCP 与 TFTP 设置</h4><p>将 netboot-tftp 源码上传到 ROS 的 files，然后 ip -&gt; TFTP 开启 ROS 的 TFTP 服务<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/18.png" alt="image 18"><br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/21.png" alt="image 21"></p>
+<p>DHCP server 里配置 next server 和 boot file name<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/19.png" alt="image 19"></p>
+<h4 id="LEDE-的-DHCP-与-TFTP-设置"><a href="#LEDE-的-DHCP-与-TFTP-设置" class="headerlink" title="LEDE 的 DHCP 与 TFTP 设置"></a>LEDE 的 DHCP 与 TFTP 设置</h4><p>如果是使用 LEDE 的 DHCP 和 TFTP 服务器，则将 netboot-tftp 源码上传到 lede 路由上<br>然后在 网络 -&gt; DHCP/DNS 下进行配置 TFTP 服务<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/20.png" alt="image 20"></p>
+<h3 id="九、对特殊电脑做特别设置"><a href="#九、对特殊电脑做特别设置" class="headerlink" title="九、对特殊电脑做特别设置"></a>九、对特殊电脑做特别设置</h3><p>脚本是支持多个电脑启动不同的系统到电脑对应系统的 iSCSI LUN<br>这就是上面创建 iSCSI target 的时候 target 名称为什么要用 主机名.系统名<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/10.png" alt="image 10"></p>
+<p>* 设置电脑网卡 mac 地址脚本<br>比如要让电脑 A(网卡 MAC 地址为 00:12:34:56:78:90) 启动到 mini.系统名 的 iSCSI<br>那就是设置电脑 A 的主机名为 mini<br>如果使用群晖的 DHCP，则可以在群群晖 DHCP 客户端列表里给 MAC 地址设置主机名<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/4.png" alt="image 4"></p>
+<p>如果一些不能设置主机名的 DHCP 服务器，如 ROS，如果不用做特殊设置，则 hostname 为空<br>这样脚本会找 mac 地址.系统名 的 iSCSI, 这样就会取不到 iSCSI, 除非你 iSCSI target 用 mac 地址.系统名 命名</p>
+<p>在 netboot-tftp 源码目录下有一个 boot 文件夹，这个文件夹就是放置对应主机或 MAC 地址特殊脚本的目录<br>在 boot 目录下创建文件, 文件的命名格式为 mac-mac 地址去掉冒号字母小写.ipxe<br>例如 mac-001234567890.ipxe<br>在文件里添加脚本如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!ipxe</span><br><span class="line">echo</span><br><span class="line"># 设置这个mac地址的主机名</span><br><span class="line">set hostname mini</span><br><span class="line">set initiator-iqn $&#123;base-iqn&#125;:$&#123;hostname&#125;</span><br><span class="line">echo Booting $&#123;hostname&#125;</span><br><span class="line"></span><br><span class="line"># 这里还可以设置默认进入的菜单和在菜单上的等待时间</span><br><span class="line"># 比如装好系统后设置 default 为 esxi ,timeout 为1秒或更短</span><br><span class="line"># 这样就可以直接进入esxi系统，省去选择菜单步骤。在装好系统不要用菜单的时候很有用</span><br><span class="line">set menu-default esxi</span><br><span class="line">set menu-timeout 10000</span><br><span class="line"></span><br><span class="line">chain --replace --autofree $&#123;menu-url&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="十、折腾过程中遇到的坑"><a href="#十、折腾过程中遇到的坑" class="headerlink" title="十、折腾过程中遇到的坑"></a>十、折腾过程中遇到的坑</h3><h4 id="关于-iscsi-的坑"><a href="#关于-iscsi-的坑" class="headerlink" title="关于 iscsi 的坑"></a>关于 iscsi 的坑</h4><p>仔细看 netboot-tftp 里菜单命令会发现有一条命令 sanhook \${root-path}<br>是扫描加载 iSCSI 的<br>全路径是这样的<br>sanhook iscsi:192.168.1.252::::iqn.iqn.2000-01.com.synology:mini.ESXi</p>
+<p><a href="http://ipxe.org/sanuri" target="_blank" rel="noopener">iPXE 官方文档</a>有对这个进行说明:<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/44.png" alt="image 44"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iscsi:&lt;servername&gt;:&lt;protocol&gt;:&lt;port&gt;:&lt;LUN&gt;:&lt;targetname&gt;</span><br></pre></td></tr></table></figure>
+<p>我们把其中的 protocol、prot、LUN 都省略了，所以成了::::<br>其中 LUN 是一个坑，官方文档中有对 LUN 的介绍是这个样的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;LUN&gt; is the SCSI LUN of the boot disk, in hexadecimal. It can be left empty, in which case the default LUN (0) will be used.</span><br></pre></td></tr></table></figure>
+<p>LUN 是指要加载 iSCSI target 中哪个 LUN，值是 LUN 的编号 ,关键信息是 默认值 为 0。<br>使用我的脚本加载 DS3617xs 中的 iSCSI 一切正常<br>但是用这个脚本加载 DS918+ 的中 iSCSI 就会加载不到<br>研究了几个小才发现<br>在我在 DS3617xs 中 iSCSI target 第一个 LUN 的编号为 0<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/45.png" alt="image 45"></p>
+<p>而 DS918+ 中 iSCSI target 第一个 LUN 的编号为 1<br><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/46.png" alt="image 46"></p>
+<p>所以如果发现自己 iSCSI target 第一个 LUN 的编号为 1 的，请修改 netboot-tftp 源码中的 boot.ipxe.cfg 文件</p>
+<p><img src="//fronttang.github.io/2019/05/29/net-boot-ipxe-esxi-centos-windows-etc-from-iscsi-lun/47.png" alt="image 47"></p>
+<p>将</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set base-iscsi iscsi:$&#123;iscsi-server&#125;::::$&#123;base-iqn&#125;</span><br></pre></td></tr></table></figure>
+<p>改成</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set base-iscsi iscsi:$&#123;iscsi-server&#125;:::1:$&#123;base-iqn&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>iPXE</category>
+      </categories>
+      <tags>
+        <tag>iPXE</tag>
+        <tag>NETBOOT</tag>
+        <tag>iSCSI</tag>
+        <tag>ESXi</tag>
+        <tag>NAS</tag>
+        <tag>TFTP</tag>
+        <tag>DHCP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ROS端口映射动态IP完美解决回流问题</title>
+    <url>/2019/05/29/ros-firewall-net-hairpin/</url>
+    <content><![CDATA[<a id="more"></a>
+<p>网上很多关于动态 IP 下 ROS 配置 NET 端口映射，关于回流问题的解决方案是设置脚本：IP 更新后更新 NET 规则的 Dst.Address.<br>这样的话如果有多个端口映射,那就要配置多个脚本。下面介绍一个完美解决 NET 回流,不需要配置脚本的方法.</p>
+<h3 id="一、找到-IP-gt-Cloud-把里面的-DDNS-功能启用，时间更新启用，并复制一下生成出来的域名。"><a href="#一、找到-IP-gt-Cloud-把里面的-DDNS-功能启用，时间更新启用，并复制一下生成出来的域名。" class="headerlink" title="一、找到 IP-&gt;Cloud,把里面的 DDNS 功能启用，时间更新启用，并复制一下生成出来的域名。"></a>一、找到 IP-&gt;Cloud,把里面的 DDNS 功能启用，时间更新启用，并复制一下生成出来的域名。</h3><p>如果不想用 ROS 的 DDNS 域名，也可以用自己的域名，如阿里云域名，在 LEDE 或群晖中做好 DDNS.<br><img src="//fronttang.github.io/2019/05/29/ros-firewall-net-hairpin/1.png" alt="image 1"></p>
+<h3 id="二、IP-gt-Firewall-添加一個-address"><a href="#二、IP-gt-Firewall-添加一個-address" class="headerlink" title="二、IP -&gt; Firewall 添加一個 address"></a>二、IP -&gt; Firewall 添加一個 address</h3><p><img src="//fronttang.github.io/2019/05/29/ros-firewall-net-hairpin/2.png" alt="image 2"></p>
+<h3 id="三、设置端口映射"><a href="#三、设置端口映射" class="headerlink" title="三、设置端口映射"></a>三、设置端口映射</h3><p><img src="//fronttang.github.io/2019/05/29/ros-firewall-net-hairpin/3.png" alt="image 3"><br><img src="//fronttang.github.io/2019/05/29/ros-firewall-net-hairpin/4.png" alt="image 4"><br><img src="//fronttang.github.io/2019/05/29/ros-firewall-net-hairpin/5.png" alt="image 5"><br>这样设置完成后 我们就可以在动态 IP 下实时更新 DDNS 同时也可以回流，重要的是，我们依然可以继续使用群晖 DDNS 或阿里云 DDNS 给的短域名。</p>
+]]></content>
+      <categories>
+        <category>Router</category>
+      </categories>
+      <tags>
+        <tag>ROS</tag>
+        <tag>NET</tag>
+        <tag>FIREWALL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OpenWRT/LEDE软路由下利用docker安装nginx实现反向代理</title>
+    <url>/2019/04/07/lede-docker-nginx-reverse-proxy/</url>
+    <content><![CDATA[<a id="more"></a>
+<p>上一篇文章 <a href="https://blog.open4j.com/2019/04/07/use-dsm-nginx-reverse-proxy/" target="_blank" rel="noopener">利用群晖的反向代理服务器转发内网服务,实现外网免端口访问内网服务</a> 讲了利用利用群晖的反向代理服务器转发内网服务，有人可能没有群晖 NAS，本文将介绍在软路由 LEDE 下安装 docker，用 docker 的 nginx 容器来配置和群晖反向代理一样的功能。</p>
+<p>前期一些配置就不再多介绍了，下面从上一篇<a href="https://blog.open4j.com/2019/04/07/use-dsm-nginx-reverse-proxy/" target="_blank" rel="noopener">文章</a>的第四点开始配置</p>
+<h3 id="一、OpenWRT-LEDE-添加磁盘"><a href="#一、OpenWRT-LEDE-添加磁盘" class="headerlink" title="一、OpenWRT/LEDE 添加磁盘"></a>一、OpenWRT/LEDE 添加磁盘</h3><p>* 本文是以 koolshare 论坛的 LEDE x86 为例进行配置</p>
+<h4 id="1-在-ESXI-下给-lede-添加硬盘"><a href="#1-在-ESXI-下给-lede-添加硬盘" class="headerlink" title="1. 在 ESXI 下给 lede 添加硬盘"></a>1. 在 ESXI 下给 lede 添加硬盘</h4><p><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/1.jpg" alt="图片 1"><br><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/2.jpg" alt="图片 2"></p>
+<h4 id="2-用-SSH-登录-lede-给硬盘进行分区并格式化"><a href="#2-用-SSH-登录-lede-给硬盘进行分区并格式化" class="headerlink" title="2. 用 SSH 登录 lede 给硬盘进行分区并格式化"></a>2. 用 SSH 登录 lede 给硬盘进行分区并格式化</h4><p><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/3.jpg" alt="图片 3"><br><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/4.jpg" alt="图片 4"><br><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/5.jpg" alt="图片 5"><br><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/6.jpg" alt="图片 6"><br><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/7.jpg" alt="图片 7"></p>
+<h4 id="3-在-LEDE-界面挂载分区"><a href="#3-在-LEDE-界面挂载分区" class="headerlink" title="3. 在 LEDE 界面挂载分区"></a>3. 在 LEDE 界面挂载分区</h4><p><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/8.jpg" alt="图片 8"><br><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/9.jpg" alt="图片 9"><br><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/10.jpg" alt="图片 10"><br><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/11.jpg" alt="图片 11"></p>
+<h3 id="二、-安装-docker-插件"><a href="#二、-安装-docker-插件" class="headerlink" title="二、 安装 docker 插件"></a>二、 安装 docker 插件</h3><p>安装 docker 之前，先给 lede 加一块硬盘，如果 lede 是安装在物理机可以不加磁盘</p>
+<h4 id="安装-docker"><a href="#安装-docker" class="headerlink" title="安装 docker"></a>安装 docker</h4><p><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/12.jpg" alt="图片 12"><br><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/13.jpg" alt="图片 13"></p>
+<h3 id="三、-下载-nginx-docker-镜像"><a href="#三、-下载-nginx-docker-镜像" class="headerlink" title="三、 下载 nginx docker 镜像"></a>三、 下载 nginx docker 镜像</h3><p><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/14.png" alt="图片 14"><br><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/15.png" alt="图片 15"><br><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/16.png" alt="图片 16"></p>
+<h3 id="四、-创建并启动-nginx-容器"><a href="#四、-创建并启动-nginx-容器" class="headerlink" title="四、 创建并启动 nginx 容器"></a>四、 创建并启动 nginx 容器</h3><p>先在 /mnt/docker 目录下创建文件夹</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /mnt/docker</span><br><span class="line">mkdir nginx</span><br><span class="line">mkdir nginx/conf</span><br><span class="line">mkdir nginx/conf.d</span><br><span class="line">cd nginx</span><br></pre></td></tr></table></figure>
+<p>创建 nginx.conf,内容如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">user  nginx;</span><br><span class="line">worker_processes  1;</span><br><span class="line">error_log  /var/log/nginx/error.log warn;</span><br><span class="line">pid        /var/run/nginx.pid;</span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">    include       /etc/nginx/mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line">                      &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</span><br><span class="line">                      &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;</span><br><span class="line"></span><br><span class="line">    access_log  /var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    #tcp_nopush     on;</span><br><span class="line"></span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    #gzip  on;</span><br><span class="line"></span><br><span class="line">    include /etc/nginx/conf.d/*.conf;</span><br><span class="line">    include /etc/nginx/sites-enabled/*;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/18.png" alt="图片 18"><br><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/19.png" alt="图片 19"></p>
+<p>启动参数如下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-p 88:80</span><br><span class="line">-p 8443:443</span><br><span class="line">-v /mnt/docker/nginx/nginx.conf:/etc/nginx/nginx.conf</span><br><span class="line">-v /mnt/docker/nginx/proxy_params:/etc/nginx/proxy_params</span><br><span class="line">-v /mnt/docker/nginx/conf/:/etc/nginx/sites-enabled</span><br><span class="line">-v /mnt/docker/nginx/conf.d/:/etc/nginx/conf.d</span><br><span class="line">--network host</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/21.png" alt="图片 21"></p>
+<p>浏览器访问 <a href="http://ledeip:88" target="_blank" rel="noopener">http://ledeip:88</a> 就能访问到 Nginx<br><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/29.png" alt="图片 29"></p>
+<h3 id="五、配置-nginx-虚拟主机-域名-反向代理"><a href="#五、配置-nginx-虚拟主机-域名-反向代理" class="headerlink" title="五、配置 nginx 虚拟主机(域名)反向代理"></a>五、配置 nginx 虚拟主机(域名)反向代理</h3><h4 id="增加虚拟主机配置文件"><a href="#增加虚拟主机配置文件" class="headerlink" title="增加虚拟主机配置文件"></a>增加虚拟主机配置文件</h4><p>以反向代理群晖 NAS 服务为例<br>在 /mnt/docker/nginx/conf 文件夹增加 dsm.open4j.com 配置文件：<br>配置文件名为二级域名<br>server_name 也为二级域名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /mnt/docker/nginx/conf</span><br><span class="line">vi dsm.open4j.com</span><br><span class="line">server &#123;</span><br><span class="line">    listen 88;</span><br><span class="line">    listen [::]:88;</span><br><span class="line"></span><br><span class="line">    server_name dsm.open4j.com;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_set_header        Host                $http_host;</span><br><span class="line">        proxy_set_header        X-Real-IP           $remote_addr;</span><br><span class="line">        proxy_set_header        X-Forwarded-For     $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header        X-Forwarded-Proto   $scheme;</span><br><span class="line">        proxy_intercept_errors  on;</span><br><span class="line">        proxy_http_version      1.1;</span><br><span class="line"></span><br><span class="line">        proxy_pass http://192.168.1.252:5000;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="重启-nginx-容器"><a href="#重启-nginx-容器" class="headerlink" title="重启 nginx 容器"></a>重启 nginx 容器</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker restart nginx</span><br></pre></td></tr></table></figure>
+<h4 id="在主路由中配置端口映射"><a href="#在主路由中配置端口映射" class="headerlink" title="在主路由中配置端口映射"></a>在主路由中配置端口映射</h4><p>以 ROS 为例<br><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/25.png" alt="图片 25"><br><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/26.png" alt="图片 26"></p>
+<p>输入 <a href="http://dsm.open4j.com:88" target="_blank" rel="noopener">http://dsm.open4j.com:88</a> 就能访问到群晖 NAS 了<br><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/27.png" alt="图片 27"></p>
+<h4 id="转发其他服务"><a href="#转发其他服务" class="headerlink" title="转发其他服务"></a>转发其他服务</h4><p>转发其他服务和转发 NAS 一样在 /mnt/docker/nginx/conf/ 目录下添加一个配置文件<br>修改 server_name 和 proxy_pass 地址<br>然后重启 nginx 容器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker restart nginx</span><br></pre></td></tr></table></figure>
+<p>输入 配置的 server_name 对应的域名就能访问了<br>也可以 將 lede 的 88 端口映射到外網 80 端口，這樣就可以不帶端口訪問了。<br>如果有 https 訪問需要配置證書，原理是一樣的，大家自行找相關資料吧。</p>
+<p><img src="//fronttang.github.io/2019/04/07/lede-docker-nginx-reverse-proxy/30.png" alt="图片 30"></p>
+]]></content>
+      <categories>
+        <category>Router</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>DSM</tag>
+        <tag>ROS</tag>
+        <tag>LEDE</tag>
+        <tag>nginx</tag>
+        <tag>Openwrt</tag>
+        <tag>proxy</tag>
+        <tag>ajenti</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>利用群晖的反向代理服务器转发内网服务,实现外网免端口访问内网服务</title>
+    <url>/2019/04/07/use-dsm-nginx-reverse-proxy/</url>
+    <content><![CDATA[<a id="more"></a>
+<p>如果要在外网访问家里的一些服务，如：群晖 NAS,op/lede 路由等等，这时候就要在主路由器里进行端口映射。当要映射的服务非常多时，在路由器里就要配置很多条端口映射。而且多个服务映射到外网后，外网访问的时候通常是要加上端口号的。如果想外网访问不加端口，这时候要就用上 nginx 的反向代理功能了。<br>通过在 nginx 里配置虚拟主机，实现外网同一个端口（80 或 443）访问内网多个服务。<br>如果自己配置 nginx 的虚拟主机、反向代理挺麻烦的（愿意动手的可以自己配置）,这时候我们需要借助群晖 NAS 的反向代理功能来简化我们的配置。</p>
+<h3 id="一、前期准备"><a href="#一、前期准备" class="headerlink" title="一、前期准备"></a>一、前期准备</h3><ol>
+<li>外网 IP：宽带拨号后是公网 IP，如果是拨号后是内网 IP，请使用内网穿透工具。</li>
+<li>一个域名：自己买或用免费的都行</li>
+<li>泛域名(*.yourdomain.com)证书(非必须)：如果当地宽带 80 端口没被封，可以不用证书，如果 80 被封，这时候就要使用 443 端口（如果 443 端口也被封的，那就老老实实带端口访问吧）。使用 443 端口时如果不想浏览器有错误提示最好申请一个证书, 免费的 SSL 证书 let’s encrypt 用的比较多。不用泛域名证书，用单个域名证书也可以，用单域名证书时在群晖 NAS 配置有点区别，本文是以泛域名证书为例.</li>
+</ol>
+<h3 id="二、DDNS-配置"><a href="#二、DDNS-配置" class="headerlink" title="二、DDNS 配置"></a>二、DDNS 配置</h3><p>* 本方以 koolshare 论坛 LEDE 下 koolddns 插件配置域名 yourdomain.com 为例进行配置, 域名供应商以 aliyun 为例</p>
+<ol>
+<li><p>进到阿里云控制台取得 AccessKey ID 和 Access Key Secret。<br><img src="//fronttang.github.io/2019/04/07/use-dsm-nginx-reverse-proxy/1.jpg" alt="图片 1"><br><img src="//fronttang.github.io/2019/04/07/use-dsm-nginx-reverse-proxy/2.jpg" alt="图片 2"></p>
+</li>
+<li><p>在 lede 的 koolddns 插件下进行配置 DDNS<br><img src="//fronttang.github.io/2019/04/07/use-dsm-nginx-reverse-proxy/3.jpg" alt="图片 3"></p>
+</li>
+</ol>
+<h3 id="三、主路由端口映射"><a href="#三、主路由端口映射" class="headerlink" title="三、主路由端口映射"></a>三、主路由端口映射</h3><p>*以 ROS 路由为例，将外网端口 443 映射到内网群晖(192.168.1.253)的 443 端口<br><img src="//fronttang.github.io/2019/04/07/use-dsm-nginx-reverse-proxy/4.jpg" alt="图片 4"><br><img src="//fronttang.github.io/2019/04/07/use-dsm-nginx-reverse-proxy/5.jpg" alt="图片 5"></p>
+<h3 id="四、群晖反向代理配置"><a href="#四、群晖反向代理配置" class="headerlink" title="四、群晖反向代理配置"></a>四、群晖反向代理配置</h3><ol>
+<li><p>进入群晖控制台-&gt;安全-&gt;证书<br><img src="//fronttang.github.io/2019/04/07/use-dsm-nginx-reverse-proxy/6.jpg" alt="图片 6"></p>
+</li>
+<li><p>新增证书，设置证书为默认证书<br><img src="//fronttang.github.io/2019/04/07/use-dsm-nginx-reverse-proxy/7.jpg" alt="图片 7"><br><img src="//fronttang.github.io/2019/04/07/use-dsm-nginx-reverse-proxy/8.jpg" alt="图片 8"><br><img src="//fronttang.github.io/2019/04/07/use-dsm-nginx-reverse-proxy/9.jpg" alt="图片 9"></p>
+</li>
+<li><p>进入群晖控制台-&gt;应用程序入口-&gt;反向代理服务器<br><img src="//fronttang.github.io/2019/04/07/use-dsm-nginx-reverse-proxy/10.jpg" alt="图片 10"></p>
+</li>
+<li><p>新增反向代理<br><img src="//fronttang.github.io/2019/04/07/use-dsm-nginx-reverse-proxy/11.jpg" alt="图片 11"></p>
+</li>
+<li><p>enjoy it<br><img src="//fronttang.github.io/2019/04/07/use-dsm-nginx-reverse-proxy/12.jpg" alt="图片 12"><br><img src="//fronttang.github.io/2019/04/07/use-dsm-nginx-reverse-proxy/13.jpg" alt="图片 13"><br><img src="//fronttang.github.io/2019/04/07/use-dsm-nginx-reverse-proxy/14.jpg" alt="图片 14"></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>DSM</category>
+      </categories>
+      <tags>
+        <tag>DSM</tag>
+        <tag>ROS</tag>
+        <tag>LEDE</tag>
+        <tag>nginx</tag>
+        <tag>Openwrt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>允许netdata外网访问</title>
+    <url>/2019/04/07/netdata-allow-connetions-dashboard-from-internat/</url>
+    <content><![CDATA[<a id="more"></a>
+<p>当我们需要外网访问 netdata 的时候，在路由器里做了端口映射还不够，还要修改 netdata 的配置文件 /etc/netdata/netdata.conf, 配置 netdata 允许访问的来源 IP。因为 netdata 默认配置是只允许内网的一些 IP 才能访问。</p>
+<h3 id="一、修改-netdata-配置"><a href="#一、修改-netdata-配置" class="headerlink" title="一、修改 netdata 配置"></a>一、修改 netdata 配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$vi</span> /etc/netdata/netdata.conf</span><br></pre></td></tr></table></figure>
+<p>修改[web]下的 allow connections from 和 allow dashboard from</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">allow connections from = *</span><br><span class="line">allow dashboard from = *</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2019/04/07/netdata-allow-connetions-dashboard-from-internat/1554609011349.jpg" alt="图片 1"></p>
+<h3 id="二、路由器里增加端口映射"><a href="#二、路由器里增加端口映射" class="headerlink" title="二、路由器里增加端口映射"></a>二、路由器里增加端口映射</h3><p>以 ROS 路由器为例：<br>用 winbox 登录 ROS ,打开 ip-&gt;firewall,切换到 NET 页,点击新增按钮</p>
+<p><img src="//fronttang.github.io/2019/04/07/netdata-allow-connetions-dashboard-from-internat/1554610449677.jpg" alt="图片 1"><br><img src="//fronttang.github.io/2019/04/07/netdata-allow-connetions-dashboard-from-internat/1554610422433.jpg" alt="图片 2"></p>
+]]></content>
+      <categories>
+        <category>Router</category>
+      </categories>
+      <tags>
+        <tag>Openwrt</tag>
+        <tag>netdata</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>教你分分钟搞定Docker私有仓库Registry</title>
+    <url>/2018/12/21/docker-registry-install/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="一、什么是-Docker-私有仓库-Registry"><a href="#一、什么是-Docker-私有仓库-Registry" class="headerlink" title="一、什么是 Docker 私有仓库 Registry"></a>一、什么是 Docker 私有仓库 Registry</h3><p>官方的 Docker hub 是一个用于管理公共镜像的好地方，我们可以在上面找到我们想要的镜像，也可以把我们自己的镜像推送上去。但是，有时候我们的服务器无法访问互联网，或者你不希望将自己的镜像放到公网当中，那么你就需要 Docker Registry，它可以用来存储和管理自己的镜像。</p>
+<h3 id="二、安装-Docker-及-Registry"><a href="#二、安装-Docker-及-Registry" class="headerlink" title="二、安装 Docker 及 Registry"></a>二、安装 Docker 及 Registry</h3><h4 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h4><p>见之前博文：</p>
+<p><a href="https://blog.open4j.com/2018/12/17/centos7-install-docker/" target="_blank" rel="noopener">https://blog.open4j.com/2018/12/17/centos7-install-docker/</a></p>
+<h4 id="安装-Registry："><a href="#安装-Registry：" class="headerlink" title="安装 Registry："></a>安装 Registry：</h4><p>很简单，只需要运行一个 Registry 容器即可（包括下载镜像和启动容器、服务）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d -p 5000:5000 -v /data/registry:/var/lib/registry --name registry --restart=always registry</span><br></pre></td></tr></table></figure>
+<h3 id="三、如何使用-Registry"><a href="#三、如何使用-Registry" class="headerlink" title="三、如何使用 Registry"></a>三、如何使用 Registry</h3><p>我也看过其他博文，经常报的一个错误就是：</p>
+<p>unable to ping registry endpoint <a href="https://172.18.3.22:5000/v0/" target="_blank" rel="noopener">https://172.18.3.22:5000/v0/</a><br>v2 ping attempt failed with error: Get <a href="https://172.18.3.22:5000/v2/" target="_blank" rel="noopener">https://172.18.3.22:5000/v2/</a>: http: server gave HTTP response to HTTPS client<br>这是由于 Registry 为了安全性考虑，默认是需要 https 证书支持的.</p>
+<p>但是我们可以通过一个简单的办法解决：</p>
+<p>修改/etc/docker/daemon.json 文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#vi /etc/docker/daemon.json</span><br><span class="line">&#123;</span><br><span class="line">&quot;insecure-registries&quot;: [&quot;&lt;ip&gt;:5000&quot;]</span><br><span class="line">&#125;</span><br><span class="line">#systemctl daemon-reload</span><br><span class="line">#systemctl restart docker</span><br></pre></td></tr></table></figure>
+<p>注：<ip>：Registry 的机器 ip 地址，在安装 registry 的节点和客户端需要访问私有 Registry 的节点都需要执行此步操作。</ip></p>
+<h3 id="四、通过-docker-tag-重命名镜像，使之与-registry-匹配"><a href="#四、通过-docker-tag-重命名镜像，使之与-registry-匹配" class="headerlink" title="四、通过 docker tag 重命名镜像，使之与 registry 匹配"></a>四、通过 docker tag 重命名镜像，使之与 registry 匹配</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker tag inits/nginx1.8 &lt;ip&gt;:5000/nginx1.8:latest</span><br></pre></td></tr></table></figure>
+<h3 id="五、上传镜像到-Registry"><a href="#五、上传镜像到-Registry" class="headerlink" title="五、上传镜像到 Registry"></a>五、上传镜像到 Registry</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker push &lt;ip&gt;:5000/nginx1.8:latest</span><br></pre></td></tr></table></figure>
+<h3 id="六、查看-Registry-中所有镜像信息"><a href="#六、查看-Registry-中所有镜像信息" class="headerlink" title="六、查看 Registry 中所有镜像信息"></a>六、查看 Registry 中所有镜像信息</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl http://&lt;ip&gt;:5000/v2/\_catalog</span><br><span class="line">返回：</span><br><span class="line">&#123;&quot;repositories&quot;:[&quot;centos6.8&quot;,&quot;jenkins1.638&quot;,&quot;nginx&quot;,&quot;redis3.0&quot;,&quot;source2.0.3&quot;,&quot;zkdubbo&quot;]&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="七、其他-Docker-服务器下载镜像"><a href="#七、其他-Docker-服务器下载镜像" class="headerlink" title="七、其他 Docker 服务器下载镜像"></a>七、其他 Docker 服务器下载镜像</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull &lt;ip&gt;:5000/nginx1.8:latest</span><br></pre></td></tr></table></figure>
+<h3 id="八、启动镜像"><a href="#八、启动镜像" class="headerlink" title="八、启动镜像"></a>八、启动镜像</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -it &lt;ip&gt;:5000/nginx1.8:latest /bin/bash</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>CentOS</tag>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Centos7上安装docker</title>
+    <url>/2018/12/17/centos7-install-docker/</url>
+    <content><![CDATA[<a id="more"></a>
+<p>Docker 从 1.13 版本之后采用时间线的方式作为版本号，分为社区版 CE 和企业版 EE。</p>
+<p>社区版是免费提供给个人开发者和小型团体使用的，企业版会提供额外的收费服务，比如经过官方测试认证过的基础设施、容器、插件等。</p>
+<p>社区版按照 stable 和 edge 两种方式发布，每个季度更新 stable 版本，如 17.06，17.09；每个月份更新 edge 版本，如 17.09，17.10。</p>
+<h3 id="一、安装-docker"><a href="#一、安装-docker" class="headerlink" title="一、安装 docker"></a>一、安装 docker</h3><h4 id="1、Docker-要求-CentOS-系统的内核版本高于-3-10-，查看本页面的前提条件来验证你的-CentOS-版本是否支持-Docker-。"><a href="#1、Docker-要求-CentOS-系统的内核版本高于-3-10-，查看本页面的前提条件来验证你的-CentOS-版本是否支持-Docker-。" class="headerlink" title="1、Docker 要求 CentOS 系统的内核版本高于 3.10 ，查看本页面的前提条件来验证你的 CentOS 版本是否支持 Docker 。"></a>1、Docker 要求 CentOS 系统的内核版本高于 3.10 ，查看本页面的前提条件来验证你的 CentOS 版本是否支持 Docker 。</h4><p>通过 uname -r 命令查看你当前的内核版本</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ uname -r</span><br></pre></td></tr></table></figure>
+<h4 id="2、使用-root-权限登录-Centos。确保-yum-包更新到最新。"><a href="#2、使用-root-权限登录-Centos。确保-yum-包更新到最新。" class="headerlink" title="2、使用 root 权限登录 Centos。确保 yum 包更新到最新。"></a>2、使用 root 权限登录 Centos。确保 yum 包更新到最新。</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo yum update</span><br></pre></td></tr></table></figure>
+<h4 id="3、卸载旧版本-如果安装过旧版本的话"><a href="#3、卸载旧版本-如果安装过旧版本的话" class="headerlink" title="3、卸载旧版本(如果安装过旧版本的话)"></a>3、卸载旧版本(如果安装过旧版本的话)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo yum remove docker docker-common docker-selinux docker-engine</span><br></pre></td></tr></table></figure>
+<h4 id="4、安装需要的软件包，-yum-util-提供-yum-config-manager-功能，另外两个是-devicemapper-驱动依赖的"><a href="#4、安装需要的软件包，-yum-util-提供-yum-config-manager-功能，另外两个是-devicemapper-驱动依赖的" class="headerlink" title="4、安装需要的软件包， yum-util 提供 yum-config-manager 功能，另外两个是 devicemapper 驱动依赖的"></a>4、安装需要的软件包， yum-util 提供 yum-config-manager 功能，另外两个是 devicemapper 驱动依赖的</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2</span><br></pre></td></tr></table></figure>
+<h4 id="5、设置-yum-源"><a href="#5、设置-yum-源" class="headerlink" title="5、设置 yum 源"></a>5、设置 yum 源</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/17/centos7-install-docker/1.png" alt="图片 1"></p>
+<h4 id="6、可以查看所有仓库中所有-docker-版本，并选择特定版本安装"><a href="#6、可以查看所有仓库中所有-docker-版本，并选择特定版本安装" class="headerlink" title="6、可以查看所有仓库中所有 docker 版本，并选择特定版本安装"></a>6、可以查看所有仓库中所有 docker 版本，并选择特定版本安装</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yum list docker-ce --showduplicates | sort -r</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/17/centos7-install-docker/2.png" alt="图片 2"></p>
+<h4 id="7、安装-docker"><a href="#7、安装-docker" class="headerlink" title="7、安装 docker"></a>7、安装 docker</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo yum install docker-ce  <span class="comment">#由于repo中默认只开启stable仓库，故这里安装的是最新稳定版17.12.0$ sudo yum install &lt;FQPN&gt; # 例如：sudo yum install docker-ce-17.12.0.ce</span></span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/17/centos7-install-docker/3.png" alt="图片 3"></p>
+<h4 id="8、启动并加入开机启动"><a href="#8、启动并加入开机启动" class="headerlink" title="8、启动并加入开机启动"></a>8、启动并加入开机启动</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo systemctl start docker</span><br><span class="line">$ sudo systemctl <span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure>
+<h4 id="9、验证安装是否成功-有-client-和-service-两部分表示-docker-安装启动都成功了"><a href="#9、验证安装是否成功-有-client-和-service-两部分表示-docker-安装启动都成功了" class="headerlink" title="9、验证安装是否成功(有 client 和 service 两部分表示 docker 安装启动都成功了)"></a>9、验证安装是否成功(有 client 和 service 两部分表示 docker 安装启动都成功了)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker version</span><br></pre></td></tr></table></figure>
+<h4 id="10-安装docker-compose"><a href="#10-安装docker-compose" class="headerlink" title="10. 安装docker-compose"></a>10. 安装docker-compose</h4><p>see <a href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener">https://docs.docker.com/compose/install/</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo curl -L <span class="string">"https://github.com/docker/compose/releases/download/1.24.1/docker-compose-<span class="variable">$(uname -s)</span>-<span class="variable">$(uname -m)</span>"</span> -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line">sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line">sudo ln -s /usr/<span class="built_in">local</span>/bin/docker-compose /usr/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/17/centos7-install-docker/4.png" alt="图片 4"></p>
+<h3 id="二、问题"><a href="#二、问题" class="headerlink" title="二、问题"></a>二、问题</h3><h4 id="1、因为之前已经安装过旧版本的-docker，在安装的时候报错如下："><a href="#1、因为之前已经安装过旧版本的-docker，在安装的时候报错如下：" class="headerlink" title="1、因为之前已经安装过旧版本的 docker，在安装的时候报错如下："></a>1、因为之前已经安装过旧版本的 docker，在安装的时候报错如下：</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Transaction check error:</span><br><span class="line">file /usr/bin/docker from install of docker-ce-17.12.0.ce-1.el7.centos.x86_64 conflicts with file from package docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64</span><br><span class="line">file /usr/bin/docker-containerd from install of docker-ce-17.12.0.ce-1.el7.centos.x86_64 conflicts with file from package docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64</span><br><span class="line">file /usr/bin/docker-containerd-shim from install of docker-ce-17.12.0.ce-1.el7.centos.x86_64 conflicts with file from package docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64</span><br><span class="line">file /usr/bin/dockerd from install of docker-ce-17.12.0.ce-1.el7.centos.x86_64 conflicts with file from package docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64</span><br></pre></td></tr></table></figure>
+<h4 id="2、卸载旧版本的包"><a href="#2、卸载旧版本的包" class="headerlink" title="2、卸载旧版本的包"></a>2、卸载旧版本的包</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo yum erase docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/17/centos7-install-docker/5.png" alt="图片 5"></p>
+<h4 id="3、再次安装-docker"><a href="#3、再次安装-docker" class="headerlink" title="3、再次安装 docker"></a>3、再次安装 docker</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo yum install docker-ce</span><br></pre></td></tr></table></figure>
+<h3 id="三、常用命令"><a href="#三、常用命令" class="headerlink" title="三、常用命令"></a>三、常用命令</h3><p>爬一些常用 Docker 命令，更多命令详解，请访问：<a href="http://www.docker.org.cn/dockerppt/106.html" target="_blank" rel="noopener">http://www.docker.org.cn/dockerppt/106.html</a>:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker ps # 查看当前正在运行的容器</span><br><span class="line">docker ps -a # 查看所有容器的状态</span><br><span class="line">docker start/stop id/name # 启动/停止某个容器</span><br><span class="line">docker attach id # 进入某个容器(使用 exit 退出后容器也跟着停止运行)</span><br><span class="line">docker exec -ti id # 启动一个伪终端以交互式的方式进入某个容器（使用 exit 退出后容器不停止运行）</span><br><span class="line">docker images # 查看本地镜像</span><br><span class="line">docker rm id/name # 删除某个容器</span><br><span class="line">docker rmi id/name # 删除某个镜像</span><br><span class="line">docker run --name test -ti ubuntu /bin/bash # 复制 ubuntu 容器并且重命名为 test 且运行，然后以伪终端交互式方式进入容器，运行 bash</span><br><span class="line">docker build -t soar/centos:7.1 . # 通过当前目录下的 Dockerfile 创建一个名为 soar/centos:7.1 的镜像</span><br><span class="line">docker run -d -p 2222:22 --name test soar/centos:7.1 # 以镜像 soar/centos:7.1 创建名为 test 的容器，并以后台模式运行，并做端口映射到宿主机 2222 端口，P 参数重启容器宿主机端口会发生改变</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>CentOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hadoop生态系统安装 Step13：集群启动</title>
+    <url>/2018/12/10/hadoop-ecosystem-install-step13-startup-system/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><ol>
+<li><p>将所有文件复制到其他节点,并修改配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scp -r /home/hadoop/ root@hadoop-master-002:/home/</span><br><span class="line">scp -r /home/hadoop/ root@hadoop-slave-001:/home/</span><br><span class="line">scp -r /home/hadoop/ root@hadoop-slave-002:/home/</span><br><span class="line">scp -r /home/hadoop/ root@hadoop-bigdata-01:/home/</span><br><span class="line">scp -r /home/hadoop/ root@hadoop-bigdata-02:/home/</span><br><span class="line"></span><br><span class="line">rm -rf hadoop</span><br><span class="line">rm -rf hbase</span><br><span class="line">rm -rf hive/</span><br><span class="line">rm -rf storm/</span><br><span class="line">rm -rf sqoop</span><br><span class="line">rm -rf zookeeper</span><br><span class="line">rm -rf kafka</span><br><span class="line"></span><br><span class="line">ln -s apache-hive-2.0.0-bin hive</span><br><span class="line">ln -s hbase-1.2.1 hbase</span><br><span class="line">ln -s apache-storm-1.0.1 storm</span><br><span class="line">ln -s kafka_2.11-0.10.0.0 kafka</span><br><span class="line">ln -s hadoop-2.7.2 hadoop</span><br><span class="line">ln -s sqoop-1.4.6 sqoop</span><br><span class="line">ln -s zookeeper-3.4.8 zookeeper</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 hadoop-master-02 上 yarn-site.xml</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /home/hadoop/hadoop/etc/hadoop</span><br><span class="line">vi yarn-site.xml</span><br><span class="line">&lt;property&gt;</span><br><span class="line">&lt;name&gt;yarn.resourcemanager.ha.id&lt;/name&gt;</span><br><span class="line">&lt;value&gt;rm2&lt;/value&gt;</span><br><span class="line">&lt;description&gt;If we want to launch more than one RM in single node, we need this configuration&lt;/description&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 hadoop-slave-001,hadoop-slave-002 上 zookeeper 的 myid</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi /home/hadoop/zookeeper/var/data/myid</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 zoo.cfg 当前 server ip 为 0.0.0.0</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server.\*=0.0.0.0:2888:3888</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="启动集群"><a href="#启动集群" class="headerlink" title="启动集群"></a>启动集群</h3><ol>
+<li><p>启动 zookeeper<br>在 hadoop-master-002,hadoop-slave-001,hadoop-slave-002 节点上运行 zookeeper</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /home/hadoop/zookeeper/bin</span><br><span class="line">./zkServer.sh start</span><br><span class="line">./zkServer.sh status</span><br></pre></td></tr></table></figure>
+<p>检查端口</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">netstat -anp | grep 2181</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动 hadoop<br>主 Master 节点运行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hdfs zkfc -formatZK</span><br></pre></td></tr></table></figure>
+<p>所有的 Journal 节点运行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~/hadoop/sbin/hadoop-daemon.sh start journalnode</span><br></pre></td></tr></table></figure>
+<p>两个 master 节点运行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~/hadoop/sbin/hadoop-daemon.sh start zkfc</span><br></pre></td></tr></table></figure>
+<p>主 Master 节点运行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hdfs namenode -format ns</span><br></pre></td></tr></table></figure>
+<p>主 Master 节点运行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hdfs namenode -initializeSharedEdits</span><br></pre></td></tr></table></figure>
+<p>主 master 节点运行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~/hadoop/sbin/hadoop-daemon.sh start namenode</span><br></pre></td></tr></table></figure>
+<p>备 master 节点运行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hdfs namenode -bootstrapStandby</span><br></pre></td></tr></table></figure>
+<p>备 master 节点运行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~/hadoop/sbin/hadoop-daemon.sh start namenode</span><br></pre></td></tr></table></figure>
+<p>主 master 节点运行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~/hadoop/sbin/start-all.sh</span><br></pre></td></tr></table></figure>
+<p>以上为首次启动 Hadoop，后续启动 Hadoop 集群只需在主 master 节点运行./start-all.sh<br>查看两个 namenode 状态</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hdfs haadmin -getServiceState nn1</span><br><span class="line">hdfs haadmin -getServiceState nn2</span><br><span class="line">yarn rmadmin -getServiceState rm1</span><br><span class="line">yarn rmadmin -getServiceState rm2</span><br><span class="line">yarn-daemon.sh start resourcemanager</span><br></pre></td></tr></table></figure>
+<p>hdfs namenode -bootstrapStandby 报错连不上主 master:9000<br>解决方案：修改主 master hosts 文件 0.0.0.0 hadoop-master-001</p>
+</li>
+<li><p>启动 Hbase 主节点运行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">./start-hbase.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>hadoop-master-002 上启动 hive<br>将 mysql 的 jdbc 驱动 copy 到/home/hadoop/hive/lib 目录下载<br>执行./hiveserver2（使用 jdbc 连接 hive 时需要）</p>
+</li>
+<li><p>hadoop-slave-001 和 hadoop-slave-002 上启动 kafka<br>如果要启动两台 kafka，则注意修改 broker.id=1 配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nohup bin/kafka-server-start.sh config/server.properties &gt; kafka.log &amp;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动 storm<br>主节点 hadoop-master-002 上启动</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nohup ./storm nimbus&gt;nimbus.log &amp;</span><br><span class="line">nohup ./storm ui&gt;ui.log &amp;</span><br></pre></td></tr></table></figure>
+<p>从节点 hadoop-slave-001,hadoop-slave-002 上启动</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nohup ./storm supervisor &gt;supervisor.log &amp;</span><br><span class="line">nohup ./storm logviewer&gt;logviewer.log &amp;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>CentOS</tag>
+        <tag>Hadoop</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hadoop生态系统安装 Step12：安装Azkaban</title>
+    <url>/2018/12/09/hadoop-ecosystem-install-step12-install-azkaban/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="用户：hadoop"><a href="#用户：hadoop" class="headerlink" title="用户：hadoop"></a>用户：hadoop</h3><h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h3><h3 id="安装包："><a href="#安装包：" class="headerlink" title="安装包："></a>安装包：</h3><p>azkaban-executor-server-2.5.0.tar.gz<br>azkaban-web-server-2.5.0.tar.gz<br>以上两个程序上传到 hadoop-master-002<br>azkaban-sql-script-2.5.0.tar.gz<br>上传到 mysql 服务器 hadoop-slave-001</p>
+<h3 id="安装方式"><a href="#安装方式" class="headerlink" title="安装方式"></a>安装方式</h3><ol>
+<li><p>解压 azkaban-sql-script-2.5.0.tar.gz</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar -xzvf azkaban-sql-script-2.5.0.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登录 Mysql 创建 Database Azkaban,并初始化数据库脚本<br>root 登录 mysql 服务器 hadoop-slave-001</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql -uroot –pthinkive</span><br><span class="line">mysql&gt; create database azkaban;</span><br><span class="line">mysql&gt; use azkaban</span><br><span class="line">mysql&gt; source /home/hadoop/azkaban-2.5.0/create-all-sql-2.5.0.sql</span><br><span class="line">mysql&gt; grant all privileges on azkaban.\* to &apos;azkaban&apos;@&apos;%&apos; identified by &apos;azkaban&apos;;</span><br><span class="line">mysql&gt; flush privileges;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成生成一个含有一个私钥的 keystore 文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">keytool -genkey -keystore keystore -alias jetty-azkaban -keyalg RSA</span><br></pre></td></tr></table></figure>
+<p>keystore 的口令是 keystore<br>执行完毕后会生成一个 keystore 的文件，keypass 也是 keystore</p>
+<p><img src="//fronttang.github.io/2018/12/09/hadoop-ecosystem-install-step12-install-azkaban/1.jpeg" alt="image 1"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar –xzvf azkaban-web-server-2.5.0.tar.gz</span><br></pre></td></tr></table></figure>
+<p>#修改 ./conf/azkaban.properties 如下项</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">azkaban.name=Azkaban</span><br><span class="line">default.timezone.id=Asia/Shanghai</span><br><span class="line">mysql.host=hadoop-slave-001</span><br><span class="line">mysql.database=azkaban</span><br><span class="line">mysql.user=azkaban</span><br><span class="line">mysql.password=azkaban</span><br><span class="line">jetty.keystore=web/keystore</span><br><span class="line">jetty.password=keystore</span><br><span class="line">jetty.keypassword= keystore</span><br><span class="line">jetty.truststore=web/keystore</span><br><span class="line">jetty.trustpassword=keystore</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动 azkaban-web</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sh bin/azkaban-web-start.sh</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Note: 1. Azkaban 在启动是会生成两个日志文件 azkaban-access.log/azkaban-webserver.log，他们的生成位置是在你执行脚本的目录，所以建议你最好还是在 AZKABAN_HOME 目录下执行启动脚本<br>　　 2. Azkaban 需要在 ./plugins 的文件夹下手动生成一个 triggers 的目录，否则启动日志会报错。但如果添加 triggers 文件夹后，登录页面时 500 并提示 Velocity could not be initialized! 那就删除 ./plugins/tirggers 文件夹</p>
+<p><img src="//fronttang.github.io/2018/12/09/hadoop-ecosystem-install-step12-install-azkaban/2.jpeg" alt="image 2"></p>
+<ol start="5">
+<li><p>配置 azkaban-executor</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar -xzvf azkaban-executor-server-2.5.0.tar.gz</span><br></pre></td></tr></table></figure>
+<p>配置 ./conf/azkaban.properties<br>修改如下参数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">default.timezone.id=Asia/Shanghai</span><br><span class="line">mysql.port=3306</span><br><span class="line">mysql.host=hadoop-slave-001</span><br><span class="line">mysql.database=azkaban</span><br><span class="line">mysql.user=azkaban</span><br><span class="line">mysql.password=azkaban</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>CentOS</tag>
+        <tag>Hadoop</tag>
+        <tag>Azkaban</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hadoop生态系统安装 Step11：安装Sqoop</title>
+    <url>/2018/12/08/hadoop-ecosystem-install-step11-install-sqoop/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="用户：hadoop"><a href="#用户：hadoop" class="headerlink" title="用户：hadoop"></a>用户：hadoop</h3><h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h3><h3 id="安装包：sqoop-1-4-6-tar-gz"><a href="#安装包：sqoop-1-4-6-tar-gz" class="headerlink" title="安装包：sqoop-1.4.6.tar.gz"></a>安装包：sqoop-1.4.6.tar.gz</h3><h3 id="安装方式："><a href="#安装方式：" class="headerlink" title="安装方式："></a>安装方式：</h3><ol>
+<li><p>解压缩</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar zxvf sqoop-1.4.6.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改/etc/profile 增加配置 SQOOP_HOME,PATH</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi .bash_profile</span><br><span class="line">export SQOOP_HOME=/home/hadoop/sqoop-1.4.6</span><br><span class="line">export LOGDIR=$SQOOP_HOME/logs</span><br><span class="line">export PATH=$PATH:\$SQOOP_HOME/bin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置文件\$SQOOP_HOME/conf/sqoop-env.sh</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /home/hadoop/sqoop-1.4.6/conf/</span><br><span class="line">cp sqoop-env-template.sh sqoop-env.sh</span><br><span class="line">vi sqoop-env.sh</span><br><span class="line">export HADOOP_COMMON_HOME=/home/hadoop/hadoop-2.7.2</span><br><span class="line">export HADOOP_MAPRED_HOME=/home/hadoop/hadoop-2.7.2</span><br><span class="line">export HBASE_HOME=/home/hadoop/hbase-1.2.1</span><br><span class="line">export HIVE_HOME=/home/hadoop/apache-hive-2.0.0-bin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改\$SQOOP_HOME/bin/configure-sqoop</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /home/hadoop/sqoop-1.4.6/bin/</span><br><span class="line">vi configure-sqoop</span><br><span class="line">去掉：HCAT_HOME，ACCUMULO_HOME，ZOOKEEPER_HOME</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上传 lib 包<br>将 oracle/mysql 驱动包 lib 目录下</p>
+</li>
+<li><p>测试</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sqoop version</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/08/hadoop-ecosystem-install-step11-install-sqoop/1.jpeg" alt="image 1"></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>CentOS</tag>
+        <tag>Hadoop</tag>
+        <tag>Sqoop</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hadoop生态系统安装 Step10：安装storm</title>
+    <url>/2018/12/07/hadoop-ecosystem-install-step10-install-storm/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="用户：hadoop"><a href="#用户：hadoop" class="headerlink" title="用户：hadoop"></a>用户：hadoop</h3><h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h3><h3 id="安装包：apache-storm-1-0-1-tar-gz"><a href="#安装包：apache-storm-1-0-1-tar-gz" class="headerlink" title="安装包：apache-storm-1.0.1.tar.gz"></a>安装包：apache-storm-1.0.1.tar.gz</h3><h3 id="安装方式："><a href="#安装方式：" class="headerlink" title="安装方式："></a>安装方式：</h3><ol>
+<li>将 storm 文件上传到/home/hadoop 目录</li>
+<li><p>解压文件（解压即可，不需要安装，主要是做配置）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /home/hadoop/</span><br><span class="line">tar zxvf apache-strom-1.0.1.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除安装包（可选，小心操作）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rm -rf apache-storm-1.0.1.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加快捷方式（可选）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ln -s apache-storm-1.0.1 storm</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="配置方式："><a href="#配置方式：" class="headerlink" title="配置方式："></a>配置方式：</h3><ol>
+<li><p>创建本地数据目录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir /home/hadoop/storm/stdata</span><br><span class="line">mkdir /home/hadoop/storm/logs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置环境</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi .bash_profile</span><br><span class="line">export STORM_HOME=/home/hadoop/storm/</span><br><span class="line">export PATH=$STORM_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生效配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">. .bash_profile</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置 storm 环境</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /home/hadoop/storm/conf</span><br><span class="line">vim storm.yaml</span><br><span class="line"># 增加以下内容:</span><br><span class="line">storm.zookeeper.servers: - &quot;hadoop-master-002&quot; - &quot;hadoop-slave-001&quot; - &quot;hadoop-slave-002&quot;</span><br><span class="line">ui.port: 9090</span><br><span class="line">nimbus.seeds: [&quot;hadoop-master-002&quot;,&quot;hadoop-slave-001&quot;]</span><br><span class="line">storm.zookeeper.port: 2181</span><br><span class="line">nimbus.host: &quot;hadoop-master-002&quot;</span><br><span class="line">storm.local.dir: &quot;/home/hadoop/storm/stdata&quot;</span><br><span class="line">storm.local.mode.zmq: true</span><br><span class="line">supervisor.slots.ports:</span><br><span class="line">  - 6700</span><br><span class="line">  - 6701</span><br><span class="line">  - 6702</span><br><span class="line">  - 6703</span><br><span class="line">nimbus.childopts: &quot;-Xmx1024m&quot;</span><br><span class="line">supervisor.childopts: &quot;-Xmx1024m&quot;</span><br><span class="line">worker.heap.memory.mb: 768</span><br><span class="line">worker.childopts: &quot;-Xmx1024m&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/07/hadoop-ecosystem-install-step10-install-storm/1.jpeg" alt="image 1"></p>
+</li>
+<li><p>复制 strom 到其它服务器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scp -r /home/hadoop/storm hadoop@hadoop-slave-001:/home/hadoop/</span><br><span class="line">scp -r home/hadoop/storm hadoop@hadoop-slave-002:/home/hadoop/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>storm 集群启动</p>
+<p>hadoop-master-002 作为 nimbus 和 supervisor<br>hadoop-slave-001 作为 supervisor<br>hadoop-slave-002 作为 supervisor</p>
+<p>hadoop-master-002</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /home/hadoop/storm/bin</span><br><span class="line">./storm nimbus &gt;&gt; /home/hadoop/storm/logs/nimbus.out 2&gt;&amp;1 &amp;</span><br><span class="line">./storm ui&gt;&gt; /home/hadoop/storm/logs/ui.out 2&gt;&amp;1 &amp;</span><br><span class="line">./storm logviewer&gt;&gt; /home/hadoop/storm/logs/logviewer.out 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/07/hadoop-ecosystem-install-step10-install-storm/2.jpeg" alt="image 2"></p>
+<p>hadoop-slave-001 和 hadoop-slave-002</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /home/hadoop/storm/bin</span><br><span class="line">./storm supervisor&gt;&gt; /home/hadoop/storm/logs/supervisor.out 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/07/hadoop-ecosystem-install-step10-install-storm/3.jpeg" alt="image 3"></p>
+</li>
+<li><p>检测集群是否启动成功<br>在浏览器上访问 hadoop-master-002 对应的 ip 加上端口号 9090 访问状态界面查看如：<br>http：//xxx.xxx.xxx.xxx:9090/index.html<br><img src="//fronttang.github.io/2018/12/07/hadoop-ecosystem-install-step10-install-storm/4.jpeg" alt="image 4"></p>
+</li>
+<li><p>运行 jar</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">storm kill main-top -w 200</span><br><span class="line">storm jar thinkive-bigdata-bdms-storm-topology-0.0.1-SNAPSHOT.jar com.thinkive.bigdata.bdms.storm.topology.Topology conf/configuration.properties</span><br></pre></td></tr></table></figure>
+<p>查看 storm 任务</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">storm list</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>CentOS</tag>
+        <tag>Hadoop</tag>
+        <tag>Storm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hadoop生态系统安装 Step9：安装kafka</title>
+    <url>/2018/12/06/hadoop-ecosystem-install-step9-install-kafka/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="用户：hadoop"><a href="#用户：hadoop" class="headerlink" title="用户：hadoop"></a>用户：hadoop</h3><h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h3><h3 id="安装包：kafka-2-11-0-10-0-0-tgz"><a href="#安装包：kafka-2-11-0-10-0-0-tgz" class="headerlink" title="安装包：kafka_2.11-0.10.0.0.tgz"></a>安装包：kafka_2.11-0.10.0.0.tgz</h3><h3 id="安装方式："><a href="#安装方式：" class="headerlink" title="安装方式："></a>安装方式：</h3><ol>
+<li>将 kafka 文件上传到/home/hadoop 目录</li>
+<li><p>解压文件（解压即可，不需要安装，主要是做配置）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /home/hadoop</span><br><span class="line">tar -xzvf kafka_2.11-0.10.0.0.tgz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除安装包（可选，小心操作）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rm -rf kafka_2.11-0.10.0.0.tgz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加快捷方式（可选）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ln -s kafka_2.11-0.10.0.0 kafka</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="配置方式："><a href="#配置方式：" class="headerlink" title="配置方式："></a>配置方式：</h3><ol>
+<li><p>创建 log 文件目录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir /home/hadoop/tmp/kafkalogs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /home/hadoop/kafka/config</span><br><span class="line">vim server.properties</span><br></pre></td></tr></table></figure>
+<p>修改内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">broker.id=0 //当前机器在集群中的唯一标识，和 zookeeper 的 myid 性质一样不同服务器标示不一样,第二台机器上配置 id 为 1</span><br><span class="line">log.dirs=/home/hadoop/tmp/kafkalogs //设置 kafka 日志目录</span><br><span class="line">zookeeper.connect=hadoop-master-002:2181,hadoop-slave-001:2181,hadoop-slave-002:2181/kafka //设置 zookeeper 的连接端口</span><br></pre></td></tr></table></figure>
+<p>增加内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">host.name=hadoop-sub-001 //服务器名，第二台机器配置为 hadoop-sub-002</span><br><span class="line">message.max.byte=5242880//消息保存的最大值 5M</span><br><span class="line">default.replication.factor=2 //kafka 保存消息的副本数，如果一个副本失效了，另一个还可以继续提供服务</span><br><span class="line">replica.fetch.max.bytes=5242880//取消息的最大直接数</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开启服务</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/home/hadoop/kafka_2.11-0.10.0.0/bin/kafka-server-start.sh -daemon /home/hadoop/kafka_2.11-0.10.0.0/config/server.properties</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/06/hadoop-ecosystem-install-step9-install-kafka/1.jpeg" alt="image 1"></p>
+</li>
+</ol>
+<h3 id="查看服务是否正常"><a href="#查看服务是否正常" class="headerlink" title="查看服务是否正常"></a>查看服务是否正常</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jps</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/06/hadoop-ecosystem-install-step9-install-kafka/2.jpeg" alt="image 2"></p>
+<h3 id="检测-kafka-集群进程是否正常启动"><a href="#检测-kafka-集群进程是否正常启动" class="headerlink" title="检测 kafka 集群进程是否正常启动"></a>检测 kafka 集群进程是否正常启动</h3><ol>
+<li><p>创建 topic</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/home/hadoop/kafka_2.11-0.10.0.0/bin/kafka-topics.sh --create --zookeeper hadoop-slave-002:2181 --replication-factor 2 --partitions 1 --topic kafkatest</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/06/hadoop-ecosystem-install-step9-install-kafka/3.jpeg" alt="image 3"></p>
+</li>
+</ol>
+<p>查看 topic 是否创建成功</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/home/hadoop/kafka_2.11-0.10.0.0/bin/kafka-topics.sh --list --zookeeper hadoop-slave-002:2181</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/06/hadoop-ecosystem-install-step9-install-kafka/4.jpeg" alt="image 4"></p>
+<ol start="2">
+<li><p>hadooop-sub-001 机器 创建 broker</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/home/hadoop/kafka_2.11-0.10.0.0/bin/kafka-console-producer.sh --broker-list hadoop-sub-001:9092 --topic kafkatest</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/06/hadoop-ecosystem-install-step9-install-kafka/5.jpeg" alt="image 5"></p>
+</li>
+<li><p>hadooop-sub-002 机器 创建订阅者</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/home/hadoop/kafka_2.11-0.10.0.0/bin/kafka-console-consumer.sh --zookeeper hadoop-slave-002:2181 --topic kafkatest --from-beginning</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/06/hadoop-ecosystem-install-step9-install-kafka/6.jpeg" alt="image 6"></p>
+</li>
+<li><p>hadooop-sub-001 机器 输入 hello world<br><img src="//fronttang.github.io/2018/12/06/hadoop-ecosystem-install-step9-install-kafka/7.jpeg" alt="image 7"></p>
+</li>
+<li><p>hadooop-sub-002 机器 显示 hello world<br><img src="//fronttang.github.io/2018/12/06/hadoop-ecosystem-install-step9-install-kafka/8.jpeg" alt="image 8"></p>
+</li>
+<li><p>查看 kafka 日志<br><img src="//fronttang.github.io/2018/12/06/hadoop-ecosystem-install-step9-install-kafka/9.jpeg" alt="image 9"><br><img src="//fronttang.github.io/2018/12/06/hadoop-ecosystem-install-step9-install-kafka/10.jpeg" alt="image 10"></p>
+</li>
+<li><p>查看 zookeeper 日志<br><img src="//fronttang.github.io/2018/12/06/hadoop-ecosystem-install-step9-install-kafka/11.jpeg" alt="image 11"><br><img src="//fronttang.github.io/2018/12/06/hadoop-ecosystem-install-step9-install-kafka/12.jpeg" alt="image 12"></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>CentOS</tag>
+        <tag>Hadoop</tag>
+        <tag>Kafka</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hadoop生态系统安装 Step8：安装Hive</title>
+    <url>/2018/12/05/hadoop-ecosystem-install-step8-install-hive/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="用户：hadoop"><a href="#用户：hadoop" class="headerlink" title="用户：hadoop"></a>用户：hadoop</h3><h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h3><h3 id="安装包：apache-hive-2-1-1-bin-tar-gz"><a href="#安装包：apache-hive-2-1-1-bin-tar-gz" class="headerlink" title="安装包：apache-hive-2.1.1-bin.tar.gz"></a>安装包：apache-hive-2.1.1-bin.tar.gz</h3><h3 id="安装方式："><a href="#安装方式：" class="headerlink" title="安装方式："></a>安装方式：</h3><ol>
+<li>将 hive 文件上传到/home/hadoop</li>
+<li>解压文件（解压即可，不需要安装，主要是做配置）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /home/hadoop/</span><br><span class="line">tar zxvf apache-hive-2.1.1-bin.tar.gz</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>删除安装包（可选，小心操作）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rm -rf apache-hive-2.1.1-bin.tar.gz</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>添加快捷方式（可选）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ln -s apache-hive-2.1.1-bin hive</span><br></pre></td></tr></table></figure>
+<h3 id="配置方式："><a href="#配置方式：" class="headerlink" title="配置方式："></a>配置方式：</h3><ol>
+<li>创建 hive 数据库、用户并授予相应权限<br>登陆录 mysql 主机，执行如下命令</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql -uroot –pthinkive</span><br><span class="line">create database hive;</span><br><span class="line">alter database hive character set latin1;</span><br><span class="line">CREATE USER hive@&apos;%&apos; IDENTIFIED BY &apos;hive&apos;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<p>2、配置环境变量</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi .base_profile</span><br><span class="line"># 添加内容</span><br><span class="line">export HIVE_HOME=/home/hadoop/apache-hive-2.0.0-bin</span><br><span class="line">export PATH=$PATH:$HIVE_HOME/bin</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改 hive</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /home/hadoop/apache-hive-2.1.1-bin/conf</span><br><span class="line">cp hive-default.xml.template hive-site.xml</span><br></pre></td></tr></table></figure>
+<p>修改 hive-site.xml （见附件）</p>
+<ol start="3">
+<li>修改 hive-env.sh</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp hive-env.sh.template hive-env.sh</span><br><span class="line"># 编辑hive-env.sh</span><br><span class="line">export HADOOP_HOME=/home/hadoop/hadoop-2.7.2</span><br><span class="line">export HIVE_CONF_DIR=/home/hadoop/apache-hive-2.1.1-bin/conf</span><br><span class="line">export HADOOP_CLASSPATH=.:$CLASSPATH:$HADOOP_CLASSPATH:$HADOOP_HOME/bin</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>修改 hive-config.sh</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /home/hadoop/apache-hive-2.0.0-bin/bin</span><br><span class="line">vi hive-config.sh</span><br><span class="line"># 末尾添加</span><br><span class="line">export JAVA_HOME=/usr/java/jdk1.8.0_121</span><br><span class="line">export HADOOP_HOME=/home/hadoop/hadoop-2.7.2</span><br><span class="line">export HIVE_HOME=/home/hadoop/apache-hive-2.0.0-bin</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li><p>上传 mysql 驱动包<br>将 mysql-connector-java-5.1.x-bin.jar 上传到 lib 目录下</p>
+</li>
+<li><p>执行 hive 初始化脚本</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">./schematool -dbType mysql -initSchema</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>CentOS</tag>
+        <tag>Hadoop</tag>
+        <tag>Hive</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hadoop生态系统安装 Step7：安装Hbase</title>
+    <url>/2018/12/04/hadoop-ecosystem-install-step7-install-hbase/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="用户：hadoop"><a href="#用户：hadoop" class="headerlink" title="用户：hadoop"></a>用户：hadoop</h3><h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h3><h3 id="安装包：hbase-1-2-4-bin-tar-gz"><a href="#安装包：hbase-1-2-4-bin-tar-gz" class="headerlink" title="安装包：hbase-1.2.4-bin.tar.gz"></a>安装包：hbase-1.2.4-bin.tar.gz</h3><h3 id="安装方式："><a href="#安装方式：" class="headerlink" title="安装方式："></a>安装方式：</h3><ol>
+<li>将 hbase 文件上传到/home/hadoop</li>
+<li><p>解压文件（解压即可，不需要安装，主要是做配置）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /home/hadoop/</span><br><span class="line">tar zxvf hbase-1.2.4-bin.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除安装包（可选、小心操作）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rm -rf hbase-1.2.4-bin.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加快捷方式（可选）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ln -s hbase-1.2.4-bin hbase</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="配置方式"><a href="#配置方式" class="headerlink" title="配置方式"></a>配置方式</h3><ol>
+<li><p>配置环境变量</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi .bash_profile</span><br><span class="line">export HBASE_HOME=/home/hadoop/hbase-1.2.4/</span><br><span class="line">export PATH=$HBASE_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生效配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">. .bash_profile</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 regionservers 文件（regionserver）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim /home/hadoop/hbase-1.2.4/conf/regionservers</span><br><span class="line"># 删除原有内容，添加以下内容：</span><br><span class="line">hadoop-slave-001</span><br><span class="line">hadoop-slave-002</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 hbase-env.sh（见附件）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim /home/hadoop/hbase-1.2.4/conf/hbase-env.sh</span><br><span class="line"># 添加以下内容：</span><br><span class="line">export HBASE_PID_DIR=/home/hadoop/pids</span><br><span class="line">export JAVA_HOME=/usr/java/jdk1.8.0_121</span><br><span class="line">export HBASE_MANAGES_ZK=false</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 hbase-site.xml 配置（见附件）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim /home/hadoop/hbase-1.2.4/conf/hbase-site.xml</span><br></pre></td></tr></table></figure>
+<p>删除原有<configuration></configuration>内容，添加以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">&lt;name&gt;hbase.rootdir&lt;/name&gt;</span><br><span class="line">&lt;value&gt;hdfs://hadoop-master-001:9000/hbase&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">&lt;name&gt;hbase.cluster.distributed&lt;/name&gt;</span><br><span class="line">&lt;value&gt;true&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">&lt;name&gt;hbase.tmp.dir&lt;/name&gt;</span><br><span class="line">&lt;value&gt;/home/hadoop/tmp/hbase&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">&lt;name&gt;hbase.zookeeper.quorum&lt;/name&gt;</span><br><span class="line">&lt;value&gt;hadoop-master-002,hadoop-slave-001,hadoop-slave-002&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">&lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">&lt;value&gt;1&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">&lt;name&gt;hbase.master&lt;/name&gt;</span><br><span class="line">&lt;value&gt;hadoop-master-002&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">&lt;name&gt;hbase.master.info.port&lt;/name&gt;</span><br><span class="line">&lt;value&gt;60010&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">&lt;name&gt;hbase.master.port&lt;/name&gt;</span><br><span class="line">&lt;value&gt;60000&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">&lt;name&gt;hbase.master.info.bindAddress&lt;/name&gt;</span><br><span class="line">&lt;value&gt;0.0.0.0&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复制到其他节点</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scp -r /home/hadoop/hbase-1.2.4 hadoop@hadoop-slave-001:/home/hadoop</span><br><span class="line">scp -r /home/hadoop/hbase-1.2.4 hadoop@hadoop-slave-002:/home/hadoop</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>主节点运行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/home/hadoop/hbase-1.2.4/bin/start-hbase.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检测是否启动成功<br>主节点：<br><img src="//fronttang.github.io/2018/12/04/hadoop-ecosystem-install-step7-install-hbase/1.jpeg" alt="image 1"><br>从节点<br><img src="//fronttang.github.io/2018/12/04/hadoop-ecosystem-install-step7-install-hbase/2.jpeg" alt="image 2"><br>注意：主从节点的时间一定要一致，否则从节点可能启动不起来。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>CentOS</tag>
+        <tag>Hadoop</tag>
+        <tag>HBase</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hadoop生态系统安装 Step6：安装HADOOP</title>
+    <url>/2018/12/03/hadoop-ecosystem-install-step6-install-hadoop/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="用户：hadoop"><a href="#用户：hadoop" class="headerlink" title="用户：hadoop"></a>用户：hadoop</h3><h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h3><h3 id="安装包：hadoop-2-7-2-tar-gz"><a href="#安装包：hadoop-2-7-2-tar-gz" class="headerlink" title="安装包：hadoop-2.7.2.tar.gz"></a>安装包：hadoop-2.7.2.tar.gz</h3><h3 id="安装方式："><a href="#安装方式：" class="headerlink" title="安装方式："></a>安装方式：</h3><ol>
+<li>将 Hadoop 压缩文件上传到/home/hadoop 目录</li>
+<li>解压文件（解压即可，不需要安装，主要是做配置）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar zxvf hadoop-2.7.2.tar.gz</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>删除安装包（可选，小心操作）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rm -rf hadoop-2.7.2.tar.gz</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>添加快捷方式（可选）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ln -s hadoop-2.7.2 hadoop</span><br></pre></td></tr></table></figure>
+<h3 id="配置方式："><a href="#配置方式：" class="headerlink" title="配置方式："></a>配置方式：</h3><ol>
+<li>配置系统变量</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi .bash_profile</span><br><span class="line"># 在最后加上：</span><br><span class="line">export HADOOP_HOME=/home/hadoop/hadoop-2.7.2</span><br><span class="line">export HADOOP_INSTALL=$HADOOP_HOME</span><br><span class="line">export HADOOP_MAPRED_HOME=$HADOOP_HOME</span><br><span class="line">export HADOOP_COMMON_HOME=$HADOOP_HOME</span><br><span class="line">export HADOOP_HDFS_HOME=$HADOOP_HOME</span><br><span class="line">export YARN_HOME=$HADOOP_HOME</span><br><span class="line">export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><p>使设置生效<br>命令:. .bash_profile (注意”.”和”/”中间有个空格)</p>
+</li>
+<li><p>关闭 Transparent Hugepage（可选）<br>说明：<br>RHEL6 优化了内存申请的效率，而且在某些场景下对 KVM 的性能有明显提升。而 Hadoop 是个高密集型内存运算系统，这个改动似乎给它带来了副作用。理论上运算型 Java 程序应该更多的使用用户态 CPU 才对，Cloudera 官方也推荐关闭 THP。<br>a) 查看 Transparent Hugepage 的状态</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat /sys/kernel/mm/transparent_hugepage/enabled</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/03/hadoop-ecosystem-install-step6-install-hadoop/1.jpeg" alt="image 1"></p>
+<p>表示服务为开启状态<br>b) 关闭服务<br>打开文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi /etc/rc.local</span><br></pre></td></tr></table></figure>
+<p>增加代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if test -f /sys/kernel/mm/transparent_hugepage/enabled; then</span><br><span class="line">echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled</span><br><span class="line">fi</span><br><span class="line">if test -f /sys/kernel/mm/transparent_hugepage/defrag; then</span><br><span class="line">   echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>c) 重启服务器<br>d) 查看 Transparent Hugepage 的状态</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat /sys/kernel/mm/transparent_hugepage/enabled</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/03/hadoop-ecosystem-install-step6-install-hadoop/2.jpeg" alt="image 2"><br>表示服务已经永久关闭</p>
+<ol start="4">
+<li>创建目录</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir /home/hadoop/journal</span><br><span class="line">mkdir /home/hadoop/temp</span><br><span class="line">mkdir /home/hadoop/data</span><br><span class="line">mkdir /home/hadoop/hdfs</span><br><span class="line">mkdir /home/hadoop/hdfs/name</span><br><span class="line">mkdir /home/hadoop/hdfs/data</span><br><span class="line">mkdir /home/hadoop/yarn</span><br><span class="line">mkdir /home/hadoop/yarn/local</span><br><span class="line">mkdir /home/hadoop/yarn/logs</span><br><span class="line">mkdir /home/hadoop/yarn/config</span><br><span class="line">mkdir /home/hadoop/pids</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>复制配置文件到相应目录(上传 config 目录到/home/hadoop/software)：<br>注意配置文件需要根据文件上的注释进行相应的修改</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp slaves /home/hadoop/hadoop-2.7.2/etc/hadoop/</span><br><span class="line">cp core-site.xml /home/hadoop/hadoop-2.7.2/etc/hadoop/</span><br><span class="line">cp hdfs-site.xml /home/hadoop/hadoop-2.7.2/etc/hadoop/</span><br><span class="line">cp mapred-site.xml /home/hadoop/hadoop-2.7.2/etc/hadoop/</span><br><span class="line">cp yarn-site.xml /home/hadoop/hadoop-2.7.2/etc/hadoop/</span><br><span class="line"></span><br><span class="line">vi /home/hadoop/hadoop/sbin/hadoop-daemon.sh</span><br><span class="line">HADOOP_PID_DIR=/home/hadoop/pids</span><br><span class="line"></span><br><span class="line">vi /home/hadoop/hadoop/sbin/yarn-daemon.sh</span><br><span class="line">YARN_PID_DIR=/home/hadoop/pids</span><br><span class="line"></span><br><span class="line"># 修改hadoop-env.sh、yarn-env.sh，修改JAVA_HOME</span><br><span class="line">cd /home/hadoop/hadoop-2.7.2/etc/hadoop</span><br><span class="line">vi hadoop-env.sh</span><br><span class="line">vi yarn-env.sh</span><br><span class="line">export JAVA_HOME=/usr/java/jdk1.8.0_121</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li><p>将 hadoop 复制到其他 datanode 服务器</p>
+</li>
+<li><p>在第二台 yarn 机器上修改配置文件 yarn-site.xml,参数 yarn.resourcemanager.ha.id,值改为 rm2</p>
+</li>
+<li>启动 hadoop 集群<br>a) 在每台 yarn 机器上启动 yarn</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /home/hadoop/hadoop-2.7.2/sbin/</span><br><span class="line">./yarn-daemon.sh start resourcemanager</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/03/hadoop-ecosystem-install-step6-install-hadoop/3.jpeg" alt="image 3"><br>b) 主 MASTER 格式化 ZK</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hdfs zkfc -formatZK</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/03/hadoop-ecosystem-install-step6-install-hadoop/4.jpeg" alt="image 4"><br>c) 启动所有 Journal 节点</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~/hadoop-2.7.2/sbin/hadoop-daemon.sh start journalnode</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/03/hadoop-ecosystem-install-step6-install-hadoop/5.jpeg" alt="image 5"><br>d) 主 MASTER 格式化 ns</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hdfs namenode -format ns</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/03/hadoop-ecosystem-install-step6-install-hadoop/6.jpeg" alt="image 6"><br>e) 主 master 节点运行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~/hadoop-2.7.2/sbin/hadoop-daemon.sh start namenode</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/03/hadoop-ecosystem-install-step6-install-hadoop/7.jpeg" alt="image 7"><br>f) 备 master 节点运行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hdfs namenode -bootstrapStandby</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/03/hadoop-ecosystem-install-step6-install-hadoop/8.jpeg" alt="image 8"><br>g) 备 master 节点运行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~/hadoop-2.7.2/sbin/hadoop-daemon.sh start namenode</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/03/hadoop-ecosystem-install-step6-install-hadoop/9.jpeg" alt="image 9"><br>h) 主 master 节点运行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~/hadoop-2.7.2/sbin/start-all.sh</span><br></pre></td></tr></table></figure>
+<p>第一次启动的时候会报如下警告：<br><img src="//fronttang.github.io/2018/12/03/hadoop-ecosystem-install-step6-install-hadoop/10.jpeg" alt="image 10"><br>只需要根据提示输入 yes 即可，第二次启动的时候不会报这个错</p>
+<ol start="9">
+<li>检测 HADOOOP 集群进程是否正常启动<br>在每台机器上执行命令</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jps -l</span><br></pre></td></tr></table></figure>
+<p>a) hadoop-master-001 节点<br><img src="//fronttang.github.io/2018/12/03/hadoop-ecosystem-install-step6-install-hadoop/11.jpeg" alt="image 11"><br>b) hadoop-master-002 节点<br><img src="//fronttang.github.io/2018/12/03/hadoop-ecosystem-install-step6-install-hadoop/12.jpeg" alt="image 12"><br>c) hadoop-slave-001 节点<br><img src="//fronttang.github.io/2018/12/03/hadoop-ecosystem-install-step6-install-hadoop/13.jpeg" alt="image 13"><br>d) hadoop-slave-002 节点<br><img src="//fronttang.github.io/2018/12/03/hadoop-ecosystem-install-step6-install-hadoop/14.jpeg" alt="image 14"></p>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>CentOS</tag>
+        <tag>Hadoop</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hadoop生态系统安装 Step5：安装配置zookeeper</title>
+    <url>/2018/12/02/hadoop-ecosystem-install-step5-install-and-setup-zookeeper/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="用户：hadoop"><a href="#用户：hadoop" class="headerlink" title="用户：hadoop"></a>用户：hadoop</h3><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>Zookeeper 在 HDFS 体系中主要起到的作用是配置管理，在 HBASE 里起到的作用是当 leader 宕机后，选举新的 leader,是一种高 HA 需求，zookeeper 只能部署在单数服务器，因为内部机制会判断，当网内&gt;=一半 zookeeper 服务器宕机，整个 zookeeper 服务会停止，所以装 3 台和装 4 台效果是一样的</p>
+<h3 id="安装包：zookeeper-3-4-9-tar-gz"><a href="#安装包：zookeeper-3-4-9-tar-gz" class="headerlink" title="安装包：zookeeper-3.4.9.tar.gz"></a>安装包：zookeeper-3.4.9.tar.gz</h3><h3 id="安装方式："><a href="#安装方式：" class="headerlink" title="安装方式："></a>安装方式：</h3><ol>
+<li>将 zookeeper 压缩文件上传到/home/hadoop 目录</li>
+<li><p>解压文件（解压即可，不需要安装，主要是做配置）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar zxvf zookeeper-3.4.9.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除安装包（可选，小心操作）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">m -rf zookeeper-3.4.9.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加快捷方式（可选）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ln -s zookeeper-3.4.9 zookeeper</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="配置方式："><a href="#配置方式：" class="headerlink" title="配置方式："></a>配置方式：</h3><ol>
+<li><p>配置环境变量</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi .bash_profile</span><br></pre></td></tr></table></figure>
+<p>添加内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export ZOOKEEPER_HOME=/home/hadoop/zookeeper-3.4.9</span><br><span class="line">export PATH=$ZOOKEEPER_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
+<p>用命令:. .bash_profile 使配置生效 (注意”.”后面有个空格)</p>
+</li>
+<li><p>进入到指定目录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /home/hadoop/zookeeper-3.4.9/conf/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建配置文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp zoo_sample.cfg zoo.cfg</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置 zoo.cfg 文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi zoo.cfg</span><br><span class="line">#增加以下内容:</span><br><span class="line">dataDir=/home/hadoop/zookeeper-3.4.9/var/data</span><br><span class="line">dataLogDir=/home/hadoop/zookeeper-3.4.9/var/datalog</span><br><span class="line">server.1=hadoop-master-002:2888:3888</span><br><span class="line">server.2=hadoop-slave-001:2888:3888</span><br><span class="line">server.3=hadoop-slave-002:2888:3888</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新增数据及日志目录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir /home/hadoop/zookeeper-3.4.9/var</span><br><span class="line">mkdir /home/hadoop/zookeeper-3.4.9/data</span><br><span class="line">mkdir /home/hadoop/zookeeper-3.4.9/var/datalog</span><br><span class="line">mkdir /home/hadoop/zookeeper-3.4.9/var/data</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 myid 文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim /home/hadoop/zookeeper-3.4.9/var/data/myid</span><br></pre></td></tr></table></figure>
+<p>文件内容需要根据 zoo.cfg 文件中定义服务器编号进行，如本用户器是 hadoop-master-002,而对应的服务器编码是 server.1，所以这里 myid 文件内容为 1</p>
+</li>
+<li><p>将 zookeeper-3.4.9 目录复制到其它服务器上，并修改 myid 文件</p>
+</li>
+<li><p>启动 zookeeper （每台 zookeeper 服务器）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /home/hadoop/zookeeper-3.4.9/bin</span><br><span class="line">./zkServer.sh start</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/12/02/hadoop-ecosystem-install-step5-install-and-setup-zookeeper/1.jpeg" alt="image 1"></p>
+</li>
+<li><p>检测集群启动是否成功<br>在三台机器上分别执行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/home/hadoop/zookeeper-3.4.9/bin/zkServer.sh status</span><br></pre></td></tr></table></figure>
+<p>结果如下：<br><img src="//fronttang.github.io/2018/12/02/hadoop-ecosystem-install-step5-install-and-setup-zookeeper/2.jpeg" alt="image 2"><br><img src="//fronttang.github.io/2018/12/02/hadoop-ecosystem-install-step5-install-and-setup-zookeeper/3.jpeg" alt="image 3"><br><img src="//fronttang.github.io/2018/12/02/hadoop-ecosystem-install-step5-install-and-setup-zookeeper/4.jpeg" alt="image 4"></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>CentOS</tag>
+        <tag>Hadoop</tag>
+        <tag>Zookeeper</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hadoop生态系统安装 Step4：配置SSH无密码登录</title>
+    <url>/2018/12/01/hadoop-ecosystem-install-step4-setup-ssh/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="用户：hadoop"><a href="#用户：hadoop" class="headerlink" title="用户：hadoop"></a>用户：hadoop</h3><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>Hadoop 运行过程中需要管理远端 Hadoop 守护进程，在 Hadoop 启动以后，NameNode 是通过 SSH（Secure Shell）来启动和停止各个 DataNode 上的各种守护进程的。这就必须在节点之间执行指令的时候是不需要输入密码的形式，故我们需要配置 SSH 运用无密码公钥认证的形式，这样 NameNode 使用 SSH 无密码登录并启动 DataName 进程，同样原理，DataNode 上也能使用 SSH 无密码登录到 NameNode。</p>
+<h3 id="配置方式一"><a href="#配置方式一" class="headerlink" title="配置方式一"></a>配置方式一</h3><h4 id="1-在每一台机器上执行如下指令"><a href="#1-在每一台机器上执行如下指令" class="headerlink" title="1. 在每一台机器上执行如下指令"></a>1. 在每一台机器上执行如下指令</h4><p>hadoop-master-001</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line">scp ~/.ssh/id_rsa.pub hadoop@hadoop-master-001:/home/hadoop/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<p>hadoop-master-002</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line">scp ~/.ssh/id_rsa.pub hadoop@hadoop-master-002:/home/hadoop/.ssh/authorized_keys</span><br><span class="line">scp ~/.ssh/authorized_keys hadoop@hadoop-master-001:/home/hadoop/.ssh/authorized_keys_master_002</span><br></pre></td></tr></table></figure>
+<p>hadoop-slave-001</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line">scp ~/.ssh/id_rsa.pub hadoop@hadoop-slave-001:/home/hadoop/.ssh/authorized_keys</span><br><span class="line">scp ~/.ssh/authorized_keys hadoop@hadoop-master-001:/home/hadoop/.ssh/authorized_keys_slave_001</span><br></pre></td></tr></table></figure>
+<p>hadoop-slave-002</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line">scp ~/.ssh/id_rsa.pub hadoop@hadoop-slave-002:/home/hadoop/.ssh/authorized_keys</span><br><span class="line">scp ~/.ssh/authorized_keys hadoop@hadoop-master-001:/home/hadoop/.ssh/authorized_keys_slave_002</span><br></pre></td></tr></table></figure>
+<p>hadoop-sub-001</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line">scp ~/.ssh/id_rsa.pub hadoop@hadoop-sub-001:/home/hadoop/.ssh/authorized_keys</span><br><span class="line">scp ~/.ssh/authorized_keys hadoop@hadoop-master-001:/home/hadoop/.ssh/authorized_keys_sub_001</span><br></pre></td></tr></table></figure>
+<p>hadoop-sub-002</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line">scp ~/.ssh/id_rsa.pub hadoop@hadoop-sub-002:/home/hadoop/.ssh/authorized_keys</span><br><span class="line">scp ~/.ssh/authorized_keys hadoop@hadoop-master-001:/home/hadoop/.ssh/authorized_keys_sub_002</span><br></pre></td></tr></table></figure>
+<p>hadoop-master-001</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat ~/.ssh/authorized_keys_master_002 &gt;&gt; ~/.ssh/authorized_keys</span><br><span class="line">cat ~/.ssh/authorized_keys_slave_001 &gt;&gt; ~/.ssh/authorized_keys</span><br><span class="line">cat ~/.ssh/authorized_keys_slave_002 &gt;&gt; ~/.ssh/authorized_keys</span><br><span class="line">cat ~/.ssh/authorized_keys_sub_001 &gt;&gt; ~/.ssh/authorized_keys</span><br><span class="line">cat ~/.ssh/authorized_keys_sub_002 &gt;&gt; ~/.ssh/authorized_keys</span><br><span class="line">scp ~/.ssh/authorized_keys hadoop@hadoop-master-002:/home/hadoop/.ssh/authorized_keys</span><br><span class="line">scp ~/.ssh/authorized_keys hadoop@hadoop-slave-001:/home/hadoop/.ssh/authorized_keys</span><br><span class="line">scp ~/.ssh/authorized_keys hadoop@hadoop-slave-002:/home/hadoop/.ssh/authorized_keys</span><br><span class="line">scp ~/.ssh/authorized_keys hadoop@hadoop-sub-001:/home/hadoop/.ssh/authorized_keys</span><br><span class="line">scp ~/.ssh/authorized_keys hadoop@hadoop-sub-002:/home/hadoop/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<h4 id="2-检测是否配置成功"><a href="#2-检测是否配置成功" class="headerlink" title="2. 检测是否配置成功"></a>2. 检测是否配置成功</h4><p>a) 检测本机无密码登录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh localhost</span><br></pre></td></tr></table></figure>
+<p>如没有要求输入密码，表示配置成功</p>
+<p>b) 检测其它机器无密码登录(每台机器与其它机器都可以无密登录)<br>例:ssh hadoop-slave-001<br>如没有要求输入密码，表示配置成功</p>
+<h3 id="配置方式二"><a href="#配置方式二" class="headerlink" title="配置方式二"></a>配置方式二</h3><h4 id="1、master-主节点执行："><a href="#1、master-主节点执行：" class="headerlink" title="1、master 主节点执行："></a>1、master 主节点执行：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line">cd .ssh</span><br><span class="line">cat id_rsa.pub &gt; authorized_keys</span><br><span class="line"># 将 authorized_keys 文件复制到其他机器上~/.ssh 目录下</span><br><span class="line">scp id_rsa.pub hadoop/hadoop-\*\*:/home/hadoop/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<h4 id="2、设置权限"><a href="#2、设置权限" class="headerlink" title="2、设置权限"></a>2、设置权限</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">设置 authorized_keys 权限</span><br><span class="line">chmod 600 authorized_keys</span><br><span class="line"># 设置.ssh 目录权限：</span><br><span class="line">chmod 700 -R .ssh</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>CentOS</tag>
+        <tag>Hadoop</tag>
+        <tag>SSH</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hadoop生态系统安装 Step3：安装JDK（每台机器）</title>
+    <url>/2018/11/29/hadoop-ecosystem-install-step3-install-mysql/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="用戶：root"><a href="#用戶：root" class="headerlink" title="用戶：root"></a>用戶：root</h3><h3 id="安裝包：jdk-8u121-linux-x64-rpm"><a href="#安裝包：jdk-8u121-linux-x64-rpm" class="headerlink" title="安裝包：jdk-8u121-linux-x64.rpm"></a>安裝包：jdk-8u121-linux-x64.rpm</h3><h3 id="配置方式："><a href="#配置方式：" class="headerlink" title="配置方式："></a>配置方式：</h3><h4 id="1-安装之前先检查一下系统有没有自带-JDK"><a href="#1-安装之前先检查一下系统有没有自带-JDK" class="headerlink" title="1. 安装之前先检查一下系统有没有自带 JDK"></a>1. 安装之前先检查一下系统有没有自带 JDK</h4><p>检查方式:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep jdk</span><br></pre></td></tr></table></figure>
+<p>如果是 openjdk 版本，需要卸载。<br>如果不是 openjdk,并且 JDK 版本&gt;=1.6，可以保留使用，1.6 版本以下也需要卸载。</p>
+<h4 id="2-（可选步骤）批量卸载所有带有-Java-的文件"><a href="#2-（可选步骤）批量卸载所有带有-Java-的文件" class="headerlink" title="2.（可选步骤）批量卸载所有带有 Java 的文件"></a>2.（可选步骤）批量卸载所有带有 Java 的文件</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep java | xargs rpm -e --nodeps</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/11/29/hadoop-ecosystem-install-step3-install-mysql/1.jpeg" alt="image 1"></p>
+<h4 id="3-创建-JAVA-目录"><a href="#3-创建-JAVA-目录" class="headerlink" title="3. 创建 JAVA 目录"></a>3. 创建 JAVA 目录</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir /usr/java</span><br></pre></td></tr></table></figure>
+<h4 id="4-上传-jdk-8u121-linux-x64-rpm-到-JAVA-目录中"><a href="#4-上传-jdk-8u121-linux-x64-rpm-到-JAVA-目录中" class="headerlink" title="4. 上传 jdk-8u121-linux-x64.rpm 到 JAVA 目录中"></a>4. 上传 jdk-8u121-linux-x64.rpm 到 JAVA 目录中</h4><p>安装 JDK<br>命令:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod +x jdk-8u121-linux-x64.rpm</span><br><span class="line">rpm -ivh jdk-8u121-linux-x64.rpm</span><br></pre></td></tr></table></figure>
+<h4 id="5-配置系统变量"><a href="#5-配置系统变量" class="headerlink" title="5. 配置系统变量"></a>5. 配置系统变量</h4><p>命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi etc/provile</span><br></pre></td></tr></table></figure>
+<p>在最后加上：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=/usr/java/jdk1.8.0_121\</span><br><span class="line">export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib</span><br><span class="line">export PATH=.:$JAVA_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
+<h4 id="6-使设置生效"><a href="#6-使设置生效" class="headerlink" title="6. 使设置生效"></a>6. 使设置生效</h4><p>命令:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">. /etc/profile</span><br><span class="line"># (注意”.”和”/”中间有个空格)</span><br></pre></td></tr></table></figure>
+<h4 id="7-检查安装是否成功"><a href="#7-检查安装是否成功" class="headerlink" title="7. 检查安装是否成功"></a>7. 检查安装是否成功</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java -version</span><br><span class="line">java</span><br><span class="line">javac</span><br><span class="line">echo $JAVA_HOME     # 检验变量值</span><br><span class="line">java -version</span><br><span class="line">$JAVA_HOME/bin/java -version  # 与直接执行 java -version 一样</span><br></pre></td></tr></table></figure>
+<p><img src="//fronttang.github.io/2018/11/29/hadoop-ecosystem-install-step3-install-mysql/2.jpeg" alt="image 2"></p>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>CentOS</tag>
+        <tag>Hadoop</tag>
+        <tag>JDK</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hadoop生态系统安装 Step2：创建HADOOP用户，用户组及赋权（每台机器）</title>
+    <url>/2018/11/28/hadoop-ecosystem-install-step2/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="用户：root"><a href="#用户：root" class="headerlink" title="用户：root"></a>用户：root</h3><h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h3><pre><code>增加大数据专用用户，增加安全性
+</code></pre><h3 id="配置方式："><a href="#配置方式：" class="headerlink" title="配置方式："></a>配置方式：</h3><h4 id="1、创建用户及用户组"><a href="#1、创建用户及用户组" class="headerlink" title="1、创建用户及用户组"></a>1、创建用户及用户组</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">groupadd hadoop</span><br><span class="line">useradd -d /home/hadoop -g hadoop hadoop</span><br><span class="line">passwd hadoop</span><br><span class="line">（会要求重复输入密码）</span><br></pre></td></tr></table></figure>
+<h4 id="2、配置权限"><a href="#2、配置权限" class="headerlink" title="2、配置权限"></a>2、配置权限</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi /etc/sudoers</span><br><span class="line">hadoop ALL=(ALL) ALL</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>CentOS</tag>
+        <tag>Hadoop</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hadoop生态系统安装 Step1：修改主机名，配置HOSTS（每台机器）</title>
+    <url>/2018/11/27/hadoop-ecosystem-install-step1/</url>
+    <content><![CDATA[<a id="more"></a>
+<h3 id="用户：root"><a href="#用户：root" class="headerlink" title="用户：root"></a>用户：root</h3><h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h3><pre><code>配置主机名与IP之间的映射关系
+配置主机名，主机名与hosts文件中的名字保持一致
+</code></pre><h3 id="配置方式："><a href="#配置方式：" class="headerlink" title="配置方式："></a>配置方式：</h3><h4 id="1、修改主机名"><a href="#1、修改主机名" class="headerlink" title="1、修改主机名"></a>1、修改主机名</h4><p>修改/etc/sysconfig/network，修改 HOSTNAME 后面的主机名为 HOSTNAME=hadoop-xx<br>vi /etc/sysconfig/network</p>
+<h4 id="2、配置-host"><a href="#2、配置-host" class="headerlink" title="2、配置 host"></a>2、配置 host</h4><p>修改/etc/hosts，添加</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi /etc/hosts</span><br><span class="line">192.168.61.133   hadoop-master-001</span><br><span class="line">192.168.61.134   hadoop-master-002</span><br><span class="line">192.168.61.135   hadoop-slave-001</span><br><span class="line">192.168.61.136   hadoop-slave-002</span><br><span class="line">192.168.61.132   hadoop-bigdata-001</span><br><span class="line">192.168.61.138   hadoop-bigdata-002</span><br></pre></td></tr></table></figure>
+<h4 id="3、设置时区并同步时间（可选）"><a href="#3、设置时区并同步时间（可选）" class="headerlink" title="3、设置时区并同步时间（可选）"></a>3、设置时区并同步时间（可选）</h4><p>修改 /etc/profile 在最后添加<br>export TZ=”Asia/Shanghai”<br>保存并让配置生效 . /etc/profile (注意点后面有空格)<br>输入 ntpdate time.nist.gov 同步网络时间（时间服务器可网上搜索）</p>
+<h4 id="4、重启系统"><a href="#4、重启系统" class="headerlink" title="4、重启系统"></a>4、重启系统</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>CentOS</tag>
+        <tag>Hadoop</tag>
+        <tag>hosts</tag>
+      </tags>
+  </entry>
+</search>
